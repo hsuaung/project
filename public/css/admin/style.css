@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #383854;
+    color: #FFFFFF;
+    font-family: "Exo 2";
+}
+.main {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    width: 90%;
+    /* justify-content: center; */
+    /* align-content: center; */
+    /* justify-items: center; */
+    /* align-items: center; */
+    margin: auto;
+    /* margin:1rem rem; */
+    gap: 2%;
+    /* background-color: yellow; */
+}
+
+.sidemenu {
+    background-color: #2E2E48;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    margin: 1rem;
+    border-radius: 5px;
+    /* transition: all 2s ease; */
+}
+
+.sidemenu.active {
+    width: 250px;
+
+    /* display:none; */
+}
+
+/* .sidemenu.active ~ .right{
+    display:none;
+}
+.sidemenu.active ~ .sidemenu-item a>p{
+    display:none;
+} */
+/* .sidemenu-item >p{
+    display:none;
+} */
+
+.sidemenu-title a {
+    display: flex;
+    align-items: center;
+    gap: 1%;
+    text-decoration: none;
+    color: #ffffff;
+
+}
+
+.sidemenu-container,
+.sidemenu-exit {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 3rem;
+
+}
+
+.sidemenu-item a {
+    display: flex;
+    gap: 10%;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.sidemenu-item a {}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 5rem;
+}
+
+.topnav {
+    background-color: #2E2E48;
+    color: #FFF;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    padding: .2rem 2rem;
+    align-items: center;
+
+}
+
+.rightnav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.topnav img:nth-child(2) {
+    width: 40%;
+    height: auto;
+}
+
