@@ -5,12 +5,12 @@
 <div class="top-div">
                 <div class="date">
                     <p>01/01/2023 - 01/01/2023</p>
-                    <img src="/image/calendar.png" alt="">
+                    <img src="{{asset('image/admin/calendar.png') }}" alt="">
                 </div>
                 <div class="filter">
                     <div class="search">
                         <p>Search...</p>
-                        <p><img src="/image/search.png" alt=""></p>
+                        <p><img src="{{asset('image/admin/search.png') }}" alt=""></p>
                     </div>
                     <div class="sort">
                         <select id="sort">
@@ -26,7 +26,7 @@
                 <div class="staffListTitle">
                     <p>Staff List</p>
                     <a href="/pages/staffAdd.html">
-                        <img src="/image/+.svg" alt="">
+                        <img src="{{asset('image/admin/+.svg') }}" alt="">
                         <p>New Staff</p>
                     </a>
                 </div>
@@ -56,8 +56,8 @@
                         </div>
                         <div class="active">Active</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="row ">
@@ -76,8 +76,8 @@
                         </div>
                         <div class="inactive">Inactive</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="row ">
@@ -96,8 +96,8 @@
                         </div>
                         <div class="suspended">Suspended</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="row ">
@@ -116,8 +116,8 @@
                         </div>
                         <div class="active">Active</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="row ">
@@ -136,8 +136,8 @@
                         </div>
                         <div class="active">Active</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="row ">
@@ -156,8 +156,8 @@
                         </div>
                         <div class="active">Active</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="row ">
@@ -176,8 +176,8 @@
                         </div>
                         <div class="active">Active</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     

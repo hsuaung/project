@@ -180,7 +180,7 @@
                 </div>
                 <div class="row">
                     <div class="addMainImage">
-                        <img src="/image/image.svg" alt="">
+                        <img src="{{asset('image/admin/image.svg') }}" alt="">
                         <p>Browse Image</p>
                     </div>
                     <div>

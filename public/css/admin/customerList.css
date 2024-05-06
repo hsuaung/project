@@ -1,0 +1,8 @@
+.customer-row {
+    display: grid;
+    /* grid-template-columns: repeat(8,1fr); */
+    grid-template-columns: .5fr 1fr 2fr 1fr 1fr 1fr;
+    padding-left: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}

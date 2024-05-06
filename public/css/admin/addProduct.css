@@ -1,0 +1,78 @@
+.addProduct{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:3rem;
+}
+.addImage{
+    background-color: #2E2E48;
+    border-radius: 5px;
+    padding:2rem 5rem; 
+    display:grid;
+    gap:.5rem;
+    
+}
+.addMainImage{
+    display:grid;
+    gap:1rem;
+    border-radius: 5px;
+    padding: 5rem;
+    border:1px dashed #ffffff;
+    justify-content: center;
+    justify-items: center;
+    background-color: #383854;
+}
+.sampleImage{
+    display:grid;
+    width:3rem;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    background-color: #383854;
+    text-align: center;
+}
+.addSampleImage{
+    display: flex;
+    gap:10%;
+    border:1px solid #ffffff;
+    border-radius: 5px;
+    padding:.5rem;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.addContent{
+    display:flex;
+    flex-direction: column;
+    gap:.5rem;
+    padding:2rem 5rem;
+}
+.addContent span{
+    color:red;
+}
+.addContent input, .addContent select{
+    background-color: transparent;
+    border:1px solid #ffffff;
+    border-radius:5px;
+    height: 3rem;
+
+}
+.addContent textarea{
+    background-color: transparent;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+}
+.tagContainer{
+    display:flex;
+    flex-wrap: wrap;
+    gap:.8rem;
+}
+.tag{
+    display:flex;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    padding:.2rem .5rem;
+    justify-content: center;
+    align-items: center;
+    gap:.2rem;
+}

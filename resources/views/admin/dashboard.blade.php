@@ -7,7 +7,7 @@
     <section class="graph">
             <div class="date">
                 <p>01/01/2023 - 01/01/2023</p>
-                <img src="/image/calendar.png" alt="">
+                <img src="{{asset('image/admin/calendar.png') }}" alt="">
             </div>
             <div class="sales box">
                 <div class="content">
@@ -16,7 +16,7 @@
                     <p>We have sold 123 items</p>
                 </div>
                 <div class="sale-img">
-                    <img src="/image/sale.png" alt="">
+                    <img src="{{asset('image/admin/sale.png') }}" alt="">
                 </div>
             </div>
             <div class="box">
@@ -26,7 +26,7 @@
                     <p>Availabale to payout</p>
                 </div>
                 <div class="sale-img">
-                    <img src="/image/revenue.svg" alt="">
+                    <img src="{{asset('image/admin/revenue.svg') }}" alt="">
                 </div>
             </div>
             <div class="box">
@@ -36,7 +36,7 @@
                     <p>Availabale to payout</p>
                 </div>
                 <div class="sale-img">
-                    <img src="/image/order.svg" alt="">
+                    <img src="{{asset('image/admin/order.svg') }}" alt="">
                 </div>
             </div>
             <div class="bar-graph">
@@ -195,8 +195,8 @@
                     </div>
                     <div>250.000 MMK</div>
                     <div>
-                        <img src="/image/edit.svg" alt="">
-                        <img src="/image/trashbin.svg" alt="">
+                        <img src="{{asset('image/admin/edit.svg') }}"alt="">
+                        <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                     </div>
                 </div>
                 <div class="order-row ">
@@ -210,8 +210,8 @@
                     </div>
                     <div>250.000 MMK</div>
                     <div>
-                        <img src="/image/edit.svg" alt="">
-                        <img src="/image/trashbin.svg" alt="">
+                        <img src="{{asset('image/admin/edit.svg') }}"alt="">
+                        <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                     </div>
                 </div>
                 <div class="order-row ">
@@ -225,8 +225,8 @@
                     </div>
                     <div>250.000 MMK</div>
                     <div>
-                        <img src="/image/edit.svg" alt="">
-                        <img src="/image/trashbin.svg" alt="">
+                        <img src="{{asset('image/admin/edit.svg') }}"alt="">
+                        <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                     </div>
                 </div>
                 <div class="order-row ">
@@ -240,8 +240,8 @@
                     </div>
                     <div>250.000 MMK</div>
                     <div>
-                        <img src="/image/edit.svg" alt="">
-                        <img src="/image/trashbin.svg" alt="">
+                        <img src="{{asset('image/admin/edit.svg') }}"alt="">
+                        <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                     </div>
                 </div>
                 <div class="order-row ">
@@ -255,8 +255,8 @@
                     </div>
                     <div>250.000 MMK</div>
                     <div>
-                        <img src="/image/edit.svg" alt="">
-                        <img src="/image/trashbin.svg" alt="">
+                        <img src="{{asset('image/admin/edit.svg') }}"alt="">
+                        <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                     </div>
                 </div>
                 <div class="order-row ">
@@ -270,8 +270,8 @@
                     </div>
                     <div>250.000 MMK</div>
                     <div>
-                        <img src="/image/edit.svg" alt="">
-                        <img src="/image/trashbin.svg" alt="">
+                        <img src="{{asset('image/admin/edit.svg') }}"alt="">
+                        <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                     </div>
                 </div>
                 <div class="order-row ">
@@ -285,8 +285,8 @@
                     </div>
                     <div>250.000 MMK</div>
                     <div>
-                        <img src="/image/edit.svg" alt="">
-                        <img src="/image/trashbin.svg" alt="">
+                        <img src="{{asset('image/admin/edit.svg') }}"alt="">
+                        <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                     </div>
                 </div>
 

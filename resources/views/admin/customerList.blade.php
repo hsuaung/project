@@ -6,12 +6,12 @@
 <div class="top-div">
                 <div class="date">
                     <p>01/01/2023 - 01/01/2023</p>
-                    <img src="/image/calendar.png" alt="">
+                    <img src="{{asset('image/admin/calendar.png') }}" alt="">
                 </div>
                 <div class="filter">
                     <div class="search">
                         <p>Search...</p>
-                        <p><img src="/image/search.png" alt=""></p>
+                        <p><img src="{{asset('image/admin/search.png') }}" alt=""></p>
                     </div>
                     <div class="sort">
                         <select id="sort">
@@ -49,8 +49,8 @@
                         <div>Nov 30 2023</div>
                        
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="customer-row ">
@@ -61,8 +61,8 @@
                         <div>Nov 30 2023</div>
                     
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="customer-row ">
@@ -73,8 +73,8 @@
                         <div>Nov 30 2023</div>
                     
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="customer-row ">
@@ -85,8 +85,8 @@
                         <div>Nov 30 2023</div>
                     
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="customer-row ">
@@ -97,8 +97,8 @@
                         <div>Nov 30 2023</div>
                     
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="customer-row ">
@@ -109,8 +109,8 @@
                         <div>Nov 30 2023</div>
                     
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
 
@@ -122,8 +122,8 @@
                         <div>Nov 30 2023</div>
                     
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
 

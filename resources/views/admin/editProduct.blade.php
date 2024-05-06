@@ -7,32 +7,32 @@
                 <div class="addImage">
                     <p>Add Images</p>
                     <div class="addMainImage">
-                        <img src="/image/image.svg" alt="">
+                        <img src="{{asset('image/admin/image.svg') }}" alt="">
                         <p>Browse Image</p>
                     </div>
                     <div class="addSampleImage">
                         <div class="sampleImage">
-                            <img src="/image/image.svg" alt="">
+                            <img src="{{asset('image/admin/image.svg') }}"alt="">
                         </div>
                         <p>sample-image.jpg23<br>234KB
                         </p>
-                        <img src="/image/cancel.png" alt="">
+                        <img src="{{asset('image/admin/cancel.png') }}" alt="">
                     </div>
                     <div class="addSampleImage">
                         <div class="sampleImage">
-                            <img src="/image/image.svg" alt="">
+                            <img src="{{asset('image/admin/image.svg') }}"alt="">
                         </div>
                         <p>sample-image.jpg23<br>234KB
                         </p>
-                        <img src="/image/cancel.png" alt="">
+                        <img src="{{asset('image/admin/cancel.png') }}" alt="">
                     </div>
                     <div class="addSampleImage">
                         <div class="sampleImage">
-                            <img src="/image/image.svg" alt="">
+                            <img src="{{asset('image/admin/image.svg') }}" alt="">
                         </div>
                         <p>sample-image.jpg23<br>234KB
                         </p>
-                        <img src="/image/cancel.png" alt="">
+                        <img src="{{asset('image/admin/cancel.png') }}" alt="">
                     </div>
                 </div>
                 <div class="addContent">
@@ -55,27 +55,27 @@
                         <div class="tagContainer">
                             <div class="tag">
                                 <p>Cabinet</p>
-                                <img src="/image/cancel.png" alt="">
+                                <img src="{{asset('image/admin/cancel.png') }}" alt="">
                             </div>
                             <div class="tag">
                                 <p>Sofa</p>
-                                <img src="/image/cancel.png" alt="">
+                                <img src="{{asset('image/admin/cancel.png') }}" alt="">
                             </div>
                             <div class="tag">
                                 <p>Kitchen</p>
-                                <img src="/image/cancel.png" alt="">
+                                <img src="{{asset('image/admin/cancel.png') }}" alt="">
                             </div>
                             <div class="tag">
                                 <p>Table</p>
-                                <img src="/image/cancel.png" alt="">
+                                <img src="{{asset('image/admin/cancel.png') }}" alt="">
                             </div>
                             <div class="tag">
                                 <p>Bed</p>
-                                <img src="/image/cancel.png" alt="">
+                                <img src="{{asset('image/admin/cancel.png') }}" alt="">
                             </div>
                             <div class="tag">
                                 <p>Chair</p>
-                                <img src="/image/cancel.png" alt="">
+                                <img src="{{asset('image/admin/cancel.png') }}" alt="">
                             </div>
                         </div>
                     </div>

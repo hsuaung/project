@@ -7,17 +7,17 @@
                 <div class="staffListTitle">
                     <div class="search">
                         <p>Search...</p>
-                        <p><img src="/image/search.png" alt=""></p>
+                        <p><img src="{{asset('image/admin/search.png') }}" alt=""></p>
                     </div>
                     <a href="/pages/addProduct.html">
-                        <img src="/image/+.svg" alt="">
+                        <img src="{{asset('image/admin/+.svg') }}"alt="">
                         <p>New Product</p>
                     </a>
                 </div>
                 <div class="staffListTable">
                     <div class="product-row staffListHeader">
                         <div><input type="checkbox"></div>
-                        <div><img src="/image/image.svg" alt=""></div>
+                        <div><img src="{{asset('image/admin/image.svg') }}" alt=""></div>
                         <div>ID</div>
                         <div>Product Name</div>
                         <div>Category</div>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="product-row ">
                         <div><input type="checkbox"></div>
-                        <div><img src="/image/productList1.png" alt=""></div>
+                        <div><img src="{{asset('image/admin/productList1.png') }}" alt=""></div>
                         <div>EE72823</div>
                         <div>Plush-Paradise Sofa</div>
                         <div>Sofa</div>
@@ -40,13 +40,13 @@
                         <div>205</div>
                         <div>2023 Nov 22</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="product-row ">
                         <div><input type="checkbox"></div>
-                        <div><img src="/image/productList2.png" alt=""></div>
+                        <div><img src="{{asset('image/admin/productList2.png') }}" alt=""></div>
                         <div>EE72823</div>
                         <div>Plush-Paradise Sofa</div>
                         <div>Sofa</div>
@@ -57,13 +57,13 @@
                         <div>205</div>
                         <div>2023 Nov 22</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="product-row ">
                         <div><input type="checkbox"></div>
-                        <div><img src="/image/productList3.png" alt=""></div>
+                        <div><img src="{{asset('image/admin/productList3.png') }}" alt=""></div>
                         <div>EE72823</div>
                         <div>Plush-Paradise Sofa</div>
                         <div>Sofa</div>
@@ -74,13 +74,13 @@
                         <div>205</div>
                         <div>2023 Nov 22</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="product-row ">
                         <div><input type="checkbox"></div>
-                        <div><img src="/image/productList4.png" alt=""></div>
+                        <div><img src="{{asset('image/admin/productList4.png') }}" alt=""></div>
                         <div>EE72823</div>
                         <div>Plush-Paradise Sofa</div>
                         <div>Sofa</div>
@@ -91,13 +91,13 @@
                         <div>205</div>
                         <div>2023 Nov 22</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="product-row ">
                         <div><input type="checkbox"></div>
-                        <div><img src="/image/productList5.png" alt=""></div>
+                        <div><img src="{{asset('image/admin/productList5.png') }}" alt=""></div>
                         <div>EE72823</div>
                         <div>Plush-Paradise Sofa</div>
                         <div>Sofa</div>
@@ -108,13 +108,13 @@
                         <div>205</div>
                         <div>2023 Nov 22</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="product-row ">
                         <div><input type="checkbox"></div>
-                        <div><img src="/image/productList6.png" alt=""></div>
+                        <div><img src="{{asset('image/admin/productList6.png') }}" alt=""></div>
                         <div>EE72823</div>
                         <div>Plush-Paradise Sofa</div>
                         <div>Sofa</div>
@@ -125,13 +125,13 @@
                         <div>205</div>
                         <div>2023 Nov 22</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                     <div class="product-row ">
                         <div><input type="checkbox"></div>
-                        <div><img src="/image/productList7.png" alt=""></div>
+                        <div><img src="{{asset('image/admin/productList7.png') }}" alt=""></div>
                         <div>EE72823</div>
                         <div>Plush-Paradise Sofa</div>
                         <div>Sofa</div>
@@ -142,8 +142,8 @@
                         <div>205</div>
                         <div>2023 Nov 22</div>
                         <div>
-                            <img src="/image/edit.svg" alt="">
-                            <img src="/image/trashbin.svg" alt="">
+                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
                         </div>
                     </div>
                  
