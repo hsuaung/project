@@ -85,6 +85,7 @@
             <div class="rightnav">
                 <img src="{{asset('image/admin/noti.png') }}"alt="">
                 <img src="{{asset('image/admin/admin.png') }}" alt="">
+                
             </div>
         </section>
         @yield('content')
