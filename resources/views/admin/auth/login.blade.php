@@ -13,16 +13,30 @@
          
             <img src="{{asset('image/admin/adminLogin.jpg') }}" alt="">
         </div>
-        <form action="{{route('adminLoginProcess')}}" class="login-form">
+        <form action="{{route('login_handler')}}" method="POST" class="login-form">
+            @csrf
+            {{-- {{route('adminLoginProcess')}} --}}
+            @if(Session::get('fail'))
+            <div>
+                {{Session::get('fail')}}
+                <button><span> &times;</span></button>
+            </div>
+            @endif
             <h2>Admin Login</h2>
             <div>
                 <label for="username">Username</label><br><br>
-                <input type="text" id="username">
+                <input type="text" id="username" name="login_id" value={{old('login_id')}}>
             </div>
+            @error('login_id')
+            <div>{{$message}}</div>
+            @enderror
             <div>
                 <label for="password">Password</label><br><br>
-                <input type="password" id="password">
+                <input type="password" id="password" name="password">
             </div>
+            @error('password')
+            <div>{{$message}}</div>
+            @enderror
             <button> Login </button>
         </form>
     </div>

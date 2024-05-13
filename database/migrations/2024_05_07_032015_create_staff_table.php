@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('age');
             $table->String('phone');
             $table->foreignId('role_id')->references('id')->on('roles')->cascadeOnDelete()->cascadeOnUpdate()->constrained();
+            
             $table->String('password');
             $table->String('image');
             $table->String('uuid');

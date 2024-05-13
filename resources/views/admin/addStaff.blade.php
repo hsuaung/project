@@ -3,14 +3,31 @@
 @section('title', 'Add Staff User')
 
 @section('content')
-<div class="staffEditForm">
-                <div class="firstRow">
+<form action="{{route('addStaffProcess')}}" method="post" class="staffEditForm" enctype="multipart/form-data">
+    @csrf
+    <input type="text" id="name" name="name" placeholder="enter name">
+    <input type="text" id="email" name="email" placeholder="enter email">
+    <input type="text" id="address" name="address" placeholder="enter address">
+    <input type="text" id="age" name="age" placeholder="enter age">
+    <input type="text" id="phone" name="phone" placeholder="enter phone">
+    <input type="text" id="role_id" name="role_id" placeholder="enter role_id">
+    <input type="text" id="password" name="password" placeholder="enter password">
+    <input type="file" id="image" name="image" placeholder="image">
+   
+   
+    
+
+            {{-- <div class="firstRow">
                     <div class="staffName">
-                        <label for="name">Name <span>*</span></label><br>
-                        <input type="text" id="name" placeholder="First Name">
+                        <label for="name" >Name <span>*</span></label><br>
+                        <input type="text" id="name" name="name" placeholder="First Name">
                         <input type="text" placeholder="Last Name">
                     </div>
                     <div class="select-date">
+                        <div>
+                            <label for="age">Age</label>
+                            <input type="number" name="age" id="age">
+                        </div>
                         <label for="select-date">Date of Birth <span>*</span></label><br>
                         <select id="select-month">
                             <option value="">MONTH</option>
@@ -153,7 +170,7 @@
 
                 <div class="secondRow">
                     <label for="address">Address <span>*</span></label><br>
-                    <input type="text" id="address" placeholder="Street Address">
+                    <input type="text" id="address" name="address" placeholder="Street Address">
                 </div>
                 <div class="row">
                     <div class="city">
@@ -170,12 +187,12 @@
                 <div class="row">
                     <div class="phNo">
                         <label for="phno">Phone Number <span>*</span></label><br>
-                        <input type="number" id="phno" placeholder="Eg. 097827479">
+                        <input type="number" id="phone" name="phone" placeholder="Eg. 097827479">
 
                     </div>
                     <div class="email">
                         <label for="email">Email <span>*</span></label><br>
-                        <input type="email" id="email" placeholder="Eg. mgmg123@gmail.com">
+                        <input type="email" id="email" name="email" placeholder="Eg. mgmg123@gmail.com">
 
                     </div>
                 </div>
@@ -187,25 +204,28 @@
                     <div>
                         <div class="position">
                             <label for="position">Position <span>*</span></label><br>
-                            <select id="position">
+                            <select id="role_id" name="role_id">
                                 <option value="">Roles</option>
-                                <option value="admin">admin</option>
-                                <option value="staff">staff</option>
-                                <option value="trainee">trainee</option>
+                                <option value="1">admin</option>
+                                <option value="2">staff</option>
+                                <option value="3">trainee</option>
 
                             </select>
                         </div>
                         <div class="password">
                             <label for="password">Password <span>*</span></label><br>
-                            <input type="password" id="password" placeholder="">
+                            <input type="password" id="password" name="password" placeholder="">
 
                         </div>
                     </div>
 
-                </div>
-            </div>
-            <div class="btn">
+                </div> --}}
+           
+            
+                <div class="btn">
                 <input type="reset" value="Cancel">
                 <input type="submit" value="Add Staff">
+                </div>
             </div>
+        </form>
 @endsection

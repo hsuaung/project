@@ -55,14 +55,14 @@
     background-color: #383854;
     text-align: left;
 }
-.row{
+/* .row{
     display:grid;
-    /* grid-template-columns: repeat(8,1fr); */
+   
     grid-template-columns:.5fr 2fr 2fr 2fr 2fr 2fr 1fr 1fr;
     padding-left:2rem;
     padding-top:1rem;
     padding-bottom: 1rem;
-}
+} */
 .active{
     color:#4CE13F;
 }
@@ -93,4 +93,17 @@
 }
 .pagination_active{
     background-color: #475BE8;
+}
+
+
+.listTable{
+    display:grid;
+    grid-template-columns: repeat(10,1fr);
+    justify-items: center;
+
+}
+
+.staffTable{
+    width:100%;
+    text-align: center;
 }

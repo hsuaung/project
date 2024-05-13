@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('subcategories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->references('id')->on('categories')->cascadeOnDelete()->cascadeOnUpdate()->constrained();
+          
             $table->foreignId('staff_id')->references('id')->on('staff')->cascadeOnDelete()->cascadeOnUpdate()->constrained();
             $table->String('name');
             $table->String('uuid');

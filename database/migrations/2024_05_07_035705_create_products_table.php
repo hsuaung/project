@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('subcategory_id')->references('id')->on('subcategories')->cascadeOnDelete()->cascadeOnUpdate()->constrained();
             $table->foreignId('staff_id')->references('id')->on('staff')->cascadeOnDelete()->cascadeOnUpdate()->constrained();
             $table->String('detail');
-            $table->foreignId('size_id')->references('id')->on('sizes')->cascadeOnDelete()->cascadeOnUpdate()->constrained();
+            $table->String('code_name');
             $table->float('price');
             $table->Integer('stock');
             $table->String('description');

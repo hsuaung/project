@@ -25,165 +25,45 @@
             <div class="staffList">
                 <div class="staffListTitle">
                     <p>Staff List</p>
-                    <a href="/pages/staffAdd.html">
+                    <a href="{{route('addStaff')}}">
                         <img src="{{asset('image/admin/+.svg') }}" alt="">
                         <p>New Staff</p>
                     </a>
                 </div>
-                <div class="staffListTable">
-                    <div class="row staffListHeader">
-                        <div><input type="checkbox"></div>
-                        <div>Staff ID</div>
-                        <div>Staff Name</div>
-                        <div>Address</div>
-                        <div>Email</div>
-                        <div>Roles(s)</div>
-                        <div>Status</div>
-                        <div>Action</div>
-                    </div>
-                    <div class="row ">
-                        <div><input type="checkbox"></div> <div>HFJ7784872</div>
-                        <div>Leronado Luris</div>
-                        <div>331 Wright Court</div>
-                        <div>leronado@gmail.com</div>
-                        <div>
-                            <select id="role" class="role">
-                                <option value="">Super Admin</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                            </select>
-                        </div>
-                        <div class="active">Active</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div><input type="checkbox"></div>
-                        <div>HFJ7784872</div>
-                        <div>Leronado Luris</div>
-                        <div>331 Wright Court</div>
-                        <div>leronado@gmail.com</div>
-                        <div>
-                            <select id="role" class="role">
-                                <option value="">Product Manager</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                            </select>
-                        </div>
-                        <div class="inactive">Inactive</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div><input type="checkbox"></div>
-                        <div>HFJ7784872</div>
-                        <div>Leronado Luris</div>
-                        <div>331 Wright Court</div>
-                        <div>leronado@gmail.com</div>
-                        <div>
-                            <select id="role" class="role">
-                                <option value="">Order Manager</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                            </select>
-                        </div>
-                        <div class="suspended">Suspended</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div><input type="checkbox"></div>
-                        <div>HFJ7784872</div>
-                        <div>Leronado Luris</div>
-                        <div>331 Wright Court</div>
-                        <div>leronado@gmail.com</div>
-                        <div>
-                            <select id="role" class="role">
-                                <option value="">Customer Support</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                            </select>
-                        </div>
-                        <div class="active">Active</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div><input type="checkbox"></div>
-                        <div>HFJ7784872</div>
-                        <div>Leronado Luris</div>
-                        <div>331 Wright Court</div>
-                        <div>leronado@gmail.com</div>
-                        <div>
-                            <select id="role" class="role">
-                                <option value="">Marketing Manager</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                            </select>
-                        </div>
-                        <div class="active">Active</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div><input type="checkbox"></div>
-                        <div>HFJ7784872</div>
-                        <div>Leronado Luris</div>
-                        <div>331 Wright Court</div>
-                        <div>leronado@gmail.com</div>
-                        <div>
-                            <select id="role" class="role">
-                                <option value="">Super Admin</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                            </select>
-                        </div>
-                        <div class="active">Active</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div><input type="checkbox"></div>
-                        <div>HFJ7784872</div>
-                        <div>Leronado Luris</div>
-                        <div>331 Wright Court</div>
-                        <div>leronado@gmail.com</div>
-                        <div>
-                            <select id="role" class="role">
-                                <option value="">Super Admin</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                                <option value="A">A-Z</option>
-                            </select>
-                        </div>
-                        <div class="active">Active</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    
-
-                </div>
-             
+                <table class="staffTable">
+                    <tr>
+                        <th>Staff ID</th>
+                        <th>Staff Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Age</div>
+                        <th>Phone</th>
+                        <th>Roles(s)</th>
+                        <th>Image</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    @foreach ($stafflist as $staff)
+                    <tr>
+                        <td>{{$staff->id}}</td>
+                        <td>{{$staff->name}}</td>
+                        <td>{{$staff->email}}</td>
+                        <td>{{$staff->address}}</td>
+                        <td>{{$staff->age}}</td>
+                        <td>{{$staff->phone}}</td>
+                        <td>{{$staff->rolename}}</td>
+                        <td><img width="80" height="80" src="{{asset('image/staff/'.$staff->image)}}" alt="Admin"></td>
+       
+                        <td>{{$staff->status}}</td>
+                        <td>
+                            <a href="{{url('/editStaff'.$staff->id)}}"><img src="{{asset('image/admin/edit.svg') }}" alt=""></a>
+                            <a href="{{url('/deleteStaffProcess'.$staff->id)}}"> <img src="{{asset('image/admin/trashbin.svg') }}" alt=""></a>
+                        
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
+               
             </div>
             <div class="pagination">
                 <a href="#">

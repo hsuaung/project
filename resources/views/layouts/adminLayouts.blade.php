@@ -24,7 +24,8 @@
     <section class="sidemenu">
 
         <div class="sidemenu-title">
-            <a href="{{route('adminDashboard')}}">
+            <a href="">
+                {{-- <a href="{{route('adminDashboard')}}"> --}}
                 <img src="{{asset('image/admin/sideMenu1.png') }}"alt="">
                 <b>FURNITURE</b>
                 <img src="{{asset('image/admin/sideMenu2.png') }}"alt="" class="side-menu-bar">

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->String('name');
             $table->String('deliveryaddress');
             $table->String('buyerphone');
-            $table->String('byeremail');
-            $table->String('byername');
+            $table->String('buyeremail');
+            $table->String('buyername');
             $table->String('uuid');
             $table->String('status');
             $table->timestamps();
