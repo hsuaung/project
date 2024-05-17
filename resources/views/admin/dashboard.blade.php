@@ -1,4 +1,247 @@
-@extends('layouts.adminlayouts')
+@extends('layouts.admin.masterLayout')
+@section('page', 'Funiture Store Dashboard')
+@section('title', 'Dashboard')
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
+@endpush
+@section('content')
+<div class="graph">
+    <div class="date">
+        <input type="date">
+    </div>
+    <div class="sales box">
+        <div class="content">
+            <p>Todays Sales</p>
+            <h1>$20.4K</h1>
+            <p>We have sold 123 items</p>
+        </div>
+        <div class="sale-img">
+            <img src="{{asset('image/admin/sale.png') }}" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="content">
+            <p>Todays Revenue</p>
+            <h1>$8.2K</h1>
+            <p>Availabale to payout</p>
+        </div>
+        <div class="sale-img">
+            <img src="{{asset('image/admin/revenue.svg') }}" alt="">
+        </div>
+    </div>
+    <div class="box">
+        <div class="content">
+            <p>Todays Orders</p>
+            <h1>$18.2K</h1>
+            <p>Availabale to payout</p>
+        </div>
+        <div class="sale-img">
+            <img src="{{asset('image/admin/order.svg') }}" alt="">
+        </div>
+    </div>
+    <div class="bar-graph">
+        <div class="totalRevenue">
+            <h3>Total Revenue</h3>
+            <div class="profitLoss">
+                <div>
+                    <p class="dot dot-profit"> </p><span>profit</span>
+                </div>
+                <div>
+                    <p class="dot dot-loss"> </p><span>loss</span>
+                </div>
+            </div>
+        </div>
+        <h2>$50.4K <span> &uarr; 5% than last month</span></h2>
+        <div id="column-example-14">
+              <table class="charts-css column show-labels  show-primary-axis  data-spacing-5 datasets-spacing-4">
+                <caption> Column Example #14 </caption>
+
+
+                <tbody>
+                    <tr>
+                        <th scope="row"> Jan </th>
+                        <td style="--size: 1.0;"></td>
+                        <td style="--size: 0.7;"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Feb </th>
+
+                        <td style="--size: 0.6;"></td>
+                        <td style="--size: 0.8;"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Mar </th>
+                        <td style="--size: 1.0;"></td>
+                        <td style="--size: 0.7;"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Apr </th>
+
+                        <td style="--size: 0.6;"></td>
+                        <td style="--size: 0.8;"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> May </th>
+                        <td style="--size: 1.0;"></td>
+                        <td style="--size: 0.7;"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Jun </th>
+
+                        <td style="--size: 0.6;"></td>
+                        <td style="--size: 0.8;"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Jul </th>
+                        <td style="--size: 1.0;"></td>
+                        <td style="--size: 0.7;"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Aug </th>
+
+                        <td style="--size: 0.6;"></td>
+                        <td style="--size: 0.8;"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"> Sep </th>
+
+                        <td style="--size: 0.6;"></td>
+                        <td style="--size: 0.8;"></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="progressBar">
+        <h1>Most Sold Items</h1>
+        <div>
+            <div class="label">
+                <p>Bed</p>
+                <p>70%</p>
+            </div>
+            <div class="line-wrapper">
+                <div class="line bed"></div>
+            </div>
+
+        </div>
+        <div>
+            <div class="label">
+                <p>Sofa</p>
+                <p>40%</p>
+            </div>
+            <div class="line-wrapper">
+                <div class="line sofa"></div>
+            </div>
+
+        </div>
+        <div>
+            <div class="label">
+                <p>Lamp</p>
+                <p>60%</p>
+            </div>
+            <div class="line-wrapper">
+                <div class="line lamp"></div>
+            </div>
+
+        </div>
+        <div>
+            <div class="label">
+                <p>Cabinet</p>
+                <p>60%</p>
+            </div>
+            <div class="line-wrapper">
+                <div class="line cabinet"></div>
+            </div>
+
+        </div>
+        <div>
+            <div class="label">
+                <p>Others</p>
+                <p>20%</p>
+            </div>
+            <div class="line-wrapper">
+                <div class="line others"></div>
+            </div>
+
+        </div>
+    </div>
+    
+</div>
+<div class="table">
+    <div class="title">
+        <b>Latest Orders</b>
+    </div>
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Customer Name</th>
+            <th>Status</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>Morden Sofa</td>
+            <td>EE72823</td>
+            <td>2023 Nov 22</td>
+            <td>Sofia Mia</td>
+            <td>
+                <span class="dot dot-deliver"></span> Delivered
+            </td>
+            <td>250.000 MMK</td>
+            <td>
+                <img src="{{asset('image/admin/edit.svg') }}"alt="">
+                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
+            </td>
+        </tr>
+        <tr>
+            <td>Morden Sofa</td>
+            <td>EE72823</td>
+            <td>2023 Nov 22</td>
+            <td>Sofia Mia</td>
+            <td>
+                <span class="dot dot-deliver"></span> Delivered
+            </td>
+            <td>250.000 MMK</td>
+            <td>
+                <img src="{{asset('image/admin/edit.svg') }}"alt="">
+                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
+            </td>
+        </tr>
+        <tr>
+            <td>Morden Sofa</td>
+            <td>EE72823</td>
+            <td>2023 Nov 22</td>
+            <td>Sofia Mia</td>
+            <td>
+                <span class="dot dot-deliver"></span> Delivered
+            </td>
+            <td>250.000 MMK</td>
+            <td>
+                <img src="{{asset('image/admin/edit.svg') }}"alt="">
+                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+</div>
+    {{-- <section class="graph">
+            <div class="date">
+                <p>01/01/2023 - 01/01/2023</p>
+                <img src="{{asset('image/admin/calendar.png') }}" alt="">
+            </div>
+        
+
+        </section>
+         --}}
+@endsection
+
+{{-- @extends('layouts.adminlayouts')
 
 @section('title', 'Dashboard')
 
@@ -294,4 +537,4 @@
             </div>
 
         </div>
-@endsection
+@endsection --}}

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Staff extends Model
 
@@ -24,5 +25,10 @@ class Staff extends Model
         // 'uuid',
         // 'status',
     ];
+
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(role::class);
+    }
 
 }

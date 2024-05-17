@@ -1,0 +1,44 @@
+.form{
+    display:flex;
+    flex-direction: column;
+    padding:2rem;
+    gap:1rem;
+    background-color: #2E2E48;
+    border-radius: 5px;
+    margin-top:2rem;
+}
+.form input ,select ,textarea{
+    background-color: var(--body_color);
+    color: var(--text_color);
+    padding:1rem;
+    border-radius: 5px;
+   width: 75%;
+    margin-top:1rem;
+}
+
+.form span{
+    color:red;
+}
+.row{
+    display:flex;
+    gap:2rem;
+    width: 100%;
+   
+  
+}
+.row input , select{
+   
+    width:25rem;
+
+}
+.col{
+    display: flex;
+    flex-direction: column;
+    
+}
+.btn_gp{
+   
+    display: flex;
+    justify-content: flex-end;
+    gap:1rem;
+}

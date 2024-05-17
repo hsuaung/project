@@ -1,135 +1,68 @@
-@extends('layouts.adminlayouts')
-
+@extends('layouts.admin.masterLayout')
+@section('page', 'Customer List')
 @section('title', 'Customer List')
-
 @section('content')
-<div class="top-div">
-                <div class="date">
-                    <p>01/01/2023 - 01/01/2023</p>
-                    <img src="{{asset('image/admin/calendar.png') }}" alt="">
-                </div>
-                <div class="filter">
-                    <div class="search">
-                        <p>Search...</p>
-                        <p><img src="{{asset('image/admin/search.png') }}" alt=""></p>
-                    </div>
-                    <div class="sort">
-                        <select id="sort">
-                            <option value="">Deafult Sorting</option>
-                            <option value="A">A-Z</option>
-                            <option value="A">A-Z</option>
-                            <option value="A">A-Z</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="staffList">
-                <div class="staffListTitle">
-                    <p>Customers</p>
-                    <!-- <button>
-                        <img src="/image/+.svg" alt="">
-                        <p>New Staff</p>
-                    </button> -->
-                </div>
-                <div class="staffListTable">
-                    <div class="customer-row staffListHeader">
-                        <div><input type="checkbox"></div>
-                        
-                        <div>Name</div>
-                        <div>Email</div>
-                        <div>Phone</div>
-                        <div>Joining Date</div>
-                        <div>Action</div>
-                    </div>
-                    <div class="customer-row ">
-                        <div><input type="checkbox"></div>
-                        <div>Sebastian Patterson</div>
-                        <div>SebastianPatterson@teleworm.us</div>
-                        <div>918-743-7787</div>
-                        <div>Nov 30 2023</div>
-                       
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="customer-row ">
-                        <div><input type="checkbox"></div>
-                        <div>Sebastian Patterson</div>
-                        <div>SebastianPatterson@teleworm.us</div>
-                        <div>918-743-7787</div>
-                        <div>Nov 30 2023</div>
-                    
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="customer-row ">
-                        <div><input type="checkbox"></div>
-                        <div>Sebastian Patterson</div>
-                        <div>SebastianPatterson@teleworm.us</div>
-                        <div>918-743-7787</div>
-                        <div>Nov 30 2023</div>
-                    
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="customer-row ">
-                        <div><input type="checkbox"></div>
-                        <div>Sebastian Patterson</div>
-                        <div>SebastianPatterson@teleworm.us</div>
-                        <div>918-743-7787</div>
-                        <div>Nov 30 2023</div>
-                    
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="customer-row ">
-                        <div><input type="checkbox"></div>
-                        <div>Sebastian Patterson</div>
-                        <div>SebastianPatterson@teleworm.us</div>
-                        <div>918-743-7787</div>
-                        <div>Nov 30 2023</div>
-                    
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="customer-row ">
-                        <div><input type="checkbox"></div>
-                        <div>Sebastian Patterson</div>
-                        <div>SebastianPatterson@teleworm.us</div>
-                        <div>918-743-7787</div>
-                        <div>Nov 30 2023</div>
-                    
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
+<div class="top_div">
+    <div class="date">
+        <input type="date">
+    </div>
+    <div class="right_div">
+        <div class="btn search_btn">
+            <a href="{{route('addProduct')}}" >
+                <img src="{{asset('image/admin/search.png') }}"alt="">
+                <p>search</p>
+            </a>
+        </div>
+        <div class="sort">
+            <select id="sort">
+                <option value="">Deafult Sorting</option>
+                <option value="A">A-Z</option>
+                <option value="A">A-Z</option>
+                <option value="A">A-Z</option>
+            </select>
+        </div>
+    </div>
+                
+                
+</div>
+<div class="table">
+    <div class="title">
+        <b>Customer List</b>
 
-                    <div class="customer-row ">
-                        <div><input type="checkbox"></div>
-                        <div>Sebastian Patterson</div>
-                        <div>SebastianPatterson@teleworm.us</div>
-                        <div>918-743-7787</div>
-                        <div>Nov 30 2023</div>
-                    
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-
-                </div>
-               
-            </div>
+    </div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Joining Date</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>Sebastian Patterson</td>
+            <td>SebastianPatterson@teleworm.us</td>
+            <td>918-743-7787</td>
+            <td>Nov 30 2023</td>
+           
+            <td>
+                <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
+            </td>
+        </tr>
+        <tr>
+            <td>Sebastian Patterson</td>
+            <td>SebastianPatterson@teleworm.us</td>
+            <td>918-743-7787</td>
+            <td>Nov 30 2023</td>
+           
+            <td>
+                <img src="{{asset('image/admin/edit.svg') }}" alt="">
+                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
+            </td>
+        </tr>
+    </table>
+</div>
+           
             <div class="pagination">
                 <a href="#">
                     </a>

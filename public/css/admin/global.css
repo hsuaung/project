@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+:root {
+    --body_color: #383854;
+    --primary_color: #2E2E48;
+    --text_color:#FFFFFF;
+    --confirm_color:#475BE8;
+    --cancle_btn_color: #F7941D;
+}
+
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    
+}
+body{
+    background-color: var(--body_color);
+    color: var(--text_color);
+    font-family: "Exo 2";
+    padding:2rem;
+}
+a{
+    text-decoration: none;
+    color: var(--text_color);
+}
+a:hover{
+    color:var(--confirm_color);
+    opacity: .5;
+}
+li{
+    list-style: none;
+}
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width:15rem;
+    background: var(--primary_color);
+    padding: 1rem 2rem;
+    transition: all 0.5s ease;
+    z-index: 20;
+}
+.sidebar.active{
+    width:10px;
+}
+
+.side-item{
+    display:flex;
+    margin-top:2rem;
+    gap:1rem;
+    justify-content: space-around;
+    justify-items: center;
+}
+
+.main {
+    margin-left: 18rem;
+    /* margin-right: 2rem; */
+    /* margin-top: 2rem; */
+    justify-content: space-between;
+    display: flex;
+}
+.right{
+    width:100%;
+}
+.topnav{
+    background-color: var(--primary_color);
+    display:flex;
+    justify-content: space-between;
+    padding:0 1rem;
+    border-radius: 5px;
+    height: fit-content;
+    align-items: center;
+    border-radius: 5px;
+}
+.rightnav{
+    display:flex;
+    align-items: center;
+    gap:1rem;
+}
+    
+.date{
+    width: 13%;
+}
+.date input, .sort select{
+    background-color: var(--body_color);
+    color: var(--text_color);
+    padding:1rem;
+    border-radius: 5px;
+}
+.table{
+    background-color: var(--primary_color);
+    margin-top:2rem;
+    padding:1rem;
+ 
+}
+table{
+    
+    width: 100%;
+    text-align: center;
+    border-spacing: 1rem;
+    border-radius: 5px;
+    margin-top:1rem;
+}
+.btn{
+    width:10rem;
+    background-color: var(--primary_color);
+    border-radius: 5px;
+    padding: 1rem;
+    color:var(--text_color);
+    cursor: pointer;
+}
+.btn_gp{
+    margin-top: 1rem;
+}
+.btn:hover{
+    opacity: .5;
+}
+.search_btn{
+   
+    border:1px solid var(--text_color);
+}
+.add_btn{
+    background-color:var(--confirm_color);
+}
+.cancel_btn{
+    background-color: var(--cancle_btn_color);
+}
+.btn a{
+    display:flex;
+    gap:12px;
+
+}
+.top_div{
+    display:flex;
+    justify-content: space-between;
+    margin-top:2rem;
+  
+}
+.right_div{
+    display:flex;
+    gap:1rem;
+}
+header{
+    display: flex;
+    align-content: center;
+    gap:1rem;
+}
+.title{
+    display:flex;
+    justify-content: space-between;
+}

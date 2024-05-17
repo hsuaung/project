@@ -15,6 +15,7 @@
         </div>
         <form action="{{route('login_handler')}}" method="POST" class="login-form">
             @csrf
+            <input type="hidden" name="usertype"  value="admin">
             {{-- {{route('adminLoginProcess')}} --}}
             @if(Session::get('fail'))
             <div>

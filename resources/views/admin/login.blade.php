@@ -13,15 +13,16 @@
          
             <img src="{{asset('image/admin/adminLogin.jpg') }}" alt="">
         </div>
-        <form action="{{route('adminLoginProcess')}}" class="login-form">
+        <form action="{{route('admin.login.process')}}" class="login-form" method="POST">
+            @csrf
             <h2>Admin Login</h2>
             <div>
                 <label for="username">Username</label><br><br>
-                <input type="text" id="username">
+                <input type="text" id="username" name="username">
             </div>
             <div>
                 <label for="password">Password</label><br><br>
-                <input type="password" id="password">
+                <input type="password" id="password" name="password">
             </div>
             <button> Login </button>
         </form>

@@ -1,161 +1,69 @@
-@extends('layouts.adminlayouts')
-
-@section('title', 'Product List')
+@extends('layouts.admin.masterLayout')
+@section('page', 'Product Management')
+@section('title','Product Management')
 
 @section('content')
-<div class="staffList">
-                <div class="staffListTitle">
-                    <div class="search">
-                        <p>Search...</p>
-                        <p><img src="{{asset('image/admin/search.png') }}" alt=""></p>
-                    </div>
-                    <a href="/pages/addProduct.html">
-                        <img src="{{asset('image/admin/+.svg') }}"alt="">
-                        <p>New Product</p>
-                    </a>
-                </div>
-                <div class="staffListTable">
-                    <div class="product-row staffListHeader">
-                        <div><input type="checkbox"></div>
-                        <div><img src="{{asset('image/admin/image.svg') }}" alt=""></div>
-                        <div>ID</div>
-                        <div>Product Name</div>
-                        <div>Category</div>
-                        <div>Description</div>
-                        <div>Stock</div>
-                        <div>Price</div>
-                        <div>Date</div>
-                        <div>Action</div>
-                    </div>
-                    <div class="product-row ">
-                        <div><input type="checkbox"></div>
-                        <div><img src="{{asset('image/admin/productList1.png') }}" alt=""></div>
-                        <div>EE72823</div>
-                        <div>Plush-Paradise Sofa</div>
-                        <div>Sofa</div>
-                        <div>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                        </div>
-                        <div >In stock</div>
-                        <div>205</div>
-                        <div>2023 Nov 22</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="product-row ">
-                        <div><input type="checkbox"></div>
-                        <div><img src="{{asset('image/admin/productList2.png') }}" alt=""></div>
-                        <div>EE72823</div>
-                        <div>Plush-Paradise Sofa</div>
-                        <div>Sofa</div>
-                        <div>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                        </div>
-                        <div>In stock</div>
-                        <div>205</div>
-                        <div>2023 Nov 22</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="product-row ">
-                        <div><input type="checkbox"></div>
-                        <div><img src="{{asset('image/admin/productList3.png') }}" alt=""></div>
-                        <div>EE72823</div>
-                        <div>Plush-Paradise Sofa</div>
-                        <div>Sofa</div>
-                        <div>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                        </div>
-                        <div>In stock</div>
-                        <div>205</div>
-                        <div>2023 Nov 22</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="product-row ">
-                        <div><input type="checkbox"></div>
-                        <div><img src="{{asset('image/admin/productList4.png') }}" alt=""></div>
-                        <div>EE72823</div>
-                        <div>Plush-Paradise Sofa</div>
-                        <div>Sofa</div>
-                        <div>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                        </div>
-                        <div>In stock</div>
-                        <div>205</div>
-                        <div>2023 Nov 22</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="product-row ">
-                        <div><input type="checkbox"></div>
-                        <div><img src="{{asset('image/admin/productList5.png') }}" alt=""></div>
-                        <div>EE72823</div>
-                        <div>Plush-Paradise Sofa</div>
-                        <div>Sofa</div>
-                        <div>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                        </div>
-                        <div>In stock</div>
-                        <div>205</div>
-                        <div>2023 Nov 22</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="product-row ">
-                        <div><input type="checkbox"></div>
-                        <div><img src="{{asset('image/admin/productList6.png') }}" alt=""></div>
-                        <div>EE72823</div>
-                        <div>Plush-Paradise Sofa</div>
-                        <div>Sofa</div>
-                        <div>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                        </div>
-                        <div>In stock</div>
-                        <div>205</div>
-                        <div>2023 Nov 22</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="product-row ">
-                        <div><input type="checkbox"></div>
-                        <div><img src="{{asset('image/admin/productList7.png') }}" alt=""></div>
-                        <div>EE72823</div>
-                        <div>Plush-Paradise Sofa</div>
-                        <div>Sofa</div>
-                        <div>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry
-                        </div>
-                        <div>In stock</div>
-                        <div>205</div>
-                        <div>2023 Nov 22</div>
-                        <div>
-                            <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                            <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-                        </div>
-                    </div>
-                 
-                </div>
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/admin/staff.css') }}">
+@endpush
+
+<div class="top_div">
+    <div class="btn search_btn">
+        <a href="{{route('addProduct')}}" >
+            <img src="{{asset('image/admin/search.png') }}"alt="">
+            <p>search</p>
+        </a>
+    </div>
+    
+</div>
                 
-            </div>
-            <div class="pagination">
-                <a href="#">
-                    < </a>
-                        <a href="#">1</a>
-                        <a href="#" class="pagination_active">2</a>
-                        <a href="#">></a>
-            </div>
+             
+<div class="table" >
+    <div class="title">
+        <b>Product List</b>
+        <div class="btn add_btn">
+            <a href="{{route('addProduct')}}" >
+                <img src="{{asset('image/admin/search.png') }}"alt="">
+                <p>New Product</p>
+            </a>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <th><img src="{{asset('image/admin/image.svg') }}" alt=""></th>
+            <th>ID</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+        @foreach ($productlist as $product)
+        <tr>
+            <td><img width="80" height="80" src="{{asset('image/product/'.$product->image)}}" alt="Admin"></td>
+            <td>{{$product->id}}</td>
+            <td>{{$product->name}}</td>
+            <td>{{$product->categoryName}}</td>
+            <td>{{$product->description}}</td>
+            <td>{{$product->stock}}</td>
+            <td>{{$product->price}}</td>
+            <td>{{$product->updated_at}}</td>
+            <td>
+                <a href="{{url('/editProduct/'.$product->id)}}"><img src="{{asset('image/admin/edit.svg') }}" alt=""></a>
+                <a href="{{url('/deleteProductProcess/'.$product->id)}}"><img src="{{asset('image/admin/trashbin.svg') }}" alt=""></a>
+            </td>
+        </tr>
+        @endforeach
+    </table>
+</div>
+<div class="pagination">
+    <a href="#">< </a>
+    <a href="#">1</a>
+    <a href="#" class="pagination_active">2</a>
+    <a href="#">></a>
+</div>
 
 @endsection
