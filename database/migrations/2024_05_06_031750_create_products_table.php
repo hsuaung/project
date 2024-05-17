@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->String('name');
             $table->foreignId('category_id')->references('id')->on('categories')->cascadeOnDelete()->cascadeOnUpdate()->constrained();
-            $table->foreignId('code_id')->references('id')->on('codes')->cascadeOnDelete()->cascadeOnUpdate()->constrained();
+            // $table->foreignId('code_id')->references('id')->on('codes')->cascadeOnDelete()->cascadeOnUpdate()->constrained();
             $table->foreignId('staff_id')->references('id')->on('staff')->cascadeOnDelete()->cascadeOnUpdate()->constrained();
             $table->String('detail');
             $table->String('code_name');

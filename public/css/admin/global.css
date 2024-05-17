@@ -30,6 +30,7 @@ a:hover{
 li{
     list-style: none;
 }
+
 .sidebar{
     position: fixed;
     top: 0;
@@ -45,18 +46,17 @@ li{
     transition: all 0.5s ease;
     z-index: 20;
 }
-.sidebar.active{
+
+.expand{
     width:15rem;
 }
 
-.hidden{
+#sidebar:not(.expand) .side-item .hidden{
     display:none;
-    /* color:red; */
 }
-.hidden.active{
-    /* color:yellow; */
+/* .hidden.active{
     display:block;
-}
+} */
 
 .right.active{
     background-color: red;

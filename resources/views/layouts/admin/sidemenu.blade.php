@@ -1,6 +1,6 @@
 
 
-<section class="sidebar">
+<section id="sidebar" class="sidebar">
     <div class="side-item">
         {{-- <a  >  --}}
             <i class="lni lni-menu side-menu-bar"></i>
