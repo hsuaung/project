@@ -33,28 +33,66 @@ li{
 .sidebar{
     position: fixed;
     top: 0;
-    left: 0;
+    left:0;
+    width:3rem;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    width:15rem;
+   
     background: var(--primary_color);
     padding: 1rem 2rem;
     transition: all 0.5s ease;
     z-index: 20;
 }
 .sidebar.active{
-    width:10px;
+    width:15rem;
 }
 
+.hidden{
+    display:none;
+    /* color:red; */
+}
+.hidden.active{
+    /* color:yellow; */
+    display:block;
+}
+
+.right.active{
+    background-color: red;
+}
 .side-item{
     display:flex;
     margin-top:2rem;
     gap:1rem;
-    justify-content: space-around;
-    justify-items: center;
+    /* justify-content: space-around; */
+    /* justify-items: center; */
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  } 
 
 .main {
     margin-left: 18rem;
@@ -112,6 +150,9 @@ table{
     padding: 1rem;
     color:var(--text_color);
     cursor: pointer;
+}
+.btn a:hover{
+    color:var(--text_color);
 }
 .btn_gp{
     margin-top: 1rem;

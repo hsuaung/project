@@ -6,6 +6,8 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Laravel\Ui\Presets\React;
+
 use function Laravel\Prompts\form;
 class CategoryController extends Controller
 {
@@ -26,8 +28,18 @@ class CategoryController extends Controller
         $category->save();
         return redirect()->to('/categoryList');
     }
-    public function editCategory(){
-        dd("edit category");
+    public function editCategory(Request $request){
+        $category = DB::table('categories')
+        ->select('categories.*')
+        ->where('categories.id', $request->id)
+        ->first();
+        return view('./admin/addCategory',compact('category'));
+    }
+    public function editCategoryProcess(Request $request){
+        Category::where('id', $request->id)->update([
+            'name' => $request->name,
+        ]);
+        return redirect()->to('/categoryList');
     }
     public function deleteCategoryProcess($id){
         DB::table('categories')->where('id', $id)->delete();

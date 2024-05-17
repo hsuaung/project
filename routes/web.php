@@ -36,7 +36,7 @@ use App\Http\Controllers\CategoryController;
     Route::get('/categoryList',[CategoryController::class,'categoryList'])->name('categoryList');
     Route::get('/addCategory',[CategoryController::class,'addCategory'])->name('addCategory');
     Route::post('/addCategoryProcess',[CategoryController::class,'addCategoryProcess'])->name('addCategoryProcess');
-    Route::get('/editCategory',[CategoryController::class,'editCategory'])->name('editCategory');
+    Route::get('/editCategory{id}',[CategoryController::class,'editCategory'])->name('editCategory');
     Route::post('/editCategoryProcess',[CategoryController::class,'editCategoryProcess'])->name('editCategoryProcess');
     Route::get('/deleteCategoryProcess{id}',[CategoryController::class,'deleteCategoryProcess'])->name('deleteCategoryProcess');
     

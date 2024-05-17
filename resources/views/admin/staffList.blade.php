@@ -9,7 +9,7 @@
     <div class="right_div">
         <div class="btn search_btn">
             <a href="{{route('addProduct')}}" >
-                <img src="{{asset('image/admin/search.png') }}"alt="">
+                <i class="lni lni-search-alt"></i>
                 <p>search</p>
             </a>
         </div>
@@ -32,7 +32,7 @@
                     <b>Staff List</b>
                     <div class="btn add_btn">
                         <a href="{{route('addStaff')}}">
-                            <img src="{{asset('image/admin/staff.png') }}" alt="">
+                            <i class="lni lni-circle-plus"></i>
                             <p>New Staff</p>
                         </a>
                     </div>

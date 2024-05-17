@@ -11,7 +11,7 @@
 <div class="top_div">
     <div class="btn search_btn">
         <a href="{{route('addProduct')}}" >
-            <img src="{{asset('image/admin/search.png') }}"alt="">
+            <i class="lni lni-search-alt"></i>
             <p>search</p>
         </a>
     </div>
@@ -24,14 +24,14 @@
         <b>Product List</b>
         <div class="btn add_btn">
             <a href="{{route('addProduct')}}" >
-                <img src="{{asset('image/admin/search.png') }}"alt="">
+                <i class="lni lni-circle-plus"></i>
                 <p>New Product</p>
             </a>
         </div>
     </div>
     <table>
         <tr>
-            <th><img src="{{asset('image/admin/image.svg') }}" alt=""></th>
+            <th><i class="lni lni-image"></i></th>
             <th>ID</th>
             <th>Product Name</th>
             <th>Category</th>
