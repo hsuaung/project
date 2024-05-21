@@ -1,7 +1,7 @@
 @extends('layouts.admin.masterLayout')
 @section('page', 'Product Management')
 @section('title','Product Management')
-
+@section('active','product')
 @section('content')
 
 @push('styles')
@@ -11,8 +11,8 @@
 <div class="top_div">
     <div class="btn search_btn">
         <a href="{{route('addProduct')}}" >
-            <i class="lni lni-search-alt"></i>
-            <p>search</p>
+            <input type="text" placeholder="search"> 
+            <i class="lni lni-search-alt"></i></input>
         </a>
     </div>
     

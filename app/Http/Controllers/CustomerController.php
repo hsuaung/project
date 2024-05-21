@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
     
     public function home(){
-        return view ('./customer/home');
+
+        $grid_items =  Category::whereIn('name', ['Bed', 'Sofa', 'Chair' , 'Lamp' ,'Office'])->withCount('products')
+        ->get();
+
+        // dd($grid_items);
+       
+
+    
+        return view ('./customer/home',compact('grid_items'));
     }
     public function blog(){
         return view ('./customer/blog');

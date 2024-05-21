@@ -45,7 +45,36 @@ class staffSeeder extends Seeder
             'status'=>'Active',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-        ],     ]
+        ], 
+        [
+            'name' => 'Kim Do Young',
+            'email' => 'kimdoyoung@gmail.com',
+            'address' => 'Seoul',
+            'age' => 21,
+            'phone' => '321354',
+            'role_id' => 1,
+            'password' => 'kimdoyoung',
+            'image' => '-',
+            'uuid'=>Str::uuid()->toString(),
+            'status'=>'Active',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ],    
+        [
+            'name' => 'Hsu Aung',
+            'email' => 'hsuaung@gmail.com',
+            'address' => 'Pathein',
+            'age' => 22,
+            'phone' => '09254239048',
+            'role_id' => 1,
+            'password' => 'hsuaung',
+            'image' => 'hsuaung.jpg',
+            'uuid'=>Str::uuid()->toString(),
+            'status'=>'Active',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ],   
+        ]
     );
     }
 }

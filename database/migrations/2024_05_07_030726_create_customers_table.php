@@ -17,7 +17,6 @@ return new class extends Migration
             $table->String('email');
             $table->String('phone');
             $table->String('address');
-            $table->Datetime('joining_date');
             $table->String('password');
             $table->String('image');
             $table->String('uuid');

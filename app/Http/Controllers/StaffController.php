@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class StaffController extends Controller
 {
@@ -19,8 +20,8 @@ class StaffController extends Controller
         $stafflist = DB::table('staff')
             ->join('roles', 'roles.id', '=', 'staff.role_id')
            
-            ->select('staff.*', 'roles.name as rolename')->get();
-            // $stafflist = staff::paginate(5);
+            ->select('staff.*', 'roles.name as rolename')
+            ->paginate(5);
         // dd($stafflist);
         return view('admin.stafflist', compact('stafflist'));
     }
@@ -34,9 +35,13 @@ class StaffController extends Controller
    
    
     public function addStaffProcess(Request $request){
+        $path = $request->file('image')->store('images', 'public');
+        $url = Storage::url($path);
+       
+
+
         $uuid = Str::uuid()->toString();
-        $image = $uuid.'.'.$request->image->extension();
-        $request->image->move(public_path('image/staff/'),$image);
+        
         $staff = new Staff();
         $staff->name = $request->name;
         $staff->email = $request->email;
@@ -45,7 +50,7 @@ class StaffController extends Controller
         $staff->phone = $request->phone;
         $staff->role_id = $request->role;
         $staff->uuid= $uuid;
-        $staff->image = $image;
+        $staff->image = $url;
         $staff->status= "Active";
         $staff->password =Hash::make($request->password);
         $staff->save();

@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Furniture Store | Log In Form</title>
-    <link rel="stylesheet" href="{{asset('css/admin/style.css') }}">
-    <link rel="stylesheet" href="/css/admin/login.css">
+    <link rel="stylesheet" href="{{asset('css/admin/global.css') }}">
+    <link rel="stylesheet" href="{{asset('css/admin/login.css') }}">
 </head>
 <body>
+   
     <div class="login">
         <div class="login-image">
          
@@ -15,6 +16,7 @@
         </div>
         <form action="{{route('admin.login.process')}}" class="login-form" method="POST">
             @csrf
+            <input type="hidden" value="admin" name="usertype" >
             <h2>Admin Login</h2>
             <div>
                 <label for="username">Username</label><br><br>

@@ -1,8 +1,12 @@
 @extends('layouts.customerLayout')
-
+{{-- @php
+    dd($grid_items[0]['name']);
+// dd($gird_items[0]);
+@endphp --}}
 @section('title', 'Home')
 
 @section('content')
+
     <!-- Slideshow container -->
     <div class="slideshow-container">
         <div class="text">
@@ -39,14 +43,27 @@
     <section class="home-grid">
         <div class="bed home-gird-card">
             <div class="home-grid-text">
-                <b>BED</b>
-                <p>70 Products</p>
+                <b>{{$grid_items[0]['name']}}</b>
+                <p>{{$grid_items[0]['products_count']}} Products</p>
             </div>
-           
-            
             <img src="image/customer/homeGrid1.png" alt="">
         </div>
-        <div class="sofa home-gird-card">
+        
+        @for($i=1;$i<count($grid_items);$i++)
+           <div class="home-gird-card">
+            <div class="home-grid-text">
+                <b>{{$grid_items[$i]['name']}}</b>
+            <p>{{$grid_items[$i]['products_count']}} Products</p>
+            </div>
+            
+            <img src="image/customer/homeGrid3.png" alt="">
+            {{-- <img src="image/product/"{{$grid_items[$i]['image']}} alt=""> --}}
+            </div>
+        @endfor
+     
+
+
+        {{-- <div class="sofa home-gird-card">
             <div class="home-grid-text">
                 <b>SOFA</b>
                 <p>50 Products</p>
@@ -76,12 +93,13 @@
             </div>
             
             <img src="image/customer/homeGrid5.png" alt="">
-        </div>
+        </div> --}}
         <a>
             Explore more
             <img src="image/customer/icons.svg" alt="">
         </a>
     </section>
+    
     <section class="new-products">
         <h2 class="heading">NEW PRODUCTS</h2>
         <div class="product-nav">

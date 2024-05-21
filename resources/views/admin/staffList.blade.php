@@ -1,6 +1,7 @@
 @extends('layouts.admin.masterLayout')
 @section('page', 'Staff Management')
 @section('title', 'Staff Management')
+{{-- @dd($stafflist); --}}
 @section('content')
 <div class="top_div">
     <div class="date">
@@ -60,7 +61,7 @@
                         <td>{{$staff->age}}</td>
                         <td>{{$staff->phone}}</td>
                         <td>{{$staff->rolename}}</td>
-                        <td><img width="80" height="80" src="{{asset('image/staff/'.$staff->image)}}" alt="Admin"></td>
+                        <td><img width="80" height="80" src="{{asset("$staff->image")}}" alt="Admin"></td>
        
                         <td>{{$staff->status}}</td>
                         <td>
@@ -75,9 +76,12 @@
                 </table>
             </div>
                 
-                <div class="pagination-links">
+            <div class="pagination">
+                {{ $stafflist->links() }}
+            </div>
+                {{-- <div class="pagination-links">
                     {{-- {{ $stafflist->links() }} --}}
-                </div>
+                {{-- </div>  --}}
                 
                
             </div>

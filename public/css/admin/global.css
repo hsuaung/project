@@ -49,6 +49,7 @@ li{
 
 .expand{
     width:15rem;
+    transition: all 0.5s ease;
 }
 
 #sidebar:not(.expand) .side-item .hidden{
@@ -58,13 +59,12 @@ li{
     display:block;
 } */
 
-.right.active{
-    background-color: red;
-}
+
 .side-item{
     display:flex;
     margin-top:2rem;
     gap:1rem;
+   
     /* justify-content: space-around; */
     /* justify-items: center; */
 }
@@ -95,14 +95,22 @@ li{
   } 
 
 .main {
-    margin-left: 18rem;
+    /* margin-left: 18rem; */
     /* margin-right: 2rem; */
     /* margin-top: 2rem; */
-    justify-content: space-between;
-    display: flex;
+    /* justify-content: space-between; */
+    /* display: flex; */
 }
 .right{
-    width:100%;
+    width:95%;
+    margin-left: 5rem;
+    transition: all 0.5s ease;
+}
+.right.active{
+    /* background-color: red; */
+    width:85%;
+    margin-left: 15rem;
+    transition: all 0.5s ease;
 }
 .topnav{
     background-color: var(--primary_color);
@@ -143,13 +151,21 @@ table{
     border-radius: 5px;
     margin-top:1rem;
 }
-.btn{
+.btn {
     width:10rem;
     background-color: var(--primary_color);
     border-radius: 5px;
     padding: 1rem;
     color:var(--text_color);
     cursor: pointer;
+    
+}
+.btn a{
+    display:flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 .btn a:hover{
     color:var(--text_color);
@@ -161,11 +177,19 @@ table{
     opacity: .5;
 }
 .search_btn{
-   
-    border:1px solid var(--text_color);
+    width:12rem;
+  
+   text-align: center;
+   border:1px solid var(--text_color);
+}
+.search_btn input{
+    background-color: transparent;
+    border: 0;
+    width: 100%;
 }
 .add_btn{
     background-color:var(--confirm_color);
+    
 }
 .cancel_btn{
     background-color: var(--cancle_btn_color);
@@ -179,11 +203,14 @@ table{
     display:flex;
     justify-content: space-between;
     margin-top:2rem;
+    
   
 }
 .right_div{
     display:flex;
     gap:1rem;
+    align-items: flex-end;
+    /* padding: 1rem; */
 }
 header{
     display: flex;
@@ -193,4 +220,22 @@ header{
 .title{
     display:flex;
     justify-content: space-between;
+}
+
+.active_link{
+    color:var(--confirm_color);
+}
+
+.pagination{
+    margin-top:1rem;
+    display: flex;
+    gap:1rem;
+    justify-content: flex-end;
+}
+.pagination a{
+    background-color: var(--primary_color);
+    padding: 1rem;
+}
+.pagination a:active{
+    background-color: #F7941D;
 }

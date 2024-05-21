@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\Role;
-use App\Models\Staff;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 //*********IMPORTANT******** */
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 
 class LoginController extends Controller
@@ -48,91 +45,78 @@ class LoginController extends Controller
 
     public function login (Request $request)
     {
-        $userdata = $request->validate(
-            [
-                'username' => 'required',
-                'password' => 'required',
-          ],
-            [
-                'username.required' => 'Username Field is Required.',
-                'password.required' => 'Password Field is Required.',
-            ],
-        );
 
-        $input = Staff::where('name', $userdata['username'])->first() ;
-        if($input){
-            $role_id=$input->role_id;
-            $role = role::find($role_id);
-            if( ($input->name === $userdata['username'] ) && (Hash::check($userdata['password'], $input->password ))){
-                // dd("home");
-                if( $role->name ==="Admin")
+    //    dd($request->usertype);
+        // $validatedData = $request -> validate(
+        //     [
+        //         'name' => 'required',
+        //         'password' => 'required',
+        //     ]
+        // );
+
+        // dd($request->all());
+
+        $validatedData = $this->validate(
+            $request, [
+            [
+                'name' => 'required',
+                'password' => 'required'
+            ]
+        ]);
+
+        dd($validatedData);
+
+        // $validatedData['password'] = bcrypt($validatedData['password']);
+        $input = $request->all();
+        $userdata = array('name' => $input['name'], 'password' => $input['password']);
+        
+        if($request->usertype == 'admin')
+        {
+            dd('test');
+            
+            if(auth('admin')->attempt($userdata))
+            {
+                $user = auth('admin')->user();
+                dd($user);
+                if($user->status =='Active')
                 {
-                    // dd("admin home");
                     return redirect()->route('adminDashboard');
                 }
-                else if ($role->name ==="Manager"){
-                    dd("Manager home");
-                }
                 else{
-                    dd("Staff home");
+                    Auth::logout();
+                    return redirect()->route('admin.login')->with('error' , 'You don\'t have Account Access!');
                 }
-
-            }else
-            {
-                return redirect()->route('admin.login');
             }
+
+            else
+            {
+                // Auth::login();
+                return redirect()->route('admin.login')->with('error' , 'Wrong Email and Password');
+            }
+        }
+
+
+        if($input['usertype']=='customer'){
            
-         }
-         else {
-            // dd("incorrect");
-            return redirect()->route('admin.login')->with('error' , 'Wrong Email and Password');
-         }
-
-        // if($input['usertype'] == 'admin')
-        // {
+            if(auth('customer')->attempt(($userdata))){
+                $user = auth('customer')->user();
+                if($user->status == "Active"){
+                    return redirect()->route('home');
+                } 
+                else{
+                    Auth::logout();
+                    return redirect()->route('customer.login')->with('error','You don\'t have Customer Account Access!');
+                }
+            }
+            else{
+                Auth::logout();
+                return redirect()->route('customer.login')->with('error','Wrong email and password.');
+            }
+        }
+        else{
             
-        //     if(auth('admin') ->attempt($userdata))
-        //     {
-        //         $user = auth('admin')->user();
-        //         if($user->status =='Active')
-        //         {
-        //             return redirect()->route('admin.home');
-        //         }
-        //         else{
-        //             Auth::logout();
-        //             return redirect()->route('admin.login')->with('error' , 'You don\'t have Account Access!');
-        //         }
-        //     }
-
-        //     else
-        //     {
-        //         Auth::login();
-        //         return redirect()->route('admin.login')->with('error' , 'Wrong Email and Password');
-        //     }
-        // }
-
-
-        // if($input['usertype']=='customer'){
-           
-        //     if(auth('customer')->attempt(($userdata))){
-        //         $user = auth('customer')->user();
-        //         if($user->status == "Active"){
-        //             return redirect()->route('home');
-        //         } 
-        //         else{
-        //             Auth::logout();
-        //             return redirect()->route('customer.login')->with('error','You don\'t have Customer Account Access!');
-        //         }
-        //     }
-        //     else{
-        //         Auth::logout();
-        //         return redirect()->route('customer.login')->with('error','Wrong email and password.');
-        //     }
-        // }
-        // else{
-            
-        //     return redirect('customer.login')->with('error','You don\'t have Account Access!');
-        // }
+            return redirect('customer.login')->with('error','You don\'t have Account Access!');
+        }
     }
 
     public function CustomerLogout()

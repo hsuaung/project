@@ -1,15 +1,14 @@
-{{-- @push('styles')
+@push('styles')
 
 
+@endpush
 
-@endpush --}}
 
 <section class="topnav">
     <header>
         @yield('title')
         <a href="{{route('home')}}" >
-            <i class="fa-solid fa-house"></i>
-            {{-- <img src="{{asset('image/admin/search.png') }}"alt=""> --}}
+            <i class="lni lni-home"></i>
         </a>
     </header>
    

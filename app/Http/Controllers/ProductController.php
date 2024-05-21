@@ -15,124 +15,120 @@ class ProductController extends Controller
     {
         // $products=DB::table('products')->select('products.*')->get();
         // dd($products);
-       $productlist = DB::table('products')
+        $productlist = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')
             ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
             ->where('product_photos.isPrimary', 1)
-            ->select('products.*', 'categories.name as categoryName','product_photos.image as image')->get();
+            ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
         // dd($productlist);
         return view('admin.productList', compact('productlist'));
     }
     public function addProduct()
     {
         $categories = DB::table('categories')
-        ->select('categories.*')->get();
-        $codes = DB::table('codes')
-        ->select('codes.*')->get();
+            ->select('categories.*')->get();
+        // $codes = DB::table('codes')
+        //     ->select('codes.*')->get();
         $staffs = DB::table('staff')
-        ->select('staff.*')->get();
-        return view('./admin/product',compact('categories','codes','staffs'));
-    }   
-    public function addProductProcess(Request $request){
-        $product=new Product();
-        $product->name=$request->name;
-        $product->category_id=$request->category;
-        $product->code_id=$request->code;
-        $product->staff_id=$request->staff_id;
-        $product->detail=$request->detail;
-        $product->code_name=$request->code_name;
-        $product->price=$request->price;
-        $product->stock=$request->stock;
-        $product->description=$request->description;
-        $product->feature=$request->feature;
-        $product->additioninfo=$request->additioninfo;
+            ->select('staff.*')->get();
+        return view('./admin/product', compact('categories', 'staffs'));
+    }
+    public function addProductProcess(Request $request)
+    {
+        $product = new Product();
+        $product->name = $request->name;
+        $product->category_id = $request->category;
+        // $product->code_id = $request->code;
+        $product->staff_id = $request->staff_id;
+        $product->detail = $request->detail;
+        // $product->code_name = $request->code_name;
+        $product->price = $request->price;
+        $product->stock = $request->stock;
+        $product->description = $request->description;
+        $product->feature = $request->feature;
+        $product->additioninfo = $request->additioninfo;
         $uuid = Str::uuid()->toString();
-        $product->uuid=$uuid;
-        $product->status="Active";
+        $product->uuid = $uuid;
+        $product->status = "Active";
         $product->save();
         $images = $request->file('images');
         $i = 0;
-        foreach ($images as $image) 
-        {
-        $extension = $image->getClientOriginalExtension();
-        $fileName = time() . '.' . $extension;
-        $image->move(public_path('image/product/'), $fileName);
-        $product_photo=new Product_photo();
-        $product_photo->name=$product->name;
-        $product_photo->product_id=$product->id;
-        $product_photo->image=$fileName;
-        $uuid = Str::uuid()->toString();
-        $product_photo->uuid=$uuid;
-        $product_photo->status="test";
-        $product_photo->isPrimary = $i == 0 ? 1 : 0;
-        $i++;
-        $product_photo->save();
+        foreach ($images as $image) {
+            $extension = $image->getClientOriginalExtension();
+            $fileName = time() . '.' . $extension;
+            $image->move(public_path('image/product/'), $fileName);
+            $product_photo = new Product_photo();
+            $product_photo->name = $product->name;
+            $product_photo->product_id = $product->id;
+            $product_photo->image = $fileName;
+            $uuid = Str::uuid()->toString();
+            $product_photo->uuid = $uuid;
+            $product_photo->status = "test";
+            $product_photo->isPrimary = $i == 0 ? 1 : 0;
+            $i++;
+            $product_photo->save();
         }
         return redirect()->to('/productList');
     }
-    public function editProduct($id){
+    public function editProduct($id)
+    {
 
         $categories = DB::table('categories')
-        ->select('categories.*')->get();
-        $codes = DB::table('codes')
-        ->select('codes.*')->get();
+            ->select('categories.*')->get();
+        // $codes = DB::table('codes')
+        //     ->select('codes.*')->get();
         $staffs = DB::table('staff')
-        ->select('staff.*')->get();
+            ->select('staff.*')->get();
         $product = DB::table('products')
-        ->select('products.*')
-        ->where('products.id', $id)
-        ->first();
-        return view('./admin/product',compact('categories','codes','staffs','product'));
-    
+            ->select('products.*')
+            ->where('products.id', $id)
+            ->first();
+        return view('./admin/product', compact('categories', 'staffs', 'product'));
     }
-    public function editProductProcess(Request $request){
-        DB::table('product_photos')->where('product_id', $request->id )->delete();
+    public function editProductProcess(Request $request)
+    {
+        DB::table('product_photos')->where('product_id', $request->id)->delete();
         if ($request->hasFile('images')) {
             $images = $request->file('images');
             $i = 0;
-            foreach ($images as $image)
-            {
+            foreach ($images as $image) {
                 $extension = $image->getClientOriginalExtension();
                 $fileName = time() . '.' . $extension;
                 $image->move(public_path('image/product/'), $fileName);
-                $product_photo=new Product_photo();
-                $product_photo->name=$request->name;
-                $product_photo->product_id=$request->id;
-                $product_photo->image=$fileName;
+                $product_photo = new Product_photo();
+                $product_photo->name = $request->name;
+                $product_photo->product_id = $request->id;
+                $product_photo->image = $fileName;
                 $uuid = Str::uuid()->toString();
-                $product_photo->uuid=$uuid;
-                $product_photo->status="test";
+                $product_photo->uuid = $uuid;
+                $product_photo->status = "test";
                 $product_photo->isPrimary = $i == 0 ? 1 : 0;
                 $i++;
                 $product_photo->save();
             }
             Product::where('id', $request->id)->update([
                 'name' => $request->name,
-                'category_id'=>$request->category,
-                'code_id'=>$request->code,
-                'staff_id'=>$request->staff_id,
-                'detail'=>$request->detail,
-                'code_name'=>$request->code_name,
-                'price'=>$request->price,
-                'stock'=>$request->stock,
-                'description'=>$request->description,
-                'feature'=>$request->feature,
-                'additioninfo'=>$request->additioninfo,
+                'category_id' => $request->category,
+                // 'code_id' => $request->code,
+                'staff_id' => $request->staff_id,
+                'detail' => $request->detail,
+                // 'code_name' => $request->code_name,
+                'price' => $request->price,
+                'stock' => $request->stock,
+                'description' => $request->description,
+                'feature' => $request->feature,
+                'additioninfo' => $request->additioninfo,
             ]);
             return redirect()->to('/productList');
-            
         } else {
             dd("wrong");
             return back()->with('error', 'No file uploaded');
         }
-       
-
     }
-  
-    public function deleteProductProcess($id){
+
+    public function deleteProductProcess($id)
+    {
         DB::table('products')->where('id', $id)->delete();
         return redirect()->to('/productList');
     }
-   
-
 }

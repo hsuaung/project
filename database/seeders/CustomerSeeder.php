@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class RoleSeeder extends Seeder
+class CustomerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,29 +17,45 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         //
-        DB::table('roles')->insert(
+        DB::table('customers')->insert(
             [
                 [
-                    'name' => 'Admin',
+                    'name' => 'Khin Maung Win',
+                    'email'=>'khinmaungwin@gmail.com',
+                    'phone'=>'953216823',
+                    'address'=>'North Dagon',
+                    'password'=>Hash::make('khinmaungwin'),
                     'uuid' => Str::uuid()->toString(),
                     'status' => 'Active',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ],
+                
                 [
-                    'name' => 'Manager',
+                    'name' => 'Hein Htet Aung',
+                    'email'=>'heinhtetaung@gmail.com',
+                    'phone'=>'3216544',
+                    'address'=>'Tamwe',
+                    'password'=>Hash::make('heinhtetaung'),
                     'uuid' => Str::uuid()->toString(),
                     'status' => 'Active',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ],
+                
                 [
-                    'name' => 'Staff',
+                    'name' => 'Ye Yint Oo',
+                    'email'=>'yeyintoo@gmail.com',
+                    'phone'=>'6543032',
+                    'address'=>'Hong Kong',
+                    'password'=>Hash::make('yeyintoo'),
                     'uuid' => Str::uuid()->toString(),
                     'status' => 'Active',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
-                ]
+                ],
+                
+             
             ]
         );
     }
