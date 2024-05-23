@@ -1,15 +1,48 @@
-.graph {
-  margin-top: 2rem;
-  /* background-color: red; */
-  display:flex;
-  flex-wrap: wrap;
-  gap:1rem;
-    /* display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(3, 1fr); */
+:root {
+  --body_color: #383854;
+  --primary_color: #2E2E48;
+  --text_color:#FFFFFF;
+  --confirm_color:#475BE8;
+  --cancle_btn_color: #F7941D;
 }
-.box{
-    width:30%;
+
+
+.dashboardrow 
+{
     display: flex;
-    /* background-color: green; */
+    margin-top: 1rem;
+    gap:1rem;
+
+}
+.box
+{
+    width: 100%;
+  
+    background-color: var(--primary_color);
+  
+   
+}
+
+.box .content
+{
+    color: rgb(229, 225, 225);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    
+}
+
+.bar-chart
+{
+    width: 740px;
+    background-color: rgb(46,46,72);
+    margin-right: 20px;
+}
+.pie-chart
+{
+    width: 360px;
+    background-color: rgb(46,46,72);
+   
 }

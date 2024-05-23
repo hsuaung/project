@@ -10,7 +10,8 @@
         <link rel="stylesheet" href="{{ asset('css/admin/global.css') }}">
         <link rel="stylesheet" href="{{ asset('css/admin/order.css') }}">
         <link rel="stylesheet" href="{{ asset('css/admin/add.css') }}">
-   
+        <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     
 </head>
 <body>

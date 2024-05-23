@@ -37,11 +37,7 @@ class StaffController extends Controller
     public function addStaffProcess(Request $request){
         $path = $request->file('image')->store('images', 'public');
         $url = Storage::url($path);
-       
-
-
         $uuid = Str::uuid()->toString();
-        
         $staff = new Staff();
         $staff->name = $request->name;
         $staff->email = $request->email;
@@ -64,17 +60,18 @@ class StaffController extends Controller
     }
 
     public function editStaffProcess(Request $request){
-    // dd("process");
-        // dd( $request->image);
+    
+
         if ($request->hasFile('image')) {
-           
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $fileName = time() . '.' . $extension;
+            $path = $request->file('image')->store('images', 'public');
+            $url = Storage::url($path);
+            // $file = $request->file('image');
+            // $extension = $file->getClientOriginalExtension();
+            // $fileName = time() . '.' . $extension;
             // dd($fileName);
-            $file->move(public_path('image/staff/'), $fileName);
+            // $file->move(public_path('image/staff/'), $fileName);
             Staff::where('id', $request->id)->update([
-                'image' => $fileName,
+                'image' => $url,
                 'name' => $request->name,
                 'email' => $request->email,
                 'address' => $request->address,

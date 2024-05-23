@@ -8,44 +8,40 @@ use Illuminate\Http\Request;
 use App\Models\Product_photo;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
     public function productList()
     {
-        // $products=DB::table('products')->select('products.*')->get();
-        // dd($products);
+        
         $productlist = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')
-            ->select('products.*', 'categories.name as categoryName')->get();
-            // ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
-            // ->where('product_photos.isPrimary', 1)
-            // ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
-        // dd($productlist);
+            
+            ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
+            ->where('product_photos.isPrimary', 1)
+            ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
+        
         return view('admin.productList', compact('productlist'));
     }
     public function addProduct()
     {
         $categories = DB::table('categories')
             ->select('categories.*')->get();
-        // $codes = DB::table('codes')
-        //     ->select('codes.*')->get();
+   
         $staffs = DB::table('staff')
             ->select('staff.*')->get();
         return view('./admin/product', compact('categories', 'staffs'));
     }
     public function addProductProcess(Request $request)
     {
-    
+        
         $product = new Product();
         $product->name = $request->name;
         $product->category_id = $request->category;
-        // $product->code_id = $request->code;
         $product->staff_id = $request->staff_id;
         $product->detail = $request->detail;
-        $product->code_name = '-';
-        // $product->image = '-';
-        $product->price = $request->price;
+         $product->price = $request->price;
         $product->stock = $request->stock;
         $product->description = $request->description;
         $product->feature = $request->feature;
@@ -54,69 +50,67 @@ class ProductController extends Controller
         $product->uuid = $uuid;
         $product->status = "Active";
         $product->save();
-        if ($request->hasFile('image')) {
-           
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $fileName = time() . '.' . $extension;
-        $images = $request->file('images');
-        $i = 0;
-        foreach ($images as $image) {
-            $extension = $image->getClientOriginalExtension();
         
-            $fileName = time() . '.' . $extension;
-    
+       
+        if ($request->hasFile('images')) {
+            $images=$request->images;
+
+            $i = 0;
+            foreach ($images as $image) {
+            $path = $image->store('images', 'public');
+            $url = Storage::url($path);
             $product_photo = new Product_photo();
             $product_photo->name = $product->name;
             $product_photo->product_id = $product->id;
-            $product_photo->image = $fileName;
+            $product_photo->image = $url;
             $uuid = Str::uuid()->toString();
             $product_photo->uuid = $uuid;
             $product_photo->status = "test";
             $product_photo->isPrimary = $i == 0 ? 1 : 0;
             $i++;
             $product_photo->save();
+            
         }
         return redirect()->to('/productList');
     }
     }
 
     
-    public function editProduct(Request $id)
+    public function editProduct( $id)
     {
 
         $categories = DB::table('categories')
             ->select('categories.*')->get();
-        // $codes = DB::table('codes')
-        //     ->select('codes.*')->get();
+    
         $staffs = DB::table('staff')
             ->select('staff.*')->get();
         $product = DB::table('products')
             ->select('products.*')
             ->where('products.id', $id)
             ->first();
+            // dd($product);
         return view('./admin/product', compact('categories', 'staffs', 'product'));
     }
     public function editProductProcess(Request $request)
     {
         DB::table('product_photos')->where('product_id', $request->id)->delete();
         if ($request->hasFile('images')) {
-            $images = $request->file('images');
+            $images=$request->images;
+
             $i = 0;
             foreach ($images as $image) {
-                $extension = $image->getClientOriginalExtension();
-                $fileName = time() . '.' . $extension;
-                $image->move(public_path('image/product/'), $fileName);
-                $product_photo = new Product_photo();
-                $product_photo->name = $request->name;
-                $product_photo->product_id = $request->id;
-                $product_photo->image = $fileName;
-                $uuid = Str::uuid()->toString();
-                $product_photo->uuid = $uuid;
-                $product_photo->status = "test";
-                $product_photo->isPrimary = $i == 0 ? 1 : 0;
-                $i++;
-                $product_photo->save();
+            $path = $image->store('images', 'public');
+            $url = Storage::url($path);
+            $product_photo = new Product_photo();
+            $product_photo->name = $request->name;
+            $product_photo->product_id = $request->id;
+            $product_photo->image = $url;
+            $uuid = Str::uuid()->toString();
+            $product_photo->uuid = $uuid;
+            $product_photo->status = "test";
+            $product_photo->isPrimary = $i == 0 ? 1 : 0;
+            $i++;
+            $product_photo->save();
             }
             Product::where('id', $request->id)->update([
                 'name' => $request->name,

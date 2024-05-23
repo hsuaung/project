@@ -31,7 +31,7 @@
     </div>
     <table>
         <tr>
-            {{-- <th><i class="lni lni-image"></i></th> --}}
+            <th><i class="lni lni-image"></i></th>
             <th>ID</th>
             <th>Product Name</th>
             <th>Category</th>
@@ -43,7 +43,8 @@
         </tr>
         @foreach ($productlist as $product)
         <tr>
-            {{-- <td><img width="80" height="80" src="{{asset('image/product/'.$product->image)}}" alt="Admin"></td> --}}
+            <td><img width="80" height="80" src="{{asset("$product->image")}}" alt="Product"></td>
+            {{-- <td><img width="80" height="80" src="{{asset("$staff->image")}}" alt="Admin"></td> --}}
             <td>{{$product->id}}</td>
             <td>{{$product->name}}</td>
             <td>{{$product->categoryName}}</td>

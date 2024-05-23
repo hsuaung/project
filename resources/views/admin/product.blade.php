@@ -30,11 +30,7 @@ if(!empty($product)){
             </div>
             <div class="col">
                 <label for="category">Category <span>*</span></label>
-            {{-- <a href="{{route('addCategory')}}"> --}}
-                {{-- <img src="{{asset('image/admin/+.svg') }}"alt=""> --}}
-              
-                {{-- <p>Edit Category</p> --}}
-            {{-- </a> --}}
+            
           
             <select name="category" id="">
                 @foreach ($categories as $category)
@@ -43,21 +39,7 @@ if(!empty($product)){
             </select>
             </div>
         </div>
-        {{-- <div class="row">
-            
-            <div class="col">
-                <label for="code"> Choose Code <span>*</span> </label>
-                <select name="code" id="" >
-                    @foreach ($codes as $code)
-                    <option value="{{$code->id}}" {{$updatestatus == true ? 'selected': '' }} >{{$code->name}}</option>
-                    @endforeach
-                </select>
-            </div> 
-            <div class="col">
-                <label for="code_name">Code Number <span>*</span></label>
-                <input type="number" name="code_name" placeholder="Code Number" required value="{{$updatestatus == true ? $product->code_name: '' }}">
-            </div>
-        </div> --}}
+       
         <div class="row">
             <div class="col">
                 <label for="staff_id">Choose Staff <span>*</span></label>
