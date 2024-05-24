@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="{{ asset('css/admin/staff.css') }}">
 @endpush
 
-<div class="top_div">
+{{-- <div class="top_div">
     <div class="btn search_btn">
         <a href="{{route('addProduct')}}" >
             <input type="text" placeholder="search"> 
@@ -16,12 +16,17 @@
         </a>
     </div>
     
-</div>
+</div> --}}
                 
              
 <div class="table" >
     <div class="title">
-        <b>Product List</b>
+        <div class="btn search_btn">
+            <a href="{{route('addProduct')}}" >
+                <input type="text" placeholder="search"> 
+                <i class="lni lni-search-alt"></i></input>
+            </a>
+        </div>
         <div class="btn add_btn">
             <a href="{{route('addProduct')}}" >
                 <i class="lni lni-circle-plus"></i>
@@ -29,6 +34,15 @@
             </a>
         </div>
     </div>
+    {{-- <div class="title">
+        <b>Product List</b>
+        <div class="btn add_btn">
+            <a href="{{route('addProduct')}}" >
+                <i class="lni lni-circle-plus"></i>
+                <p>New Product</p>
+            </a>
+        </div>
+    </div> --}}
     <table>
         <tr>
             <th><i class="lni lni-image"></i></th>

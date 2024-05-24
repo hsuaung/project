@@ -19,6 +19,12 @@ body{
     font-family: "Exo 2";
     padding:2rem;
 }
+header{
+    height: 70px;
+    padding: 1rem 0; 
+    display:flex;
+    align-items: center;
+}
 a{
     text-decoration: none;
     color: var(--text_color);
@@ -55,18 +61,13 @@ li{
 #sidebar:not(.expand) .side-item .hidden{
     display:none;
 }
-/* .hidden.active{
-    display:block;
-} */
 
 
 .side-item{
     display:flex;
     margin-top:2rem;
     gap:1rem;
-   
-    /* justify-content: space-around; */
-    /* justify-items: center; */
+ 
 }
 
 .tooltip {
@@ -94,13 +95,8 @@ li{
     visibility: visible;
   } 
 
-.main {
-    /* margin-left: 18rem; */
-    /* margin-right: 2rem; */
-    /* margin-top: 2rem; */
-    /* justify-content: space-between; */
-    /* display: flex; */
-}
+
+
 .right{
     width:95%;
     margin-left: 5rem;
@@ -150,7 +146,16 @@ table{
     border-spacing: 1rem;
     border-radius: 5px;
     margin-top:1rem;
+    /* border-radius: 50px; */
 }
+/* input[type="file"]
+{
+    display: none;
+
+} */
+/* .image{
+    border:1px solid var(--cancle_btn_color);
+} */
 .btn {
     width:10rem;
     background-color: var(--primary_color);
@@ -220,6 +225,7 @@ header{
 .title{
     display:flex;
     justify-content: space-between;
+    /* background-color: red; */
 }
 
 .active_link{
@@ -239,3 +245,4 @@ header{
 .pagination a:active{
     background-color: #F7941D;
 }
+

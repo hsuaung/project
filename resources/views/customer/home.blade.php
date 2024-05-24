@@ -1,8 +1,7 @@
 @extends('layouts.customerLayout')
-{{-- @php
-    dd($grid_items[0]['name']);
-// dd($gird_items[0]);
-@endphp --}}
+@php
+    // dd($bed->image);
+@endphp
 @section('title', 'Home')
 
 @section('content')
@@ -63,154 +62,136 @@
      
 
 
-        {{-- <div class="sofa home-gird-card">
-            <div class="home-grid-text">
-                <b>SOFA</b>
-                <p>50 Products</p>
-            </div>
-            <img src="image/customer/homeGrid2.png" alt="">
-        </div>
-        <div class="lamp home-gird-card">
-            <div class="home-grid-text">
-                <b>LAMP</b>
-                <p>30 Products</p>
-            </div>
-             <img src="image/customer/homeGrid3.png" alt="">
-        </div>
-        <div class="cabinet home-gird-card">
-            <div class="home-grid-text">
-                <b>CABINET</b>
-                <p>40 Products</p>
-            </div>
-
-            
-            <img src="image/customer/homeGrid4.png" alt="">
-        </div>
-        <div class="table home-gird-card">
-            <div class="home-grid-text">
-                <b>TABLE</b>
-                <p>20 Products</p>
-            </div>
-            
-            <img src="image/customer/homeGrid5.png" alt="">
-        </div> --}}
+    
         <a>
             Explore more
             <img src="image/customer/icons.svg" alt="">
         </a>
     </section>
     
-    <section class="new-products">
+    <section class="new-products ">
         <h2 class="heading">NEW PRODUCTS</h2>
         <div class="product-nav">
-            <button class="" onclick="openMenu('bed')"><a>Bed</a></button>
+            
             <button class="" onclick="openMenu('sofa')"><a>Sofa</a></button>
+            <button class="" onclick="openMenu('bed')"><a>Bed</a></button>
             <button class="" onclick="openMenu('lamp')"><a>Lamp</a></button>
             <button class="" onclick="openMenu('cabinet')"><a>Cabinet</a></button>
+            <button class="" onclick="openMenu('chair')"><a>Chair</a></button>
             <button class="" onclick="openMenu('table')"><a>Table</a></button>
             
         </div>
-        <div id="bed" class="menu">
+      
+      
+       
+        <div id="sofa" class="menu" style="display:none">
             <div class="product-card-container">
-                <div class="product-card">
+
+                @foreach ($sofalist as $sofa)
+                <a href="{{url('/detail/'.$sofa->id)}}" class="product-card">
                     <div class="product-card-image">
-                        <img src="image/customer/homeProduct1.png" alt="">
+                        <img src="{{asset("$sofa->image")}}" alt="">
                         <span class="sale">Sale</span>
                     </div>
                     <div class="product-card-content">
-                        <p>Cylindo Accent Arm Chair</p>
-                        <p>$699.00</p>
+                        <p>{{$sofa->name}}</p>
+                        <p>${{$sofa->price}}</p>
                     </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-image">
-                        <img src="image/customer/homeProduct2.png" alt="">
-                        <span class="sold-out">Sold Out</span>
-                    </div>
-                    <div class="product-card-content">
-                        <p>Cylindo Accent Arm Chair</p>
-                        <p>$699.00</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-image">
-                        <img src="image/customer/homeProduct1.png" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="product-card-content">
-                        <p>Cylindo Accent Arm Chair</p>
-                        <p>$699.00</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-image">
-                        <img src="image/customer/homeProduct2.png" alt="">
-                        <span class="sold-out">Sold Out</span>
-                    </div>
-                    <div class="product-card-content">
-                        <p>Cylindo Accent Arm Chair</p>
-                        <p>$699.00</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-image">
-                        <img src="image/customer/homeProduct1.png" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="product-card-content">
-                        <p>Cylindo Accent Arm Chair</p>
-                        <p>$699.00</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-image">
-                        <img src="image/customer/homeProduct2.png" alt="">
-                        <span class="sold-out">Sold Out</span>
-                    </div>
-                    <div class="product-card-content">
-                        <p>Cylindo Accent Arm Chair</p>
-                        <p>$699.00</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-image">
-                        <img src="image/customer/homeProduct1.png" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="product-card-content">
-                        <p>Cylindo Accent Arm Chair</p>
-                        <p>$699.00</p>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-card-image">
-                        <img src="image/customer/homeProduct2.png" alt="">
-                        <span class="sold-out">Sold Out</span>
-                    </div>
-                    <div class="product-card-content">
-                        <p>Cylindo Accent Arm Chair</p>
-                        <p>$699.00</p>
-                    </div>
-                </div>
+                </a>
+                @endforeach
             </div>
         </div>
-        <div id="sofa" class="menu" style="display:none">
-            <h2>sofa menu</h2>
-            
-        </div>
-        <div id="lamp" class=" menu" style="display:none">
-            <h2>lamp</h2>
-            
-        </div>
-        <div id="cabinet" class="menu" style="display:none">
-            <h2>cabinet menu</h2>
-          
-        </div>
-        <div id="table" class=" menu" style="display:none">
-            <h2>table</h2>
-            
-        </div>
+        <div id="bed" class="menu" style="display:">
+            <div class="product-card-container">
 
+                @foreach ($bedlist as $bed)
+                <a href="{{url('/detail/'.$bed->id)}}" class="product-card">
+                    <div class="product-card-image">
+                        <img src="{{asset("$bed->image")}}" alt="">
+                        <span class="sale">Sale</span>
+                    </div>
+                    <div class="product-card-content">
+                        <p>{{$bed->name}}</p>
+                        <p>${{$bed->price}}</p>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        <div id="lamp" class="menu" style="display:none">
+            <div class="product-card-container" >
+
+                @foreach ($lamplist as $lamp)
+
+                    <a href="{{url('/detail/'.$lamp->id)}}" class="product-card">
+                        {{-- <div>{{$chair->id}}</div> --}}
+                        <div class="product-card-image">
+                            <img src="{{asset("$lamp->image")}}" alt="">
+                            <span class="sale">Sale</span>
+                        </div>
+                        <div class="product-card-content">
+                            <p>{{$lamp->name}}</p>
+                            <p>${{$lamp->price}}</p>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+        
+        
+        <div id="cabinet" class="menu" style="display:none">
+            <div class="product-card-container">
+
+                @foreach ($cabinetlist as $cabinet)
+                <a href="{{url('/detail/'.$cabinet->id)}}" class="product-card">
+                    <div class="product-card-image">
+                        <img src="{{asset("$cabinet->image")}}" alt="">
+                        <span class="sale">Sale</span>
+                    </div>
+                    <div class="product-card-content">
+                        <p>{{$cabinet->name}}</p>
+                        <p>${{$cabinet->price}}</p>
+                    </div>
+                </a>
+                @endforeach
+            </div>
+        </div>
+        <div id="chair" class="menu" style="display:none">
+            <div class="product-card-container" >
+
+                @foreach ($chairlist as $chair)
+
+                    <a href="{{url('/detail/'.$chair->id)}}" class="product-card">
+                        {{-- <div>{{$chair->id}}</div> --}}
+                        <div class="product-card-image">
+                            <img src="{{asset("$chair->image")}}" alt="">
+                            <span class="sale">Sale</span>
+                        </div>
+                        <div class="product-card-content">
+                            <p>{{$chair->name}}</p>
+                            <p>${{$chair->price}}</p>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+        <div id="table" class="menu" style="display:none">
+            <div class="product-card-container">
+
+                @foreach ($tablelist as $table)
+                <a href="{{url('/detail/'.$table->id)}}" class="product-card">
+                    <div class="product-card-image">
+                        <img src="{{asset("$table->image")}}" alt="">
+                        <span class="sale">Sale</span>
+                    </div>
+                    <div class="product-card-content">
+                        <p>{{$table->name}}</p>
+                        <p>${{$table->price}}</p>
+                    </div>
+                </a>
+                @endforeach
+            </div>
+        </div>
 
       
     </section>

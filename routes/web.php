@@ -8,12 +8,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
-
 use App\Http\Controllers\UploadImageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CategoryController;
-
-
+use App\Http\Controllers\BlogController;
     Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
     Route::post('/admin/login/process', [LoginController::class, 'login'])->name('admin.login.process');
     Route::get('/adminDashboard',[AdminController::class,'dashboard'])->name('adminDashboard');
@@ -40,6 +38,8 @@ use App\Http\Controllers\CategoryController;
     Route::post('/editCategoryProcess',[CategoryController::class,'editCategoryProcess'])->name('editCategoryProcess');
     Route::get('/deleteCategoryProcess{id}',[CategoryController::class,'deleteCategoryProcess'])->name('deleteCategoryProcess');
     
+    Route::get('/addBlog',[BlogController::class,'addBlog'])->name('addBlog');
+ 
     
 Route::get('/customerList',[AdminController::class,'customerList'])->name('customerList');
 Route::get('/orderList',[AdminController::class,'orderList'])->name('orderList');
@@ -60,7 +60,8 @@ Route::get('/orderList',[AdminController::class,'orderList'])->name('orderList')
 
 
 Route::get('/', function () {
-    return view('layouts.admin.masterLayout');
+
+    return view('admin.login');
 });
 Route::get('/test', function () {
     return view('admin.test');
@@ -69,24 +70,10 @@ Route::get('/test', function () {
 
 
 
-// // Route::middleware(['admin'])->group(function(){
-// //     Route::get('/admin/login', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
-
-// //     Route::get('/admin/login/process',[App\Http\Controllers\Auth\LoginController::class, 'login'])->name("adminLoginProcess");
-    // // });
-
-
-
-
-
-
-
 
 
 Auth::routes();
 
-
-// // Route::get('/editStaff',[App\Http\Controllers\AdminController::class,'editStaff'])->name('editStaff');
 Route::get('/home', [App\Http\Controllers\CustomerController::class, 'home'])->name('home');
  Route::get('/blog', [App\Http\Controllers\CustomerController::class, 'blog'])->name('blog');
 
@@ -97,8 +84,10 @@ Route::get('/category', [App\Http\Controllers\CustomerController::class, 'catego
 Route::get('/checkout', [App\Http\Controllers\CustomerController::class, 'checkout'])->name('checkout');
 
 Route::get('/contact', [App\Http\Controllers\CustomerController::class, 'contact'])->name('contact');
+Route::get('/detail/{id}',[CustomerController::class,'detail'])->name('detail');
 
-Route::get('/detail', [App\Http\Controllers\CustomerController::class, 'detail'])->name('detail');
+    
+// Route::get('/detail{id}', [App\Http\Controllers\CustomerController::class, 'detail'])->name('detail');
 
 Route::get('/login', [App\Http\Controllers\CustomerController::class, 'login'])->name('login');
 
@@ -106,12 +95,3 @@ Route::get('/shop', [App\Http\Controllers\CustomerController::class, 'shop'])->n
 Route::get('/story', [App\Http\Controllers\CustomerController::class, 'story'])->name('story');
 
 
-// Route::get('/test/home', [App\Http\Controllers\CustomerController::class, 'home'])->name('home');
-
-Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

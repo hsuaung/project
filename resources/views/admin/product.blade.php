@@ -75,7 +75,7 @@ if(!empty($product)){
                 <input type="text" id="additioninfo" name="additioninfo" required value="{{$updatestatus == true ? $product->additioninfo:'' }}">
             </div>
         </div>
-        <div class="col">
+        <div class="col image">
             <label for="image">Enter Your Image: <span>*</span></label>
             <input type="file" id="image" name="images[]" placeholder="image" multiple required value="{{$updatestatus == true ? '':'' }}">
         </div>

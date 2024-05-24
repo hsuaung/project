@@ -13,7 +13,7 @@
     </header>
    
     <div class="rightnav">
-        <i class="lni lni-alarm"></i>
+        {{-- <i class="lni lni-alarm"></i> --}}
         <img src="{{asset('image/admin/admin.png') }}" alt="">
     </div>
 </section>

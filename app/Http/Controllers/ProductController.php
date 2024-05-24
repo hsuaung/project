@@ -57,7 +57,7 @@ class ProductController extends Controller
 
             $i = 0;
             foreach ($images as $image) {
-            $path = $image->store('images', 'public');
+            $path = $image->store('images/products', 'public');
             $url = Storage::url($path);
             $product_photo = new Product_photo();
             $product_photo->name = $product->name;

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> @yield('title')</title>
     <!-- custom css link  -->
+    {{-- <link rel="stylesheet" href="{{ asset('css/customer/global.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/customer/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/customer/blog.css') }}">
     <link rel="stylesheet" href="{{ asset('css/customer/cart.css') }}">
