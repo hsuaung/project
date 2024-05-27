@@ -36,5 +36,5 @@ function showSlides(n) {
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
     }
-    document.getElementById(menuItem).style.display = "block";
+    document.getElementById(menuItem).style.display = "grid";
 }

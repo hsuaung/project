@@ -53,7 +53,7 @@
     gap:.5rem;
 }
 
-.menu a {
+/* .menu a {
     width: 10rem;
     padding:.4rem;
     background-color: black;
@@ -62,7 +62,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .tab-menu {
     margin: 3% 7%;
@@ -86,7 +86,7 @@
 .tab-menu button:hover{
     border-bottom:2px solid black;
 }
-.menu{
+/* .menu{
     display:flex;
     flex-direction: column;
     gap:1rem;
@@ -95,7 +95,7 @@
 .menu div{
     margin:1rem;
     margin-left:2rem;
-}
+} */
 
 .cutoff-text {
     --max-lines: 2;

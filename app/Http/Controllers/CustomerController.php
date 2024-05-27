@@ -53,18 +53,8 @@ class CustomerController extends Controller
         ->where('product_photos.isPrimary', 1)
         ->where('categories.name','=','table')
         ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
-// dd($tablelist);
-        // $productlist=DB::table('products')
-        // ->join('categories', 'categories.id', '=', 'products.category_id')
-        // ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
-        // ->where('product_photos.isPrimary', 1)
-        // ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
-        
-        
-        $grid_items =  Category::whereIn('name', ['sofa', 'bed', 'lamp' , 'cabinet' ,'table'])->withCount('products')
+         $grid_items =  Category::whereIn('name', ['sofa', 'bed', 'lamp' , 'cabinet' ,'table'])->withCount('products')
         ->get();
-
-    //    dd($chairlist);
         return view ('./customer/home',compact('grid_items','sofalist','bedlist','lamplist','cabinetlist','chairlist','tablelist'));
     }
     public function blog(){
@@ -104,7 +94,15 @@ class CustomerController extends Controller
         return view ('./customer/login');
     }
     public function shop(){
-        return view ('./customer/shop');
+        $productlist=DB::table('products')
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
+        ->where('product_photos.isPrimary', 1)
+        
+        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
+       
+        // dd($productlist);
+        return view ('./customer/shop',compact('productlist'));
     }
     public function story(){
         return view ('./customer/story');

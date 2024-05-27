@@ -1,7 +1,5 @@
 @extends('layouts.customerLayout')
-@php
-    // dd($bed->image);
-@endphp
+
 @section('title', 'Home')
 
 @section('content')
@@ -71,129 +69,121 @@
     
     <section class="new-products ">
         <h2 class="heading">NEW PRODUCTS</h2>
-        <div class="product-nav">
-            
-            <button class="" onclick="openMenu('sofa')"><a>Sofa</a></button>
-            <button class="" onclick="openMenu('bed')"><a>Bed</a></button>
-            <button class="" onclick="openMenu('lamp')"><a>Lamp</a></button>
-            <button class="" onclick="openMenu('cabinet')"><a>Cabinet</a></button>
-            <button class="" onclick="openMenu('chair')"><a>Chair</a></button>
-            <button class="" onclick="openMenu('table')"><a>Table</a></button>
+        <div class="product-nav tabmenu">
+            <button class="tab" onclick="openMenu('sofa')" ><a>Sofa</a></button>
+            <button class="tab" onclick="openMenu('bed')"><a>Bed</a></button>
+            <button class="tab" onclick="openMenu('lamp')"><a>Lamp</a></button>
+            <button class="tab" onclick="openMenu('cabinet')"><a>Cabinet</a></button>
+            <button class="tab" onclick="openMenu('chair')"><a>Chair</a></button>
+            <button class="tab" onclick="openMenu('table')"><a>Table</a></button>
             
         </div>
-      
-      
-       
-        <div id="sofa" class="menu" style="display:none">
-            <div class="product-card-container">
-
+        <div id="sofa" class="menu grid">
                 @foreach ($sofalist as $sofa)
-                <a href="{{url('/detail/'.$sofa->id)}}" class="product-card">
-                    <div class="product-card-image">
-                        <img src="{{asset("$sofa->image")}}" alt="">
+                <a href="{{url('/detail/'.$sofa->id)}}" class="pcard">
+                    <div class="image">
+                        <img src="{{asset("$sofa->image")}}" width="200px" height="250px" alt="">
                         <span class="sale">Sale</span>
                     </div>
-                    <div class="product-card-content">
+                    <div class="">
                         <p>{{$sofa->name}}</p>
-                        <p>${{$sofa->price}}</p>
+                        <b>${{$sofa->price}}</b>
                     </div>
                 </a>
                 @endforeach
-            </div>
         </div>
-        <div id="bed" class="menu" style="display:">
-            <div class="product-card-container">
-
-                @foreach ($bedlist as $bed)
-                <a href="{{url('/detail/'.$bed->id)}}" class="product-card">
-                    <div class="product-card-image">
-                        <img src="{{asset("$bed->image")}}" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="product-card-content">
-                        <p>{{$bed->name}}</p>
-                        <p>${{$bed->price}}</p>
-                    </div>
+        <div id="bed" class="menu grid" style="display:none">
+            @foreach ($bedlist as $bed)
+            <a href="{{url('/detail/'.$bed->id)}}" class="pcard">
+                <div class="image">
+                    <img src="{{asset("$bed->image")}}" width="200px" height="250px" alt="">
+                    <span class="sale">Sale</span>
                 </div>
-                @endforeach
-            </div>
+                <div class="">
+                    <p>{{$bed->name}}</p>
+                    <b>${{$bed->price}}</b>
+                </div>
+            </a>
+            @endforeach
         </div>
-        <div id="lamp" class="menu" style="display:none">
-            <div class="product-card-container" >
-
-                @foreach ($lamplist as $lamp)
-
-                    <a href="{{url('/detail/'.$lamp->id)}}" class="product-card">
-                        {{-- <div>{{$chair->id}}</div> --}}
-                        <div class="product-card-image">
-                            <img src="{{asset("$lamp->image")}}" alt="">
-                            <span class="sale">Sale</span>
-                        </div>
-                        <div class="product-card-content">
-                            <p>{{$lamp->name}}</p>
-                            <p>${{$lamp->price}}</p>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
+        <div id="lamp" class="menu grid" style="display:none">
+            <h1>Lamp</h1>
+            @foreach ($lamplist as $lamp)
+            <a href="{{url('/detail/'.$lamp->id)}}" class="pcard">
+                <div class="image">
+                    <img src="{{asset("$lamp->image")}}" width="200px" height="250px" alt="">
+                    <span class="sale">Sale</span>
+                </div>
+                <div class="">
+                    <p>{{$lamp->name}}</p>
+                    <b>${{$lamp->price}}</b>
+                </div>
+            </a>
+            @endforeach
         </div>
+        <div id="cabinet" class="menu grid" style="display:none">
+            <h1>cabinet</h1>
+            @foreach ($cabinetlist as $cabinet)
+            <a href="{{url('/detail/'.$cabinet->id)}}" class="pcard">
+                <div class="image">
+                    <img src="{{asset("$cabinet->image")}}" width="200px" height="250px" alt="">
+                    <span class="sale">Sale</span>
+                </div>
+                <div class="">
+                    <p>{{$cabinet->name}}</p>
+                    <b>${{$cabinet->price}}</b>
+                </div>
+            </a>
+            @endforeach
+        </div>
+        <div id="chair" class="menu grid" style="display:none">
+            <h1>chair</h1>
+            @foreach ($chairlist as $chair)
+            <a href="{{url('/detail/'.$chair->id)}}" class="pcard">
+                <div class="image">
+                    <img src="{{asset("$chair->image")}}" width="200px" height="250px" alt="">
+                    <span class="sale">Sale</span>
+                </div>
+                <div class="">
+                    <p>{{$chair->name}}</p>
+                    <b>${{$chair->price}}</b>
+                </div>
+            </a>
+            @endforeach
+        </div>
+        <div id="table" class="menu grid" style="display:none">
+            
+            @foreach ($tablelist as $table)
+            <a href="{{url('/detail/'.$table->id)}}" class="pcard">
+                <div class="image">
+                    <img src="{{asset("$table->image")}}" width="200px" height="250px" alt="">
+                    <span class="sale">Sale</span>
+                </div>
+                <div class="">
+                    <p>{{$table->name}}</p>
+                    <b>${{$table->price}}</b>
+                </div>
+            </a>
+            @endforeach
+        </div>
+
+        {{-- <div id="sofa" class="menu grid " style="display:none">
+            @foreach ($sofalist as $sofa)
+            <a href="{{url('/detail/'.$sofa->id)}}" class="">
+                <div class="">
+                    <img src="{{asset("$sofa->image")}}" width="100px" height="100px" alt="">
+                    <span class="sale">Sale</span>
+                </div>
+                <div class="">
+                    <p>{{$sofa->name}}</p>
+                    <p>${{$sofa->price}}</p>
+                </div>
+            </a>
+            @endforeach
+        </div> --}}
+
         
-        
-        <div id="cabinet" class="menu" style="display:none">
-            <div class="product-card-container">
-
-                @foreach ($cabinetlist as $cabinet)
-                <a href="{{url('/detail/'.$cabinet->id)}}" class="product-card">
-                    <div class="product-card-image">
-                        <img src="{{asset("$cabinet->image")}}" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="product-card-content">
-                        <p>{{$cabinet->name}}</p>
-                        <p>${{$cabinet->price}}</p>
-                    </div>
-                </a>
-                @endforeach
-            </div>
-        </div>
-        <div id="chair" class="menu" style="display:none">
-            <div class="product-card-container" >
-
-                @foreach ($chairlist as $chair)
-
-                    <a href="{{url('/detail/'.$chair->id)}}" class="product-card">
-                        {{-- <div>{{$chair->id}}</div> --}}
-                        <div class="product-card-image">
-                            <img src="{{asset("$chair->image")}}" alt="">
-                            <span class="sale">Sale</span>
-                        </div>
-                        <div class="product-card-content">
-                            <p>{{$chair->name}}</p>
-                            <p>${{$chair->price}}</p>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-        </div>
-        <div id="table" class="menu" style="display:none">
-            <div class="product-card-container">
-
-                @foreach ($tablelist as $table)
-                <a href="{{url('/detail/'.$table->id)}}" class="product-card">
-                    <div class="product-card-image">
-                        <img src="{{asset("$table->image")}}" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="product-card-content">
-                        <p>{{$table->name}}</p>
-                        <p>${{$table->price}}</p>
-                    </div>
-                </a>
-                @endforeach
-            </div>
-        </div>
-
-      
+    
     </section>
     <section class="home-banner">
         <div class="banner">
@@ -276,3 +266,12 @@
     </section>
 
 @endsection
+
+@push('scripts')
+    
+    <link rel="stylesheet" href="{{ asset('js/customer/home.js') }}">
+@endpush
+
+@push('styles')
+    <link href="{{ asset('css/customer/homepage.css') }}" rel="stylesheet">
+@endpush
