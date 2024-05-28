@@ -22,6 +22,7 @@ use App\Http\Controllers\BlogController;
     Route::get('/editProduct/{id}',[ProductController::class,'editProduct'])->name('editProduct');
     Route::post('/editProductProcess',[ProductController::class,'editProductProcess'])->name('editProductProcess');
     Route::get('/deleteProductProcess/{id}',[ProductController::class,'deleteProductProcess'])->name('deleteProductProcess');
+    Route::get('/searchProduct',[ProductController::class,'searchProduct'])->name('searchProduct');
 
     Route::get('/staffList',[StaffController::class,'stafflist'])->name('staffList');
     Route::get('/addStaff',[StaffController::class,'addStaff'])->name('addStaff');
@@ -29,7 +30,7 @@ use App\Http\Controllers\BlogController;
     Route::get('/editStaff{id}',[StaffController::class,'editStaff'])->name('editStaff');
     Route::post('/editStaffProcess',[StaffController::class,'editStaffProcess'])->name('editStaffProcess');
     Route::get('/deleteStaffProcess{id}',[StaffController::class,'deleteStaffProcess'])->name('deleteStaffProcess');
-
+    Route::get('/searchStaff',[StaffController::class,'searchStaff'])->name('searchStaff');
     
     Route::get('/categoryList',[CategoryController::class,'categoryList'])->name('categoryList');
     Route::get('/addCategory',[CategoryController::class,'addCategory'])->name('addCategory');
@@ -59,10 +60,7 @@ Route::get('/orderList',[AdminController::class,'orderList'])->name('orderList')
 
 
 
-Route::get('/', function () {
-
-    return view('admin.login');
-});
+Route::get('/', [App\Http\Controllers\CustomerController::class, 'home'])->name('home');
 Route::get('/test', function () {
     return view('admin.test');
 });

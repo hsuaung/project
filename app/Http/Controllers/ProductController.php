@@ -20,8 +20,9 @@ class ProductController extends Controller
             
             ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
             ->where('product_photos.isPrimary', 1)
-            ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
-        
+            ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
+            ->paginate(5);
+      
         return view('admin.productList', compact('productlist'));
     }
     public function addProduct()
@@ -79,6 +80,7 @@ class ProductController extends Controller
     public function editProduct( $id)
     {
 
+
         $categories = DB::table('categories')
             ->select('categories.*')->get();
     
@@ -86,9 +88,10 @@ class ProductController extends Controller
             ->select('staff.*')->get();
         $product = DB::table('products')
             ->select('products.*')
-            ->where('products.id', $id)
+            ->where('id','=',$id)
+            // ->where('products.id', $id)
             ->first();
-            // dd($product);
+        
         return view('./admin/product', compact('categories', 'staffs', 'product'));
     }
     public function editProductProcess(Request $request)
@@ -115,10 +118,8 @@ class ProductController extends Controller
             Product::where('id', $request->id)->update([
                 'name' => $request->name,
                 'category_id' => $request->category,
-                // 'code_id' => $request->code,
                 'staff_id' => $request->staff_id,
                 'detail' => $request->detail,
-                // 'code_name' => $request->code_name,
                 'price' => $request->price,
                 'stock' => $request->stock,
                 'description' => $request->description,
@@ -136,5 +137,17 @@ class ProductController extends Controller
     {
         DB::table('products')->where('id', $id)->delete();
         return redirect()->to('/productList');
+    }
+    public function searchProduct(Request $request)
+    {
+        $search = $request->input('search');
+        $productlist = DB::table('products')
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
+        ->where('product_photos.isPrimary', 1)
+        ->where('products.name', 'like', "%$search%")
+        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
+        ->paginate(5);
+        return view('admin.productList', compact('productlist'));
     }
 }

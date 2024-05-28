@@ -8,12 +8,16 @@
         <input type="date">
     </div>
     <div class="right_div">
-        <div class="btn search_btn">
+        <form action="{{ route('searchStaff') }}" method="GET" class="btn search_btn">
+            <input type="text" name="search" placeholder="Search Staff">
+            <button type="submit"><i class="lni lni-search-alt"></i></button>
+        </form>
+        {{-- <div class="btn search_btn">
             <a href="{{route('addProduct')}}" >
                 <i class="lni lni-search-alt"></i>
                 <p>search</p>
             </a>
-        </div>
+        </div> --}}
         <div class="sort">
             <select id="sort">
                 <option value="">Deafult Sorting</option>

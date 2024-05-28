@@ -31,10 +31,13 @@ if(!empty($product)){
             <div class="col">
                 <label for="category">Category <span>*</span></label>
             
-          
+            
             <select name="category" id="">
                 @foreach ($categories as $category)
-                <option value="{{$category->id}}" {{$updatestatus == true ? 'selected': '' }}>{{$category->name}}</option>
+                <option value="{{ $category->id }}"
+                    @isset($product){{ $product->category_id === $category->id ? 'selected' : '' }}
+                    @endisset>
+                    {{ $category->name }}</option>
                 @endforeach
             </select>
             </div>
@@ -45,7 +48,10 @@ if(!empty($product)){
                 <label for="staff_id">Choose Staff <span>*</span></label>
             <select name="staff_id" id="">
                 @foreach ($staffs as $staff)
-                <option value="{{$staff->id}}" {{$updatestatus == true ? 'selected': '' }}>{{$staff->name}}</option>
+                <option value="{{ $staff->id }}"
+                    @isset($product){{ $product->staff_id === $staff->id ? 'selected' : '' }}
+                    @endisset>
+                    {{ $staff->name }}</option>
                 @endforeach
             </select>
             </div>

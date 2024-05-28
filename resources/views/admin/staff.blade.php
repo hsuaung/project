@@ -1,3 +1,5 @@
+
+@extends('layouts.admin.masterLayout')
 @php
 $updatestatus=false;
 
@@ -6,7 +8,7 @@ if(!empty($staff)){
     // dd($staff);
 }
 @endphp
-@extends('layouts.admin.masterLayout')
+
 @section('page')
 {{$updatestatus == true? 'Edit Staff ': 'Add Staff' }}
 @endsection
@@ -53,7 +55,10 @@ if(!empty($staff)){
             <label for="role">Choose Your Role: <span>*</span></label>
             <select name="role" id="" >
             @foreach ($roles as $role)
-            <option value="{{$role->id}}" {{$updatestatus == true? 'selected ': '' }}>{{$role->name}}</option>
+            <option value="{{ $role->id }}"
+                @isset($staff){{ $staff->role_id === $role->id ? 'selected' : '' }}
+                @endisset>
+                {{ $role->name }}</option>
             @endforeach
     </select>
         </div>

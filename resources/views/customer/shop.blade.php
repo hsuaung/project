@@ -82,7 +82,6 @@
 
 
 
-
         <div class="loadMore">
             <p>You're viewed 16 of 50 products</p>
             <a href="#">LOAD MORE</a>

@@ -67,33 +67,9 @@ li{
     display:flex;
     margin-top:2rem;
     gap:1rem;
- 
+    cursor:pointer;
 }
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-  }
-  
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-  
-    position: absolute;
-    z-index: 1;
-    top: -5px;
-    left: 105%;
-  }
-  
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-  } 
 
 
 
@@ -163,9 +139,29 @@ table{
     padding: 1rem;
     color:var(--text_color);
     cursor: pointer;
+    display:flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
     
 }
-.btn a{
+.btn input{
+    padding: .5em;
+    color:var(--text_color);
+}
+.btn input:focus{
+    outline: none;
+}
+.btn button{
+    background-color: transparent;
+    border:none;
+}
+.btn button i{
+    color:var(--text_color);
+}
+
+/* .btn a{
     display:flex;
     justify-items: center;
     justify-content: center;
@@ -174,7 +170,7 @@ table{
 }
 .btn a:hover{
     color:var(--text_color);
-}
+} */
 .btn_gp{
     margin-top: 1rem;
 }
@@ -231,7 +227,7 @@ header{
 .active_link{
     color:var(--confirm_color);
 }
-
+/* 
 .pagination{
     margin-top:1rem;
     display: flex;
@@ -244,5 +240,25 @@ header{
 }
 .pagination a:active{
     background-color: #F7941D;
+}
+ */
+
+ .pagination{
+    background-color: transparent;
+    margin:1rem;
+    display: flex;
+    gap:1rem;
+    justify-content: flex-end;
+
+ }
+.page-item{
+    border:1px solid var(--confirm_color);
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.active{
+    background-color:var(--confirm_color);
+    
 }
 

@@ -2,28 +2,16 @@
 
 <section id="sidebar" class="sidebar">
     <div class="side-item">
-        {{-- <a  >  --}}
+       
             <i class="lni lni-menu side-menu-bar"></i>
             <b class="hidden">FURNITURE</b>
-            {{-- @php
-            $variable=@yield('active')
-            dd($variable)
-            if(@yield('active')=='product')
-                dd("true")
             
-            @endphp --}}
-        {{-- </a> --}}
     </div>
     <ul>
-        {{-- <li>
-            <div class="tooltip">Hover over me
-                <span class="tooltiptext">Tooltip text</span>
-              </div>
-        </li> --}}
+       
         <li >
             <a href="{{route('adminDashboard')}}" class="side-item {{ Route::currentRouteNamed('adminDashboard') ? 'active_link' : '' }} " >
                 <i class="lni lni-dashboard"></i>
-                {{-- <p class="tooltiptext">Dashboard</p> --}}
                 <p class="hidden">Dashboard</p>
             </a>
         </li>

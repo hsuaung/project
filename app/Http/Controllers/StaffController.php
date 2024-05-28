@@ -21,7 +21,7 @@ class StaffController extends Controller
             ->join('roles', 'roles.id', '=', 'staff.role_id')
            
             ->select('staff.*', 'roles.name as rolename')
-            ->paginate(5);
+            ->paginate(3);
         // dd($stafflist);
         return view('admin.stafflist', compact('stafflist'));
     }
@@ -92,5 +92,14 @@ class StaffController extends Controller
        DB::table('staff')->where('id', $id)->delete();
         return redirect()->to('/staffList');
     }
-    
+    public function searchStaff(Request $request)
+    {
+        $search = $request->input('search');
+        $stafflist = DB::table('staff')
+        ->join('roles', 'roles.id', '=', 'staff.role_id')
+        ->select('staff.*', 'roles.name as rolename')
+        ->where('staff.name', 'like', "%$search%")
+        ->paginate(3);
+        return view('admin.stafflist', compact('stafflist'));
+    }
 }
