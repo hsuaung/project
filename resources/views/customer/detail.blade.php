@@ -109,3 +109,6 @@
 
 @endsection
 
+@push('styles')
+    <link href="{{ asset('css/customer/detail.css') }}" rel="stylesheet">
+@endpush

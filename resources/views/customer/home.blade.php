@@ -38,29 +38,41 @@
 
 
     <section class="home-grid">
-        <div class="bed home-gird-card">
+        <a href="{{url('/productByCategory/'.'sofa')}}"  class="sofa home-gird-card">
             <div class="home-grid-text">
                 <b>{{$grid_items[0]['name']}}</b>
                 <p>{{$grid_items[0]['products_count']}} Products</p>
             </div>
-            <img src="image/customer/homeGrid1.png" alt="">
-        </div>
-        
-        @for($i=1;$i<count($grid_items);$i++)
-           <div class="home-gird-card">
+            <img src="image/customer/category7.png" alt="">
+        </a>
+        <a href="{{url('/productByCategory/'.'bed')}}"  class="bed home-gird-card">
             <div class="home-grid-text">
-                <b>{{$grid_items[$i]['name']}}</b>
-            <p>{{$grid_items[$i]['products_count']}} Products</p>
+                <b>{{$grid_items[1]['name']}}</b>
+            <p>{{$grid_items[1]['products_count']}} Products</p>
             </div>
-            
-            <img src="image/customer/homeGrid3.png" alt="">
-            {{-- <img src="image/product/"{{$grid_items[$i]['image']}} alt=""> --}}
+            <img src="image/customer/gridbed.png" alt="">
+        </a>
+        <a href="{{url('/productByCategory/'.'lamp')}}"  class="lamp home-gird-card">
+            <div class=" home-grid-text">
+                <b>{{$grid_items[2]['name']}}</b>
+            <p>{{$grid_items[2]['products_count']}} Products</p>
             </div>
-        @endfor
-     
-
-
-    
+            <img src="image/customer/homegrid3.png" alt="">
+        </a>
+        <a href="{{url('/productByCategory/'.'cabinet')}}"  class="cabinet home-gird-card">
+            <div class="home-grid-text">
+                <b>{{$grid_items[3]['name']}}</b>
+            <p>{{$grid_items[3]['products_count']}} Products</p>
+            </div>
+            <img src="image/customer/gridcabinet.png" alt="">
+        </a>
+        <a href="{{url('/productByCategory/'.'table')}}"  class="table home-gird-card">
+            <div class="home-grid-text">
+                <b>{{$grid_items[4]['name']}}</b>
+            <p>{{$grid_items[4]['products_count']}} Products</p>
+            </div>
+            <img src="image/customer/gridtable.png" alt="">
+        </a>
         <a>
             Explore more
             <img src="image/customer/icons.svg" alt="">
@@ -107,7 +119,7 @@
             @endforeach
         </div>
         <div id="lamp" class="menu grid" style="display:none">
-            <h1>Lamp</h1>
+          
             @foreach ($lamplist as $lamp)
             <a href="{{url('/detail/'.$lamp->id)}}" class="pcard">
                 <div class="image">
@@ -122,7 +134,7 @@
             @endforeach
         </div>
         <div id="cabinet" class="menu grid" style="display:none">
-            <h1>cabinet</h1>
+            
             @foreach ($cabinetlist as $cabinet)
             <a href="{{url('/detail/'.$cabinet->id)}}" class="pcard">
                 <div class="image">
@@ -137,7 +149,7 @@
             @endforeach
         </div>
         <div id="chair" class="menu grid" style="display:none">
-            <h1>chair</h1>
+            
             @foreach ($chairlist as $chair)
             <a href="{{url('/detail/'.$chair->id)}}" class="pcard">
                 <div class="image">
@@ -167,22 +179,7 @@
             @endforeach
         </div>
 
-        {{-- <div id="sofa" class="menu grid " style="display:none">
-            @foreach ($sofalist as $sofa)
-            <a href="{{url('/detail/'.$sofa->id)}}" class="">
-                <div class="">
-                    <img src="{{asset("$sofa->image")}}" width="100px" height="100px" alt="">
-                    <span class="sale">Sale</span>
-                </div>
-                <div class="">
-                    <p>{{$sofa->name}}</p>
-                    <p>${{$sofa->price}}</p>
-                </div>
-            </a>
-            @endforeach
-        </div> --}}
-
-        
+      
     
     </section>
     <section class="home-banner">

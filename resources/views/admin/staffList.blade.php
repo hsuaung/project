@@ -80,9 +80,9 @@
                 </table>
             </div>
                 
-            <div class="pagination">
+            {{-- <div class="pagination"> --}}
                 {{ $stafflist->links() }}
-            </div>
+            {{-- </div> --}}
                 {{-- <div class="pagination-links">
                     {{-- {{ $stafflist->links() }} --}}
                 {{-- </div>  --}}

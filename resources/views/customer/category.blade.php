@@ -1,13 +1,14 @@
 @extends('layouts.customerLayout')
 @section('title','category || furniture')
 @section('content')
+
     <section class="category">
         <div class="link-connect">
             <span>Home</span>
             <span>Shop</span>
             <span>Bed</span>
         </div>
-        <div class="title">BED</div>
+        <div class="title">{{$category}}</div>
         <div class="shop-nav">
             <div class="left-nav">
                 <a href="#">View 16 per page</a>
@@ -34,84 +35,27 @@
             </div>
         </div>
         <div class="shop-card-container">
+            @foreach ($productlist as $product)
             <div class="shop-card">
                 <div class="shop-card-image">
-                    <img src="{{asset('/image/customer/category1.png')}}" alt="">
-                   
+                    <img src="{{asset("$product->image")}}" width="200px" height="250px" alt="">
+                        
                 </div>
                 <div class="shop-card-content">
-                    <p>Modway Olivia Bed</p>
-                    <p>$1,200.00</p>
+                    <p>{{$product->name}}</p>
+                    <p>$ {{$product->price}}</p>
                 </div>
             </div>
-            <div class="shop-card">
-                <div class="shop-card-image">
-                    <img src="{{asset('/image/customer/category2.png')}}" alt="">
-        
-                </div>
-                <div class="shop-card-content">
-                    <p>Gwyneth Velvet King Bed</p>
-                    <p>$1,200.00</p>
-                </div>
-            </div>
-            <div class="shop-card">
-                <div class="shop-card-image">
-                    <img src="{{asset('/image/customer/category3.png')}}" alt="">
-                </div>
-                <div class="shop-card-content">
-                    <p>Upholstered Bed</p>
-                    <p>$1,200.00</p>
-                </div>
-            </div>
-            <div class="shop-card">
-                <div class="shop-card-image">
-                    <img src="{{asset('/image/customer/category4.png')}}" alt="">
-                    
-                </div>
-                <div class="shop-card-content">
-                    <p>Montana King Bed</p>
-                    <p>$1,000.00 - $1,500.00</p>
-                </div>
-            </div>
-            <div class="shop-card">
-                <div class="shop-card-image">
-                    <img src="{{asset('/image/customer/category5.png')}}" alt="">
-                </div>
-                <div class="shop-card-content">
-                    <p>Jervis Single Bed</p>
-                    <p>$1,100.00</p>
-                </div>
-            </div>
-            <div class="shop-card">
-                <div class="shop-card-image">
-                    <img src="{{asset('/image/customer/category6.png')}}" alt="">
-                </div>
-                <div class="shop-card-content">
-                    <p>Storage Bed Frame</p>
-                    <p>$1,200.00</p>
-                </div>
-            </div>
-            <div class="shop-card">
-                <div class="shop-card-image">
-                    <img src="{{asset('/image/customer/category7.png')}}" alt="">
-                </div>
-                <div class="shop-card-content">
-                    <p>Chaise Corner Sofa Bed</p>
-                    <p>$1,500.00</p>
-                </div>
-            </div>
-            <div class="shop-card">
-                <div class="shop-card-image">
-                    <img src="{{asset('/image/customer/category8.png')}}" alt="">
-        
-                </div>
-                <div class="shop-card-content">
-                    <p>Fabric Sofa Bed</p>
-                    <p><span class="mute-text">$1,200.00</span>$1,000.00</p>
-                </div>
-            </div>
-        
+            @endforeach
+          
         
         </div>
     </section>
 @endsection
+
+@push('styles')
+<link href="{{ asset('css/customer/home.css') }}" rel="stylesheet">
+<link href="{{ asset('css/customer/shop.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/customer/category.css') }}" rel="stylesheet">
+@endpush

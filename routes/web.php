@@ -74,7 +74,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\CustomerController::class, 'home'])->name('home');
  Route::get('/blog', [App\Http\Controllers\CustomerController::class, 'blog'])->name('blog');
-
+ 
+ Route::get('/productByCategory/'.'{category}',[CustomerController::class,'productByCategory'])->name('productByCategory');
+    
 Route::get('/cart', [App\Http\Controllers\CustomerController::class, 'cart'])->name('cart');
 
 Route::get('/category', [App\Http\Controllers\CustomerController::class, 'category'])->name('category');

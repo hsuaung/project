@@ -233,9 +233,9 @@ body {
     grid-template-columns: 2fr 1fr 1fr;
     background-color: ;
     gap:1%;
-    padding:1%;
+    /* padding:1%; */
 }
-.bed{
+.sofa{
     grid-row: 1/3;
     background-color: #F8EFEE;
 }
@@ -247,7 +247,7 @@ body {
     padding-top:30% ;
     padding-left:30%;
 }
-.sofa
+.bed
 {
     background-color: #C3A7A3;
 
@@ -456,6 +456,6 @@ body {
 
 .home_active_link{
     background-color: #EE1C47;
-    color:white;
+    color:white !important;
     padding:.5rem 1rem;
 }

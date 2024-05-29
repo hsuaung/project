@@ -55,6 +55,7 @@ class CustomerController extends Controller
         ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
          $grid_items =  Category::whereIn('name', ['sofa', 'bed', 'lamp' , 'cabinet' ,'table'])->withCount('products')
         ->get();
+        // dd($cabinetlist);
         return view ('./customer/home',compact('grid_items','sofalist','bedlist','lamplist','cabinetlist','chairlist','tablelist'));
     }
     public function blog(){
@@ -86,8 +87,6 @@ class CustomerController extends Controller
         ->where('products.id', $id)
         ->select('product_photos.image')
         ->get();
-        
-        // dd($product[0]->name);
         return view ('./customer/detail',compact('product','images'));
     }
     public function login(){
@@ -98,11 +97,24 @@ class CustomerController extends Controller
         ->join('categories', 'categories.id', '=', 'products.category_id')
         ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
         ->where('product_photos.isPrimary', 1)
-        
-        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
+        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
+        ->get();
        
-        // dd($productlist);
         return view ('./customer/shop',compact('productlist'));
+    }
+
+    public function productByCategory($category){
+        
+        $productlist=DB::table('products')
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
+        ->where('product_photos.isPrimary', 1)
+        ->where('categories.name','=',$category)
+        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
+        ->get();
+        return view ('./customer/category',compact('productlist','category'));
+ 
+     
     }
     public function story(){
         return view ('./customer/story');

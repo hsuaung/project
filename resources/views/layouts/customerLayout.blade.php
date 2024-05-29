@@ -61,20 +61,21 @@
                                 <div class="column">
                                     <h3>CATEGORY ONE </h3>
                                     <div class="column">
-                                        <a href="#">Bed</a>
-                                        <a href="#">Cabinet</a>
-                                        <a href="#">Sofa</a>
-                                        <a href="#">Kitchen</a>
-                                        <a href="#">Office</a>
-                                        <a href="#">Chair</a>
+                                        <a href="{{url('/productByCategory/'.'bed')}}">Bed</a>
+                                        <a href="{{url('/productByCategory/'.'cabinet')}}">Cabinet</a>
+                                        <a href="{{url('/productByCategory/'.'sofa')}}">Sofa</a>
+                                        <a href="{{url('/productByCategory/'.'kitchen')}}">Kitchen</a>
+                                        <a href="{{url('/productByCategory/'.'office')}}">Office</a>
+                                        <a href="{{url('/productByCategory/'.'chair')}}">Chair</a>
                                     </div>
                                     <div class="column">
-                                        <a href="#">Bed</a>
-                                        <a href="#">Cabinet</a>
-                                        <a href="#">Sofa</a>
-                                        <a href="#">Kitchen</a>
-                                        <a href="#">Office</a>
-                                        <a href="#">Chair</a>
+                                        <a href="{{url('/productByCategory/'.'bed')}}">Bed</a>
+                                        <a href="{{url('/productByCategory/'.'cabinet')}}">Cabinet</a>
+                                        <a href="{{url('/productByCategory/'.'sofa')}}">Sofa</a>
+                                        <a href="{{url('/productByCategory/'.'kitchen')}}">Kitchen</a>
+                                        <a href="{{url('/productByCategory/'.'office')}}">Office</a>
+                                        <a href="{{url('/productByCategory/'.'chair')}}">Chair</a>
+                                
                                     </div>
                                 </div>
                                 <div class="column">
