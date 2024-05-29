@@ -16,7 +16,7 @@ return new class extends Migration
             $table->String('paymenttype');
             $table->foreignId('customer_id')->references('id')->on('customers')->cascadeOnDelete()->cascadeOnUpdate()->constrained();
             $table->float('totalprice');
-            $table->String('name');
+            // $table->String('name');
             $table->String('deliveryaddress');
             $table->String('buyerphone');
             $table->String('buyeremail');

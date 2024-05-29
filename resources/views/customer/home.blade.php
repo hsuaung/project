@@ -35,49 +35,59 @@
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-    @if (isset($grid_items))
-        <section class="home-grid">
-            <a href="{{ url('/productByCategory/' . 'sofa') }}" class="sofa home-gird-card">
-                <div class="home-grid-text">
-                    <b>{{ $grid_items[0]['name'] }}</b>
-                    <p>{{ $grid_items[0]['products_count'] }} Products</p>
-                </div>
-                <img src="image/customer/category7.png" alt="">
-            </a>
-            <a href="{{ url('/productByCategory/' . 'bed') }}" class="bed home-gird-card">
-                <div class="home-grid-text">
-                    <b>{{ $grid_items[1]['name'] }}</b>
-                    <p>{{ $grid_items[1]['products_count'] }} Products</p>
-                </div>
-                <img src="image/customer/gridbed.png" alt="">
-            </a>
-            <a href="{{ url('/productByCategory/' . 'lamp') }}" class="lamp home-gird-card">
-                <div class=" home-grid-text">
-                    <b>{{ $grid_items[2]['name'] }}</b>
-                    <p>{{ $grid_items[2]['products_count'] }} Products</p>
-                </div>
-                <img src="image/customer/homegrid3.png" alt="">
-            </a>
-            <a href="{{ url('/productByCategory/' . 'cabinet') }}" class="cabinet home-gird-card">
-                <div class="home-grid-text">
-                    <b>{{ $grid_items[3]['name'] }}</b>
-                    <p>{{ $grid_items[3]['products_count'] }} Products</p>
-                </div>
-                <img src="image/customer/gridcabinet.png" alt="">
-            </a>
-            <a href="{{ url('/productByCategory/' . 'table') }}" class="table home-gird-card">
-                <div class="home-grid-text">
-                    <b>{{ $grid_items[4]['name'] }}</b>
-                    <p>{{ $grid_items[4]['products_count'] }} Products</p>
-                </div>
-                <img src="image/customer/gridtable.png" alt="">
-            </a>
-            <a>
-                Explore more
-                <img src="image/customer/icons.svg" alt="">
-            </a>
-        </section>
+    {{-- @if (!@empty($grid_items)) --}}
+    {{-- <section>
+        NOthing to show
+    </section> --}}
+    {{-- @else  --}}
+    @if (@empty($grid_items))
+    <section class="home-grid">
+        <a href="{{ url('/productByCategory/' . 'sofa') }}" class="sofa home-gird-card">
+            <div class="home-grid-text">
+                <b>{{ $grid_items[0]['name'] }}</b>
+                <p>{{ $grid_items[0]['products_count'] }} Products</p>
+            </div>
+            <img src="image/customer/category7.png" alt="">
+        </a>
+        <a href="{{ url('/productByCategory/' . 'bed') }}" class="bed home-gird-card">
+            <div class="home-grid-text">
+                <b>{{ $grid_items[1]['name'] }}</b>
+                <p>{{ $grid_items[1]['products_count'] }} Products</p>
+            </div>
+            <img src="image/customer/gridbed.png" alt="">
+        </a>
+        <a href="{{ url('/productByCategory/' . 'lamp') }}" class="lamp home-gird-card">
+            <div class=" home-grid-text">
+                <b>{{ $grid_items[2]['name'] }}</b>
+                <p>{{ $grid_items[2]['products_count'] }} Products</p>
+            </div>
+            <img src="image/customer/homegrid3.png" alt="">
+        </a>
+        <a href="{{ url('/productByCategory/' . 'cabinet') }}" class="cabinet home-gird-card">
+            <div class="home-grid-text">
+                <b>{{ $grid_items[3]['name'] }}</b>
+                <p>{{ $grid_items[3]['products_count'] }} Products</p>
+            </div>
+            <img src="image/customer/gridcabinet.png" alt="">
+        </a>
+        <a href="{{ url('/productByCategory/' . 'table') }}" class="table home-gird-card">
+            <div class="home-grid-text">
+                <b>{{ $grid_items[4]['name'] }}</b>
+                <p>{{ $grid_items[4]['products_count'] }} Products</p>
+            </div>
+            <img src="image/customer/gridtable.png" alt="">
+        </a>
+        <a>
+            Explore more
+            <img src="image/customer/icons.svg" alt="">
+        </a>
+    </section>
     @endif
+    {{-- @if (isset($grid_items))
+        
+    @else 
+    
+    @endif --}}
 
     
     <section class="new-products ">

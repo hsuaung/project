@@ -22,7 +22,7 @@ class ProductSeeder extends Seeder
                     'category_id'=>2,
                     'staff_id'=>1,
                     'detail'=>'Bed detail',
-                    'code_name'=>'Bed',
+                    
                     'price'=>2000,
                     'stock'=>10,
                     'description'=>'Bed Description',
@@ -38,7 +38,7 @@ class ProductSeeder extends Seeder
                     'category_id'=>2,
                     'staff_id'=>2,
                     'detail'=>'Bed detail',
-                    'code_name'=>'Bed',
+                    
                     'price'=>2000,
                     'stock'=>10,
                     'description'=>'Bed Description',
@@ -54,7 +54,6 @@ class ProductSeeder extends Seeder
                     'category_id'=>2,
                     'staff_id'=>3,
                     'detail'=>'Bed detail',
-                    'code_name'=>'Bed',
                     'price'=>2000,
                     'stock'=>10,
                     'description'=>'Bed Description',
@@ -70,7 +69,7 @@ class ProductSeeder extends Seeder
                     'category_id'=>3,
                     'staff_id'=>4,
                     'detail'=>'Bed detail',
-                    'code_name'=>'Bed',
+                    
                     'price'=>2000,
                     'stock'=>10,
                     'description'=>'Bed Description',

@@ -15,7 +15,7 @@ class staffSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+    
         DB::table('staff')->insert(
         [
         [
