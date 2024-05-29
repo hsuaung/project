@@ -10,191 +10,208 @@
             <h3>SALE OFF 30%</h3>
             <h1>Classic 2023 Interior Designs</h1>
             <p>orem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <button>Shop Now <img src="{{asset('image/customer/right-arrow-svgrepo-com 2.svg')}}" alt=""></button>
+            <button>Shop Now <img src="{{ asset('image/customer/right-arrow-svgrepo-com 2.svg') }}" alt=""></button>
         </div>
         <!-- Full-width images with number and caption text -->
         <div class="mySlides ">
-    
-            <img src="{{asset('image/customer/homeSlider.png')}}" alt="">
-    
+
+            <img src="{{ asset('image/customer/homeSlider.png') }}" alt="">
+
         </div>
-    
+
         <div class="mySlides fade">
-    
-            <img src="{{asset('image/customer/blog1.png')}}">
-    
+
+            <img src="{{ asset('image/customer/blog1.png') }}">
+
         </div>
-    
+
         <div class="mySlides fade">
-    
-            <img src="{{asset('image/customer/blog2.png')}}">
-    
+
+            <img src="{{ asset('image/customer/blog2.png') }}">
+
         </div>
-    
+
         <!-- Next and previous buttons -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
+    @if (isset($grid_items))
+        <section class="home-grid">
+            <a href="{{ url('/productByCategory/' . 'sofa') }}" class="sofa home-gird-card">
+                <div class="home-grid-text">
+                    <b>{{ $grid_items[0]['name'] }}</b>
+                    <p>{{ $grid_items[0]['products_count'] }} Products</p>
+                </div>
+                <img src="image/customer/category7.png" alt="">
+            </a>
+            <a href="{{ url('/productByCategory/' . 'bed') }}" class="bed home-gird-card">
+                <div class="home-grid-text">
+                    <b>{{ $grid_items[1]['name'] }}</b>
+                    <p>{{ $grid_items[1]['products_count'] }} Products</p>
+                </div>
+                <img src="image/customer/gridbed.png" alt="">
+            </a>
+            <a href="{{ url('/productByCategory/' . 'lamp') }}" class="lamp home-gird-card">
+                <div class=" home-grid-text">
+                    <b>{{ $grid_items[2]['name'] }}</b>
+                    <p>{{ $grid_items[2]['products_count'] }} Products</p>
+                </div>
+                <img src="image/customer/homegrid3.png" alt="">
+            </a>
+            <a href="{{ url('/productByCategory/' . 'cabinet') }}" class="cabinet home-gird-card">
+                <div class="home-grid-text">
+                    <b>{{ $grid_items[3]['name'] }}</b>
+                    <p>{{ $grid_items[3]['products_count'] }} Products</p>
+                </div>
+                <img src="image/customer/gridcabinet.png" alt="">
+            </a>
+            <a href="{{ url('/productByCategory/' . 'table') }}" class="table home-gird-card">
+                <div class="home-grid-text">
+                    <b>{{ $grid_items[4]['name'] }}</b>
+                    <p>{{ $grid_items[4]['products_count'] }} Products</p>
+                </div>
+                <img src="image/customer/gridtable.png" alt="">
+            </a>
+            <a>
+                Explore more
+                <img src="image/customer/icons.svg" alt="">
+            </a>
+        </section>
+    @endif
 
-
-    <section class="home-grid">
-        <a href="{{url('/productByCategory/'.'sofa')}}"  class="sofa home-gird-card">
-            <div class="home-grid-text">
-                <b>{{$grid_items[0]['name']}}</b>
-                <p>{{$grid_items[0]['products_count']}} Products</p>
-            </div>
-            <img src="image/customer/category7.png" alt="">
-        </a>
-        <a href="{{url('/productByCategory/'.'bed')}}"  class="bed home-gird-card">
-            <div class="home-grid-text">
-                <b>{{$grid_items[1]['name']}}</b>
-            <p>{{$grid_items[1]['products_count']}} Products</p>
-            </div>
-            <img src="image/customer/gridbed.png" alt="">
-        </a>
-        <a href="{{url('/productByCategory/'.'lamp')}}"  class="lamp home-gird-card">
-            <div class=" home-grid-text">
-                <b>{{$grid_items[2]['name']}}</b>
-            <p>{{$grid_items[2]['products_count']}} Products</p>
-            </div>
-            <img src="image/customer/homegrid3.png" alt="">
-        </a>
-        <a href="{{url('/productByCategory/'.'cabinet')}}"  class="cabinet home-gird-card">
-            <div class="home-grid-text">
-                <b>{{$grid_items[3]['name']}}</b>
-            <p>{{$grid_items[3]['products_count']}} Products</p>
-            </div>
-            <img src="image/customer/gridcabinet.png" alt="">
-        </a>
-        <a href="{{url('/productByCategory/'.'table')}}"  class="table home-gird-card">
-            <div class="home-grid-text">
-                <b>{{$grid_items[4]['name']}}</b>
-            <p>{{$grid_items[4]['products_count']}} Products</p>
-            </div>
-            <img src="image/customer/gridtable.png" alt="">
-        </a>
-        <a>
-            Explore more
-            <img src="image/customer/icons.svg" alt="">
-        </a>
-    </section>
     
     <section class="new-products ">
         <h2 class="heading">NEW PRODUCTS</h2>
         <div class="product-nav tabmenu">
-            <button class="tab" onclick="openMenu('sofa')" ><a>Sofa</a></button>
+            <button class="tab" onclick="openMenu('sofa')"><a>Sofa</a></button>
             <button class="tab" onclick="openMenu('bed')"><a>Bed</a></button>
             <button class="tab" onclick="openMenu('lamp')"><a>Lamp</a></button>
             <button class="tab" onclick="openMenu('cabinet')"><a>Cabinet</a></button>
             <button class="tab" onclick="openMenu('chair')"><a>Chair</a></button>
             <button class="tab" onclick="openMenu('table')"><a>Table</a></button>
-            
+
         </div>
+        @if (@isset($sofalist))
         <div id="sofa" class="menu grid">
-                @foreach ($sofalist as $sofa)
-                <a href="{{url('/detail/'.$sofa->id)}}" class="pcard">
+            @foreach ($sofalist as $sofa)
+                <a href="{{ url('/detail/' . $sofa->id) }}" class="pcard">
                     <div class="image">
-                        <img src="{{asset("$sofa->image")}}" width="200px" height="250px" alt="">
+                        <img src="{{ asset("$sofa->image") }}" width="200px" height="250px" alt="">
                         <span class="sale">Sale</span>
                     </div>
                     <div class="">
-                        <p>{{$sofa->name}}</p>
-                        <b>${{$sofa->price}}</b>
+                        <p>{{ $sofa->name }}</p>
+                        <b>${{ $sofa->price }}</b>
                     </div>
                 </a>
-                @endforeach
+            @endforeach
         </div>
+        @endif
+        @if (@isset($bedlist))
         <div id="bed" class="menu grid" style="display:none">
             @foreach ($bedlist as $bed)
-            <a href="{{url('/detail/'.$bed->id)}}" class="pcard">
-                <div class="image">
-                    <img src="{{asset("$bed->image")}}" width="200px" height="250px" alt="">
-                    <span class="sale">Sale</span>
-                </div>
-                <div class="">
-                    <p>{{$bed->name}}</p>
-                    <b>${{$bed->price}}</b>
-                </div>
-            </a>
+                <a href="{{ url('/detail/' . $bed->id) }}" class="pcard">
+                    <div class="image">
+                        <img src="{{ asset("$bed->image") }}" width="200px" height="250px" alt="">
+                        <span class="sale">Sale</span>
+                    </div>
+                    <div class="">
+                        <p>{{ $bed->name }}</p>
+                        <b>${{ $bed->price }}</b>
+                    </div>
+                </a>
             @endforeach
         </div>
+        @endif
+        @if (@isset($lamplist))
         <div id="lamp" class="menu grid" style="display:none">
-          
-            @foreach ($lamplist as $lamp)
-            <a href="{{url('/detail/'.$lamp->id)}}" class="pcard">
-                <div class="image">
-                    <img src="{{asset("$lamp->image")}}" width="200px" height="250px" alt="">
-                    <span class="sale">Sale</span>
-                </div>
-                <div class="">
-                    <p>{{$lamp->name}}</p>
-                    <b>${{$lamp->price}}</b>
-                </div>
-            </a>
-            @endforeach
-        </div>
-        <div id="cabinet" class="menu grid" style="display:none">
-            
-            @foreach ($cabinetlist as $cabinet)
-            <a href="{{url('/detail/'.$cabinet->id)}}" class="pcard">
-                <div class="image">
-                    <img src="{{asset("$cabinet->image")}}" width="200px" height="250px" alt="">
-                    <span class="sale">Sale</span>
-                </div>
-                <div class="">
-                    <p>{{$cabinet->name}}</p>
-                    <b>${{$cabinet->price}}</b>
-                </div>
-            </a>
-            @endforeach
-        </div>
-        <div id="chair" class="menu grid" style="display:none">
-            
-            @foreach ($chairlist as $chair)
-            <a href="{{url('/detail/'.$chair->id)}}" class="pcard">
-                <div class="image">
-                    <img src="{{asset("$chair->image")}}" width="200px" height="250px" alt="">
-                    <span class="sale">Sale</span>
-                </div>
-                <div class="">
-                    <p>{{$chair->name}}</p>
-                    <b>${{$chair->price}}</b>
-                </div>
-            </a>
-            @endforeach
-        </div>
-        <div id="table" class="menu grid" style="display:none">
-            
-            @foreach ($tablelist as $table)
-            <a href="{{url('/detail/'.$table->id)}}" class="pcard">
-                <div class="image">
-                    <img src="{{asset("$table->image")}}" width="200px" height="250px" alt="">
-                    <span class="sale">Sale</span>
-                </div>
-                <div class="">
-                    <p>{{$table->name}}</p>
-                    <b>${{$table->price}}</b>
-                </div>
-            </a>
-            @endforeach
-        </div>
 
-      
-    
+            @foreach ($lamplist as $lamp)
+                <a href="{{ url('/detail/' . $lamp->id) }}" class="pcard">
+                    <div class="image">
+                        <img src="{{ asset("$lamp->image") }}" width="200px" height="250px" alt="">
+                        <span class="sale">Sale</span>
+                    </div>
+                    <div class="">
+                        <p>{{ $lamp->name }}</p>
+                        <b>${{ $lamp->price }}</b>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+        @endif
+        @if (@isset($cabinetlist))
+        <div id="cabinet" class="menu grid" style="display:none">
+
+            @foreach ($cabinetlist as $cabinet)
+                <a href="{{ url('/detail/' . $cabinet->id) }}" class="pcard">
+                    <div class="image">
+                        <img src="{{ asset("$cabinet->image") }}" width="200px" height="250px" alt="">
+                        <span class="sale">Sale</span>
+                    </div>
+                    <div class="">
+                        <p>{{ $cabinet->name }}</p>
+                        <b>${{ $cabinet->price }}</b>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+        @endif
+        @if (@isset($chairlist))
+        <div id="chair" class="menu grid" style="display:none">
+
+            @foreach ($chairlist as $chair)
+                <a href="{{ url('/detail/' . $chair->id) }}" class="pcard">
+                    <div class="image">
+                        <img src="{{ asset("$chair->image") }}" width="200px" height="250px" alt="">
+                        <span class="sale">Sale</span>
+                    </div>
+                    <div class="">
+                        <p>{{ $chair->name }}</p>
+                        <b>${{ $chair->price }}</b>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+        @endif
+        @if (@isset($tablelist))
+        <div id="table" class="menu grid" style="display:none">
+
+            @foreach ($tablelist as $table)
+                <a href="{{ url('/detail/' . $table->id) }}" class="pcard">
+                    <div class="image">
+                        <img src="{{ asset("$table->image") }}" width="200px" height="250px" alt="">
+                        <span class="sale">Sale</span>
+                    </div>
+                    <div class="">
+                        <p>{{ $table->name }}</p>
+                        <b>${{ $table->price }}</b>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+        @endif
+       
+        
+        
+       
+
+
+
     </section>
     <section class="home-banner">
         <div class="banner">
             <div class="banner-content">
                 <h2>Up To 60% Off</h2>
                 <div class="ellipse">
-                    
-                        <div class="e-img">
-                            <div class="timer">
-                                <p>3</p>
-                                <p>Days</p>
-                            </div>
-                            <img src="image/customer/Ellipse 9.svg" alt="">
+
+                    <div class="e-img">
+                        <div class="timer">
+                            <p>3</p>
+                            <p>Days</p>
                         </div>
+                        <img src="image/customer/Ellipse 9.svg" alt="">
+                    </div>
                     <div class="e-img">
                         <div class="timer">
                             <p>5</p>
@@ -216,9 +233,9 @@
                         </div>
                         <img src="image/customer/Ellipse 9.svg" alt="">
                     </div>
-                        
-                    
-                   
+
+
+
                 </div>
             </div>
             <div class="banner-image">
@@ -234,11 +251,16 @@
                 <div class="blog-text">
                     <p>Nov 7,2023</p>
                     <b>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</b>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-                    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                    book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
-                    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                        industry's standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                        make a type specimen
+                        book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                        remaining essentially
+                        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+                        Ipsum passages, and more
+                        recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
                 </div>
                 <p></p>
             </div>
@@ -249,13 +271,17 @@
                     <b>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</b>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                         industry's standard
-                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                        make a
                         type specimen
-                        book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                        book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                        remaining
                         essentially
-                        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+                        Ipsum
                         passages, and more
-                        recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
                 </div>
                 <p></p>
             </div>
@@ -265,7 +291,6 @@
 @endsection
 
 @push('scripts')
-    
     <link rel="stylesheet" href="{{ asset('js/customer/home.js') }}">
 @endpush
 
