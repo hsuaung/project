@@ -20,56 +20,32 @@ class CategorySeeder extends Seeder
         [
         [
             'name' => 'Sofa',
+            'image'=>'/storage/images/category/sofa.png',
             'uuid'=>Str::uuid()->toString(),
+
             'status'=>'Active',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ], 
         [
             'name' => 'Bed',
+            'image'=>'/storage/images/category/bed.png',
             'uuid'=>Str::uuid()->toString(),
             'status'=>'Active',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ],  
         [
-            'name' => 'Wardrobe',
+            'name' => 'Lamp',
+            'image'=>'/storage/images/category/lamp.png',
             'uuid'=>Str::uuid()->toString(),
             'status'=>'Active',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ],   
         [
-            'name' => 'SideBoard',
-            'uuid'=>Str::uuid()->toString(),
-            'status'=>'Active',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ], 
-        [
-            'name' => 'Night Table',
-            'uuid'=>Str::uuid()->toString(),
-            'status'=>'Active',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ], 
-          
-        [
-            'name' => 'Dressing Table',
-            'uuid'=>Str::uuid()->toString(),
-            'status'=>'Active',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ], 
-        [
-            'name' => 'Desk',
-            'uuid'=>Str::uuid()->toString(),
-            'status'=>'Active',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ], 
-        [
-            'name' => 'Armchair',
+            'name' => 'Table',
+            'image'=>'/storage/images/category/table.png',
             'uuid'=>Str::uuid()->toString(),
             'status'=>'Active',
             'created_at' => Carbon::now(),
@@ -77,13 +53,18 @@ class CategorySeeder extends Seeder
         ], 
         [
             'name' => 'Cabinet',
+            'image'=>'/storage/images/category/cabinet.png',
             'uuid'=>Str::uuid()->toString(),
             'status'=>'Active',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ], 
+          
+       
+       
         [
             'name' => 'Shelf',
+            'image'=>'/storage/images/category/shelf.png',
             'uuid'=>Str::uuid()->toString(),
             'status'=>'Active',
             'created_at' => Carbon::now(),
@@ -91,25 +72,13 @@ class CategorySeeder extends Seeder
         ], 
         [
             'name' => 'Chair',
+            'image'=>'/storage/images/category/chair.png',
             'uuid'=>Str::uuid()->toString(),
             'status'=>'Active',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ], 
-        [
-            'name' => 'Dinning Table',
-            'uuid'=>Str::uuid()->toString(),
-            'status'=>'Active',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ], 
-        [
-            'name' => 'Coffee Table',
-            'uuid'=>Str::uuid()->toString(),
-            'status'=>'Active',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ], 
+      
         ]
     );
     }

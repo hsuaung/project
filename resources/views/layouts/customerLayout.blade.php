@@ -30,6 +30,7 @@
    
 </head>
 <body>
+   
     <nav class="top-nav">
         <div class="left">
             <div><img src="{{asset('image/customer/vector.svg')}}" alt="facebook"></div>
@@ -97,7 +98,7 @@
         <div class="nav-right">
             <div><img src="{{asset('image/customer/Frame.svg')}}" alt="magnifying glass"></div>
             <div><img src="{{asset('image/customer/Frame(1).svg')}}" alt="user"></div>
-            <div><img src="{{asset('image/customer/shoppingBag.png')}}" alt="cart"> <span>10</span></div>
+            <div><a href="{{route('cart')}}"><img src="{{asset('image/customer/shoppingBag.png')}}" alt="cart"> <span>10</span> </a></div>
         </div>
        
     </header>

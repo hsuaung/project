@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -17,13 +18,13 @@ class ProductController extends Controller
         
         $productlist = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')
-            
             ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
             ->where('product_photos.isPrimary', 1)
             ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
             ->paginate(5);
-      
-        return view('admin.productList', compact('productlist'));
+            // ->get();
+        // dd($productlist);
+              return view('admin.productList', compact('productlist'));
     }
     public function addProduct()
     {
@@ -99,7 +100,6 @@ class ProductController extends Controller
         DB::table('product_photos')->where('product_id', $request->id)->delete();
         if ($request->hasFile('images')) {
             $images=$request->images;
-
             $i = 0;
             foreach ($images as $image) {
             $path = $image->store('images', 'public');

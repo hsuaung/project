@@ -46,53 +46,66 @@ class LoginController extends Controller
     public function login (Request $request)
     {
 
-    //    dd($request->usertype);
-        // $validatedData = $request -> validate(
-        //     [
-        //         'name' => 'required',
-        //         'password' => 'required',
-        //     ]
-        // );
-
-        // dd($request->all());
-
-        $validatedData = $this->validate(
-            $request, [
-            [
-                'name' => 'required',
-                'password' => 'required'
-            ]
+        // Validate the input data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'password' => 'required|string|min:8',
         ]);
 
-        dd($validatedData);
+        // Create the userdata array with hashed password
+        $userdata = [
+            'name' => $validatedData['name'],
+            'password' => Hash::make($validatedData['password']),
+        ];
+    dd($request);
+    // $input = $request->all();
+    // $userdata = array('name' => $input['name'], 'password' => $input['password']);
+    // dd($userdata);
+        // $validatedData = $this->validate(
+        //     $request, [
+        //     [
+        //         'name' => 'required',
+        //         'password' => 'required'
+        //     ]
+        // ]);
+
+        // dd($validatedData);
 
         // $validatedData['password'] = bcrypt($validatedData['password']);
-        $input = $request->all();
-        $userdata = array('name' => $input['name'], 'password' => $input['password']);
         
-        if($request->usertype == 'admin')
+        
+        
+        if($input['usertype'] == 'admin')
         {
-            dd('test');
-            
-            if(auth('admin')->attempt($userdata))
-            {
-                $user = auth('admin')->user();
-                dd($user);
-                if($user->status =='Active')
-                {
-                    return redirect()->route('adminDashboard');
-                }
-                else{
-                    Auth::logout();
-                    return redirect()->route('admin.login')->with('error' , 'You don\'t have Account Access!');
-                }
+            if(auth('admin')->attempt(($userdata))){
+                dd("ok");
             }
+            else{
+                dd("wrong");
+            }
+            // $user = auth('admin')->user();
+            // dd($user);
 
-            else
-            {
+            
+            // if(auth('admin')->attempt($userdata))
+            // {
+            //     $user = auth('admin')->user();
+            //     dd($user);
+            //     if($user->status =='Active')
+            //     {
+            //         return redirect()->route('adminDashboard');
+            //     }
+            //     else{
+            //         Auth::logout();
+            //         return redirect()->route('home')->with('error' , 'You don\'t have Account Access!');
+            //     }
+            // }
+
+            // else
+            // {
                 // Auth::login();
-                return redirect()->route('admin.login')->with('error' , 'Wrong Email and Password');
-            }
+                // return redirect()->route('admin.login')->with('error' , 'Wrong Email and Password');
+            // }
         }
 
 

@@ -21,7 +21,7 @@ return new class extends Migration
             // $table->String('code_name');
             $table->float('price');
             $table->Integer('stock');
-            $table->String('description');
+            $table->longText('description');
             $table->String('feature');
             $table->String('additioninfo');
             $table->String('uuid');

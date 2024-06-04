@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 // class AdminController extends Controller{
@@ -67,7 +69,14 @@ class AdminController extends Controller
     }
     public function customerList()
     {
-        return view('./admin/customerList');
+        $customerlist = DB::table('customers')
+            // ->join('roles', 'roles.id', '=', 'staff.role_id')
+           
+            ->select('customers.*')
+            ->paginate(3);
+        // dd($customerlist);
+        
+        return view('./admin/customerList', compact('customerlist'));
     }
     public function orderList()
     {

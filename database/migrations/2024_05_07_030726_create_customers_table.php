@@ -18,7 +18,7 @@ return new class extends Migration
             $table->String('phone');
             $table->String('address');
             $table->String('password');
-            // $table->String('image');
+            $table->String('image');
             $table->String('uuid');
             $table->String('status');
             $table->timestamps();

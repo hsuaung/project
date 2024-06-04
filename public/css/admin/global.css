@@ -207,6 +207,26 @@ table{
     
   
 }
+.dateFilter{
+    
+    display:flex;
+    gap:1rem;
+    align-items: center;
+}
+.dateFilter input{
+    background-color: transparent;
+    color: var(--text_color);
+    padding:1rem;
+    border-radius: 5px;
+}
+.dateFilter button{
+    height: fit-content;
+    background-color: transparent;
+    color: var(--text_color);
+    padding:1rem;
+    border-radius: 5px;
+
+}
 .right_div{
     display:flex;
     gap:1rem;
@@ -257,8 +277,5 @@ header{
     border-radius: 5px;
     cursor: pointer;
 }
-.active{
-    background-color:var(--confirm_color);
-    
-}
+
 

@@ -1,8 +1,9 @@
 @extends('layouts.customerLayout')
-
+{{-- @dd($grid_items) --}}
 @section('title', 'Home')
 
 @section('content')
+
 
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -35,62 +36,77 @@
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-    {{-- @if (!@empty($grid_items)) --}}
-    {{-- <section>
-        NOthing to show
-    </section> --}}
-    {{-- @else  --}}
-    @if (@empty($grid_items))
-    <section class="home-grid">
-        <a href="{{ url('/productByCategory/' . 'sofa') }}" class="sofa home-gird-card">
-            <div class="home-grid-text">
-                <b>{{ $grid_items[0]['name'] }}</b>
-                <p>{{ $grid_items[0]['products_count'] }} Products</p>
-            </div>
-            <img src="image/customer/category7.png" alt="">
-        </a>
-        <a href="{{ url('/productByCategory/' . 'bed') }}" class="bed home-gird-card">
-            <div class="home-grid-text">
-                <b>{{ $grid_items[1]['name'] }}</b>
-                <p>{{ $grid_items[1]['products_count'] }} Products</p>
-            </div>
-            <img src="image/customer/gridbed.png" alt="">
-        </a>
-        <a href="{{ url('/productByCategory/' . 'lamp') }}" class="lamp home-gird-card">
-            <div class=" home-grid-text">
-                <b>{{ $grid_items[2]['name'] }}</b>
-                <p>{{ $grid_items[2]['products_count'] }} Products</p>
-            </div>
-            <img src="image/customer/homegrid3.png" alt="">
-        </a>
-        <a href="{{ url('/productByCategory/' . 'cabinet') }}" class="cabinet home-gird-card">
-            <div class="home-grid-text">
-                <b>{{ $grid_items[3]['name'] }}</b>
-                <p>{{ $grid_items[3]['products_count'] }} Products</p>
-            </div>
-            <img src="image/customer/gridcabinet.png" alt="">
-        </a>
-        <a href="{{ url('/productByCategory/' . 'table') }}" class="table home-gird-card">
-            <div class="home-grid-text">
-                <b>{{ $grid_items[4]['name'] }}</b>
-                <p>{{ $grid_items[4]['products_count'] }} Products</p>
-            </div>
-            <img src="image/customer/gridtable.png" alt="">
-        </a>
-        <a>
-            Explore more
-            <img src="image/customer/icons.svg" alt="">
-        </a>
-    </section>
-    @endif
-    {{-- @if (isset($grid_items))
-        
-    @else 
-    
-    @endif --}}
 
-    
+
+    @if (!@empty($grid_items))
+
+        <section class="home-grid">
+            <a href="{{ url('/productByCategory/' . 'sofa') }}" class="sofa home-gird-card">
+                <div class="home-grid-text">
+                    <b>{{ $grid_items[0]['name'] }}</b>
+                    <p>{{ $grid_items[0]['products_count'] }} Products</p>
+                    {{-- {{$i++}} --}}
+                </div>
+                <img src="image/customer/category7.png" alt="">
+            </a>
+            @for ($i = 1; $i < count($grid_items); $i++)
+                <a href="{{ url('/productByCategory/' . 'bed') }}" class=" home-gird-card">
+                    <div class="home-grid-text">
+                        <b>{{ $grid_items[$i]['name'] }}</b>
+                        <p>{{ $grid_items[$i]['products_count'] }} Products</p>
+
+                    </div>
+                    <img src="{{ asset($grid_items[$i]['image']) }}" alt="">
+
+                </a>
+            @endfor
+
+
+        
+            <a>
+                Explore more
+                <img src="image/customer/icons.svg" alt="">
+            </a>
+        </section>
+    @endif
+
+
     <section class="new-products ">
+        <h2 class="heading">NEW PRODUCTS</h2>
+        @if (!@empty($category))
+           
+                <div class="product-nav tabmenu">
+                    @foreach ($category as $c)
+                    <button class="tab" onclick="openMenu('{{$c->name }}')" ><a>{{ $c->name }}</a></button>
+                    @endforeach
+                </div>
+                @foreach ($products as $product )
+                    <div id="$product->name" class="menu grid" >
+                        <a href="{{ url('/detail/' . $product->id) }}" class="pcard">
+                            <div class="image">
+                                <img src="{{ asset("$product->image") }}" width="200px" height="250px" alt="">
+                                <span class="sale">Sale</span>
+                            </div>
+                            <div class="">
+                                <p>{{ $product->name }}</p>
+                                <b>${{ $product->price }}</b>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+                {{-- <div id="sofa" class="menu grid"> --}}
+                    @foreach ($sofalist as $sofa)
+                        
+                    @endforeach
+                {{-- </div> --}}
+                
+        @endif
+
+    </section>
+
+
+
+    {{-- <section class="new-products ">
         <h2 class="heading">NEW PRODUCTS</h2>
         <div class="product-nav tabmenu">
             <button class="tab" onclick="openMenu('sofa')"><a>Sofa</a></button>
@@ -102,113 +118,114 @@
 
         </div>
         @if (@isset($sofalist))
-        <div id="sofa" class="menu grid">
-            @foreach ($sofalist as $sofa)
-                <a href="{{ url('/detail/' . $sofa->id) }}" class="pcard">
-                    <div class="image">
-                        <img src="{{ asset("$sofa->image") }}" width="200px" height="250px" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="">
-                        <p>{{ $sofa->name }}</p>
-                        <b>${{ $sofa->price }}</b>
-                    </div>
-                </a>
-            @endforeach
-        </div>
+            <div id="sofa" class="menu grid">
+                @foreach ($sofalist as $sofa)
+                    <a href="{{ url('/detail/' . $sofa->id) }}" class="pcard">
+                        <div class="image">
+                            <img src="{{ asset("$sofa->image") }}" width="200px" height="250px" alt="">
+                            <span class="sale">Sale</span>
+                        </div>
+                        <div class="">
+                            <p>{{ $sofa->name }}</p>
+                            <b>${{ $sofa->price }}</b>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         @endif
         @if (@isset($bedlist))
-        <div id="bed" class="menu grid" style="display:none">
-            @foreach ($bedlist as $bed)
-                <a href="{{ url('/detail/' . $bed->id) }}" class="pcard">
-                    <div class="image">
-                        <img src="{{ asset("$bed->image") }}" width="200px" height="250px" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="">
-                        <p>{{ $bed->name }}</p>
-                        <b>${{ $bed->price }}</b>
-                    </div>
-                </a>
-            @endforeach
-        </div>
+            <div id="bed" class="menu grid" style="display:none">
+                @foreach ($bedlist as $bed)
+                    <a href="{{ url('/detail/' . $bed->id) }}" class="pcard">
+                        <div class="image">
+                            <img src="{{ asset("$bed->image") }}" width="200px" height="250px" alt="">
+                            <span class="sale">Sale</span>
+                        </div>
+                        <div class="">
+                            <p>{{ $bed->name }}</p>
+                            <b>${{ $bed->price }}</b>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         @endif
-        @if (@isset($lamplist))
-        <div id="lamp" class="menu grid" style="display:none">
 
-            @foreach ($lamplist as $lamp)
-                <a href="{{ url('/detail/' . $lamp->id) }}" class="pcard">
-                    <div class="image">
-                        <img src="{{ asset("$lamp->image") }}" width="200px" height="250px" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="">
-                        <p>{{ $lamp->name }}</p>
-                        <b>${{ $lamp->price }}</b>
-                    </div>
-                </a>
-            @endforeach
-        </div>
+        @if (@isset($lamplist))
+            <div id="lamp" class="menu grid" style="display:none">
+
+                @foreach ($lamplist as $lamp)
+                    <a href="{{ url('/detail/' . $lamp->id) }}" class="pcard">
+                        <div class="image">
+                            <img src="{{ asset("$lamp->image") }}" width="200px" height="250px" alt="">
+                            <span class="sale">Sale</span>
+                        </div>
+                        <div class="">
+                            <p>{{ $lamp->name }}</p>
+                            <b>${{ $lamp->price }}</b>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         @endif
         @if (@isset($cabinetlist))
-        <div id="cabinet" class="menu grid" style="display:none">
+            <div id="cabinet" class="menu grid" style="display:none">
 
-            @foreach ($cabinetlist as $cabinet)
-                <a href="{{ url('/detail/' . $cabinet->id) }}" class="pcard">
-                    <div class="image">
-                        <img src="{{ asset("$cabinet->image") }}" width="200px" height="250px" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="">
-                        <p>{{ $cabinet->name }}</p>
-                        <b>${{ $cabinet->price }}</b>
-                    </div>
-                </a>
-            @endforeach
-        </div>
+                @foreach ($cabinetlist as $cabinet)
+                    <a href="{{ url('/detail/' . $cabinet->id) }}" class="pcard">
+                        <div class="image">
+                            <img src="{{ asset("$cabinet->image") }}" width="200px" height="250px" alt="">
+                            <span class="sale">Sale</span>
+                        </div>
+                        <div class="">
+                            <p>{{ $cabinet->name }}</p>
+                            <b>${{ $cabinet->price }}</b>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         @endif
         @if (@isset($chairlist))
-        <div id="chair" class="menu grid" style="display:none">
+            <div id="chair" class="menu grid" style="display:none">
 
-            @foreach ($chairlist as $chair)
-                <a href="{{ url('/detail/' . $chair->id) }}" class="pcard">
-                    <div class="image">
-                        <img src="{{ asset("$chair->image") }}" width="200px" height="250px" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="">
-                        <p>{{ $chair->name }}</p>
-                        <b>${{ $chair->price }}</b>
-                    </div>
-                </a>
-            @endforeach
-        </div>
+                @foreach ($chairlist as $chair)
+                    <a href="{{ url('/detail/' . $chair->id) }}" class="pcard">
+                        <div class="image">
+                            <img src="{{ asset("$chair->image") }}" width="200px" height="250px" alt="">
+                            <span class="sale">Sale</span>
+                        </div>
+                        <div class="">
+                            <p>{{ $chair->name }}</p>
+                            <b>${{ $chair->price }}</b>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         @endif
         @if (@isset($tablelist))
-        <div id="table" class="menu grid" style="display:none">
+            <div id="table" class="menu grid" style="display:none">
 
-            @foreach ($tablelist as $table)
-                <a href="{{ url('/detail/' . $table->id) }}" class="pcard">
-                    <div class="image">
-                        <img src="{{ asset("$table->image") }}" width="200px" height="250px" alt="">
-                        <span class="sale">Sale</span>
-                    </div>
-                    <div class="">
-                        <p>{{ $table->name }}</p>
-                        <b>${{ $table->price }}</b>
-                    </div>
-                </a>
-            @endforeach
-        </div>
+                @foreach ($tablelist as $table)
+                    <a href="{{ url('/detail/' . $table->id) }}" class="pcard">
+                        <div class="image">
+                            <img src="{{ asset("$table->image") }}" width="200px" height="250px" alt="">
+                            <span class="sale">Sale</span>
+                        </div>
+                        <div class="">
+                            <p>{{ $table->name }}</p>
+                            <b>${{ $table->price }}</b>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
         @endif
-       
-        
-        
-       
 
 
 
-    </section>
+
+
+
+
+    </section> --}}
     <section class="home-banner">
         <div class="banner">
             <div class="banner-content">

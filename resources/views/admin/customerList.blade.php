@@ -30,44 +30,35 @@
         <b>Customer List</b>
 
     </div>
+    
     <table>
         <tr>
+            <th><i class="lni lni-image"></th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
             <th>Joining Date</th>
-            <th>Action</th>
+            {{-- <th>Action</th> --}}
         </tr>
+        @foreach ($customerlist as  $customer)
         <tr>
-            <td>Sebastian Patterson</td>
-            <td>SebastianPatterson@teleworm.us</td>
-            <td>918-743-7787</td>
-            <td>Nov 30 2023</td>
-           
+            <td><img width="80" height="80" src="{{asset("$customer->image")}}" alt="customer"></td>
+            <td>{{$customer->name}}</td>
+            <td>{{$customer->email}}</td>
+            <td>{{$customer->phone}}</td>
+            <td>{{$customer->created_at}}</td>
+{{--            
             <td>
                 <img src="{{asset('image/admin/edit.svg') }}" alt="">
                 <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-            </td>
+            </td> --}}
         </tr>
-        <tr>
-            <td>Sebastian Patterson</td>
-            <td>SebastianPatterson@teleworm.us</td>
-            <td>918-743-7787</td>
-            <td>Nov 30 2023</td>
-           
-            <td>
-                <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-            </td>
-        </tr>
+        
+        @endforeach
+        
+        
     </table>
+    {{$customerlist->links()}}
 </div>
            
-            <div class="pagination">
-                <a href="#">
-                    </a>
-                        <a href="#">1</a>
-                        <a href="#" class="pagination_active">2</a>
-                        <a href="#">></a>
-            </div>
 @endsection

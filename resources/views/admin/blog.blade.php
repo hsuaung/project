@@ -20,6 +20,7 @@ if(!empty($product)){
 
 @section('content')
 
+
     <form action="{{$updatestatus == true ? route('editProductProcess'): route('addProductProcess') }}" method="post" class="form" enctype="multipart/form-data">
     <div class="row">
         <label for="title">Title For Your Blog</label>
