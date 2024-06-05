@@ -1,3 +1,4 @@
+
 @push('styles')
 
 
@@ -7,9 +8,9 @@
 <section class="topnav">
     <header>
         @yield('title')
-        <a href="{{route('home')}}" >
+        {{-- <a href="{{route('home')}}" >
             <i class="lni lni-home"></i>
-        </a>
+        </a> --}}
     </header>
    
     <div class="rightnav">

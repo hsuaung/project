@@ -1,8 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\UploadImageController as AdminUploadImageController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\StaffController;
@@ -12,17 +10,15 @@ use App\Http\Controllers\Admin\UploadImageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BlogController;
-
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\CartController;
 
-Auth::routes();
+// Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+Route::post('/admin/login/process', [AuthenticatedSessionController::class, 'store'])->name('admin.login.process');
 
-Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
-Route::post('/admin/login/process', [LoginController::class, 'login'])->name('admin.login.process');
-
-Route::get('/adminDashboard', [AdminController::class, 'dashboard'])->name('adminDashboard');
+Route::get('/adminDashboard', [AdminController::class, 'dashboard'])->name('adminDashboard')->middleware(['auth', 'admin:admin']);
 
 Route::get('/productList', [ProductController::class, 'productList'])->name('productList');
 Route::get('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
@@ -55,30 +51,26 @@ Route::get('/addBlog', [BlogController::class, 'addBlog'])->name('addBlog');
 Route::get('/customerList', [AdminController::class, 'customerList'])->name('customerList');
 Route::get('/orderList', [AdminController::class, 'orderList'])->name('orderList');
 
-
-// Route::post('/login_handler',[AdminController::class,'loginHandler'])->name('login_handler');
-// Route::prefix('admin')->name('admin.')->group(function(){
-// Route::view('/home','admin.home')->name('home');
-// Route::view('/login','admin.auth.login')->name('login');
-// Route::middleware(['admin'])->group(function(){
-
-// });
-// Route::middleware(['admin'])->group(function(){
-// Route::view('/home','admin.home')->name('home');
-// });
-// });
-
-
-
-Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/test', function () {
     return view('admin.test');
 });
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-
+require __DIR__.'/auth.php';
 
 
 
@@ -90,6 +82,7 @@ Route::get('/productByCategory/' . '{category}', [CustomerController::class, 'pr
 Route::post('/addtocart', [CartController::class, 'addtocart'])->name('addtocart');
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::get('/clearCart', [CartController::class, 'clearCart'])->name('clearCart');
+Route::get('/updateCart', [CartController::class, 'updateCart'])->name('updateCart');
 Route::get('/removeItem/{id}', [CartController::class, 'removeItem'])->name('removeItem');
 
 Route::get('/category', [CustomerController::class, 'category'])->name('category');

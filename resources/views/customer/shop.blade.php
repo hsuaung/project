@@ -37,7 +37,7 @@
         
         </div>
 </section> --}}
-    <section class="shop">
+    <section class="">
         <div class="link-connect">
             <span>Home</span>
             <span>Shop</span>

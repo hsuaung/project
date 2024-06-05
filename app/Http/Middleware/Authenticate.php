@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class Authenticate extends Middleware{
     protected function redirectTo(Request $request): ?string{
+        // dd('test');
         if($request->expectsJson()){
             if($request->routeIst('admin.*')){
                 session()->flash('fail','You must login first');

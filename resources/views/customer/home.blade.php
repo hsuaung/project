@@ -77,11 +77,12 @@
            
                 <div class="product-nav tabmenu">
                     @foreach ($category as $c)
-                    <button class="tab" onclick="openMenu('{{$c->name }}')" ><a>{{ $c->name }}</a></button>
+                    <button class="tab" onclick="openMenu('{{$c->id }}')"><a>{{ $c->name }}</a></button>
                     @endforeach
                 </div>
+                {{-- {{$product->category_id == 1 ? 'style= "display:block"' : 'style= "display:none"' }} --}}
                 @foreach ($products as $product )
-                    <div id="$product->name" class="menu grid" >
+                    <div id="{{$product->category_id}}" class="menu grid"   style="display:none">
                         <a href="{{ url('/detail/' . $product->id) }}" class="pcard">
                             <div class="image">
                                 <img src="{{ asset("$product->image") }}" width="200px" height="250px" alt="">
@@ -95,9 +96,9 @@
                     </div>
                 @endforeach
                 {{-- <div id="sofa" class="menu grid"> --}}
-                    @foreach ($sofalist as $sofa)
+                    {{-- @foreach ($sofalist as $sofa)
                         
-                    @endforeach
+                    @endforeach --}}
                 {{-- </div> --}}
                 
         @endif

@@ -2,9 +2,7 @@
 @section('title', 'cart || furniture')
 
 @section('content')
-    {{-- @dd(session('cart')) --}}
-    {{-- @foreach (session('cart') as $id => $detail) --}}
-    {{-- <div>{{$detail['quantity']}}</div> --}}
+    {{--     
     @if (session('error'))
         <h1>{{ session('error') }}</h1>
     @elseif(session('success'))
@@ -12,66 +10,74 @@
     @endif
 
     @php
-        // dd(session('cart'));
-    @endphp
+      
+    @endphp --}}
 
     <div class="top-link">
 
         <a href="">Home > </a> Shopping cart
     </div>
-    <b class="title">Your selection <span>(1 item)</span></b>
-    <div class="test-container">
+    <b class="title">Your selection <span>
+            {{ session('cart') !== null ? count(session('cart')) . ' items' : ' 0 item' }}
 
-        <div class="row">
-            <div class="product">Product</div>
-            <div class="price">Price</div>
-            <div>Quantity</div>
-            <div class="total">Total</div>
-        </div>
-        @if (session('cart') !== null)
-            @php
-            // Session::flush();
-                $items = session('cart');
-                // dd($items);
-            @endphp
-            @if (is_array($items))
-                @if (is_array(current($items)))
-                    @foreach ($items as $id=>$detail)
-                        <div class="row">
-                            <a href="{{ url('/removeItem/' . $detail['product_id']) }}">x</a>
-                            {{-- {{ url('/deleteStaffProcess' . $staff->id) }} --}}
-                            <button value="cancel" id="cancel">x</button>
-                            <div class="product-image-container"><img src="{{ asset($detail['image']) }}" alt="product"
-                                    width="120px" height="120px"></div>
-                            <div>{{ $detail['product_name'] }}</div>
-                            <div>$ {{ $detail['price'] }}</div>
-                            <div><input class="quantity-input" type="number" value="{{ $detail['quantity'] }}"></input>
-                            </div>
-                            <div class="total">$ {{ $detail['total'] }}</div>
-                        </div>
-                    @endforeach
-                @else
-                    {{-- <div class="row">
-                        <a href="{{ url('/removeItem/' . $items['product_id']) }}">x</a>
-                        <button value="cancel" id="cancel">x</button>
-                        <div class="product-image-container"><img src="{{ asset($items['image']) }}" alt="product"
-                                width="120px" height="120px"></div>
-                        <div>{{ $items['product_name'] }}</div>
-                        <div>$ {{ $items['price'] }}</div>
-                        <div><input class="quantity-input" type="number" value="{{ $items['quantity'] }}"></input></div>
-                        <div class="total">$ {{ $items['total'] }}</div>
-                    </div> --}}
+
+        </span></b>
+    <section class="table">
+        <table>
+            <tr>
+                <th colspan="3" style="background-color: green">Product</th>
+                <th>Price</th>
+                <th style="background-color:paleturquoise">Quantity</th>
+                <th>Total</th>
+            </tr>
+            @if (session('cart') !== null)
+                @php
+                    $items = session('cart');
+                @endphp
+                @if (is_array($items))
+                    @if (is_array(current($items)))
+                        @foreach ($items as $id => $detail)
+                            <tr>
+                                <td style="background-color: pink"><a href="{{ url('/removeItem/' . $detail['product_id']) }}"
+                                        id="cancel">x</a></td>
+                                <td style="background-color: blue" class=""><img src="{{ asset($detail['image']) }}"
+                                        alt="product" width="120px" height="120px"></td>
+                                {{-- product-image-container --}}
+                                <td style="background-color: yellow">{{ $detail['product_name'] }}</td>
+                                <td>$ {{ $detail['price'] }}</td>
+                                <td style="background-color: green">
+                                    <form action="{{ route('updateCart') }}">
+                                        <input class="quantity-input" type="number" value="{{ $detail['quantity'] }}"
+                                            name="quantity" id="quantity">
+                                        </input>
+                                </td>
+                                <td class="total">$ {{ $detail['quantity'] * $detail['price'] }}</td>
+                            </tr>
+                            <tr>
+                                <td> <button class="checkout">Procced To Checkout</button></td>
+                                <td><a href="{{ route('clearCart') }}" class="clearbtn">Clear All</a></td>
+                                <td><button type="submit" class="updatebtn">Update Cart</button></td>
+                                </form>
+                            </tr>
+                        @endforeach
+                    @else
+                    @endif
                 @endif
             @endif
-        @endif
+        </table>
 
-        <div class="row">
+
+        {{-- <div class="row">
             <button class="checkout">Procced To Checkout</button>
             <a href="{{ route('clearCart') }}" class="clearbtn">Clear All</a>
-            <button class="updatebtn">Update Cart</button>
+            <form action="{{ route('updateCart') }}">
+                <input type="hidden" value="">
+                <button type="submit" class="updatebtn">Update Cart</button>
+            </form>
+            
 
-        </div>
-    </div>
+        </div> --}}
+    </section>
 
 
 @endsection

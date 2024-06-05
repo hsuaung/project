@@ -8,22 +8,7 @@
     @stack('styles')
     <link rel="stylesheet" href="{{ asset('css/customer/global.css') }}">
     <link rel="stylesheet" href="{{ asset('css/customer/home.css') }}">
-    {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
-    <link rel="stylesheet" href="{{ asset('css/customer/blog.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/cart.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/category.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/checkout.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/contact.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/detail.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/login.css') }}">
-    
-    <link rel="stylesheet" href="{{ asset('css/customer/story.css') }}"> --}}
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> --}}
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> --}}
-    <!-- font awesome link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -98,7 +83,16 @@
         <div class="nav-right">
             <div><img src="{{asset('image/customer/Frame.svg')}}" alt="magnifying glass"></div>
             <div><img src="{{asset('image/customer/Frame(1).svg')}}" alt="user"></div>
-            <div><a href="{{route('cart')}}"><img src="{{asset('image/customer/shoppingBag.png')}}" alt="cart"> <span>10</span> </a></div>
+            <div><a href="{{route('cart')}}"><img src="{{asset('image/customer/shoppingBag.png')}}" alt="cart">
+                @if (session('cart')!==null)
+                    <span>{{count(session('cart'))}}</span> 
+                @else
+                    <span>0</span>
+                
+                    
+                @endif
+                 </a>
+            </div>
         </div>
        
     </header>

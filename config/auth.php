@@ -45,7 +45,7 @@ return [
         ],
         'admin' =>[
             'driver' => 'session',
-            'provider' => 'admin',
+            'provider' => 'admins',
 
         ],
         // 'customer' => [
@@ -76,7 +76,7 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', User::class),
         ],
-        'admin' => [
+        'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Staff::class,
         ],

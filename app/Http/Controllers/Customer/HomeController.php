@@ -17,52 +17,9 @@ class HomeController extends Controller
 {
     
     public function home(){
-        
-        $sofalist=DB::table('products')
-        ->join('categories', 'categories.id', '=', 'products.category_id')
-        ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
-        ->where('product_photos.isPrimary', 1)
-        ->where('categories.name','=','sofa')
-        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
      
-        $bedlist=DB::table('products')
-        ->join('categories', 'categories.id', '=', 'products.category_id')
-        ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
-        ->where('product_photos.isPrimary', 1)
-        ->where('categories.name','=','bed')
-        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
-        
-        $lamplist=DB::table('products')
-        ->join('categories', 'categories.id', '=', 'products.category_id')
-        ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
-        ->where('product_photos.isPrimary', 1)
-        ->where('categories.name','=','lamp')
-        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
-     
-        
-        $cabinetlist=DB::table('products')
-        ->join('categories', 'categories.id', '=', 'products.category_id')
-        ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
-        ->where('product_photos.isPrimary', 1)
-        ->where('categories.name','=','cabinet')
-        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
-
-        $chairlist=DB::table('products')
-        ->join('categories', 'categories.id', '=', 'products.category_id')
-        ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
-        ->where('product_photos.isPrimary', 1)
-        ->where('categories.name','=','chair')
-        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
-
-        $tablelist=DB::table('products')
-        ->join('categories', 'categories.id', '=', 'products.category_id')
-        ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
-        ->where('product_photos.isPrimary', 1)
-        ->where('categories.name','=','table')
-        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')->get();
-        
         $category=DB::table('categories')
-        ->select('categories.name')->get();
+        ->select('categories.*')->get();
 
         $products=DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category_id')
@@ -81,7 +38,7 @@ class HomeController extends Controller
             ->take(5)
             ->get();
         
-        return view ('./customer/home',compact('category','products','grid_items','category_names','sofalist','bedlist','lamplist','cabinetlist','chairlist','tablelist'));
+        return view ('./customer/home',compact('category','products','grid_items','category_names'));
     }
    
 
