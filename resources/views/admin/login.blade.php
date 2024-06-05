@@ -14,7 +14,7 @@
          
             <img src="{{asset('image/admin/adminLogin.jpg') }}" alt="">
         </div>
-        <form action="{{route('admin.login.process')}}" class="login-form" method="POST">
+        <form action="{{route('staff.login.process')}}" class="login-form" method="POST">
             @csrf
             <input type="hidden" value="admin" name="usertype" >
             <h2>Admin Login</h2>
