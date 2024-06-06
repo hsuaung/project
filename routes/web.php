@@ -15,10 +15,10 @@ use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\CartController;
 
-// Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
+Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 Route::post('/admin/login/process', [AuthenticatedSessionController::class, 'store'])->name('admin.login.process');
 
-Route::get('/adminDashboard', [AdminController::class, 'dashboard'])->name('adminDashboard')->middleware(['auth', 'admin:admin']);
+Route::get('/adminDashboard', [AdminController::class, 'dashboard'])->name('adminDashboard');
 
 Route::get('/productList', [ProductController::class, 'productList'])->name('productList');
 Route::get('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
