@@ -47,10 +47,33 @@ iframe{
 
 
 /* Responsive */
-@media (max-width: 850px )  {
+@media (max-width: 768px )  {
     .contact-div{
-        
         grid-template-columns:1fr;
       
+    }
+}
+
+@media (max-width: 480px )  {
+   
+    .name{
+        display: flex;
+        flex-direction: column;
+    }
+  
+    .contact-message input{
+        width:100%;
+    }
+    .contact-message textarea{
+        width:100%;
+        padding:auto;
+    }
+    .contact-message>button{
+        
+        align-self: flex-end;
+    }
+    .contact-address{
+        display: flex;
+        flex-direction: column;
     }
 }

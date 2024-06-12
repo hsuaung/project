@@ -1,10 +1,13 @@
 @extends('layouts.customerLayout')
 @section('title','checkout || furniture')
 @section('content')
-<div class="top-link">
+<section class="">
         <a href="">Home > </a> Checkout
-    </div>
-    <div class="container">
+</section>
+{{-- @dd(session('cart')) --}}
+
+
+    <section class="container">
         <div class="detail">
             <b>Billing Details</b>
             <form action="">
@@ -30,29 +33,46 @@
             </form>
 
         </div>
-        <div class="order">
+        @php
+$items = session('cart');
+@endphp
+@if (is_array($items))
+@if (is_array(current($items)))
+    @foreach ($items as $id => $detail)
+    <div class="order">
             
-            <div class="order-detail">
-                <div class="title"><b>Your Order</b></div>
-                <div>PRODUCT</div>
-                <div>SUBTOTAL</div>
-                <div>Armchair Black Leather x 1</div>
-                <div>$220.00</div>
-                <div>Subtotal</div>
-                <div>$220.00</div>
-                <div>Shipping</div>
-                <div></div>
-                <div class="check">
-                    <input type="radio" id="radio"> <label for="radio">Check payments</label>
-                </div>
-                <div class="card">
-                    <img src="{{asset('image/customer/294654_visa_icon.png')}}" alt="VISA">
-                    <img src="{{asset('image/customer/206680_master_method_card_payment_icon.png')}}" alt="MASTER">
-                    <img src="{{asset('image/customer/mpu.png')}}" alt="MPU">
-                </div>
-                <div class="button"><button>Place Order</button></div>
+        <div class="order-detail">
+            <div class="title"><b>Your Order</b></div>
+            <div>PRODUCT</div>
+            <div>SUBTOTAL</div>
+            <div>{{ $detail['product_name'] }} x {{ $detail['quantity'] }}</div>
+            <div> $ {{ $detail['price'] }}</div>
+            <div>Subtotal</div>
+            <div> $ {{ $detail['price']* $detail['quantity'] }}</div>
+            <div>Shipping</div>
+            <div></div>
+            <div>TYPE OF PAYMENT</div>
+       <div>
+        <select name="payment" id="payment">
+            <option value="COD">Cash on delivery</option>
+            <option value="card">Card</option>
+          
+          </select>
+       </div>
+                
 
-            </div>
+       
+           
+            <div class="button"><button>Place Order</button></div>
+
         </div>
     </div>
+    @endforeach
+@endif
+@endif
+       
+    </section>
 @endsection
+@push('styles')
+    <link href="{{ asset('css/customer/checkout.css') }}" rel="stylesheet">
+@endpush

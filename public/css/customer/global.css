@@ -1,3 +1,4 @@
+
 a{
     text-decoration: none;
     color:black;
@@ -77,4 +78,15 @@ input{
 
 textarea{
     padding: 1rem;
+}
+
+
+@media(max-width:425px){
+    section{
+        margin:auto;
+        width:100%;
+        padding:2rem;
+        margin:1rem 0rem;
+        /* background-color: goldenrod; */
+    }
 }

@@ -17,6 +17,9 @@ class CartController extends Controller
     }
     public function cart()
     {
+        // if(session('cart')){
+        //     session()->forget('cart');
+        // }
         return view('./customer/cart');
     }
     public function addtocart(Request $request)
@@ -54,13 +57,30 @@ class CartController extends Controller
         return view('./customer/home');
     }
     public function updateCart(Request $request){
-        dd($request);
-        if (session('cart') !== null)
+        $cart = session('cart');
+        $ids = $request->product_id ?? '';
+        $quantities = $request->quantity ?? '';
+        if (isset($cart) && isset($quantities) && isset($ids))
         {
-          
-            
+            // dd($cart, $ids, $quantities);
+            foreach($ids as $key => $id){
+                if(array_key_exists($id, $cart)){
+                    // dd('true');
+                    // dd($cart[$id]['product_id']);
+                    // dd(in_array($id, $cart[$id], true));
+                    if($id == $cart[$id]['product_id']){
+                        // dd('true');
+                        $quantity = $quantities[$key];
+                        // dd($quantity);
+                        $cart[$id]['quantity'] = $quantity;
+                    }
+                    // dd($cart);
+                }
+            }
+            session()->forget('cart');
+            session()->put('cart', $cart);
         }
-         else return view('customer.cart')->with('error', 'Nothing in cart');
+        return redirect('/cart');
 
     }
     public function removeItem($id){
@@ -72,5 +92,7 @@ class CartController extends Controller
         }
         return view('customer.cart')->with('error', 'Delete Unsuccessfull');
     }
-   
+    public function checkout(){
+        return view ('./customer/checkout');
+    }
 }

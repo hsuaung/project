@@ -8,13 +8,13 @@
 <section class="topnav">
     <header>
         @yield('title')
-        {{-- <a href="{{route('home')}}" >
+        <a href="{{route('home')}}" >
             <i class="lni lni-home"></i>
-        </a> --}}
+        </a>
     </header>
    
     <div class="rightnav">
-        {{-- <i class="lni lni-alarm"></i> --}}
+        
         <img src="{{asset('image/admin/admin.png') }}" alt="">
     </div>
 </section>

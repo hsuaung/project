@@ -45,7 +45,7 @@
                 <div class="home-grid-text">
                     <b>{{ $grid_items[0]['name'] }}</b>
                     <p>{{ $grid_items[0]['products_count'] }} Products</p>
-                    {{-- {{$i++}} --}}
+                    
                 </div>
                 <img src="image/customer/category7.png" alt="">
             </a>
@@ -69,9 +69,31 @@
             </a>
         </section>
     @endif
+    {{-- <section>
+        <h2 class="heading">NEW PRODUCTS</h2>
+        @if (isset($category))
+        <div class="product-nav tabmenu">
+            @foreach ($category as  $c)
+            <button class="tab" onclick="openMenu('{{$c->id }}')"><a>{{ $c->name }}</a></button>
+                
+       
 
+                @foreach ($products as $product )
+                    <div>
+                        {{$product->category_id == $c->id? $product->name : ''}}
+                    </div>
+                    
+                    
+                @endforeach
+                
+            @endforeach
+        @else <h2>NO</h2>
+    </div>
+              
+        @endif
+    </section> --}}
 
-    <section class="new-products ">
+   <section class="new-products ">
         <h2 class="heading">NEW PRODUCTS</h2>
         @if (!@empty($category))
            
@@ -80,7 +102,6 @@
                     <button class="tab" onclick="openMenu('{{$c->id }}')"><a>{{ $c->name }}</a></button>
                     @endforeach
                 </div>
-                {{-- {{$product->category_id == 1 ? 'style= "display:block"' : 'style= "display:none"' }} --}}
                 @foreach ($products as $product )
                     <div id="{{$product->category_id}}" class="menu grid"   style="display:none">
                         <a href="{{ url('/detail/' . $product->id) }}" class="pcard">
@@ -95,12 +116,6 @@
                         </a>
                     </div>
                 @endforeach
-                {{-- <div id="sofa" class="menu grid"> --}}
-                    {{-- @foreach ($sofalist as $sofa)
-                        
-                    @endforeach --}}
-                {{-- </div> --}}
-                
         @endif
 
     </section>
@@ -271,7 +286,7 @@
             </div>
         </div>
     </section>
-    <section class="blog">
+    <div class="blog">
         <h2 class="heading">LATEST BLOG</h2>
         <div class="blog-card-container">
             <div class="blog-card">
@@ -314,7 +329,7 @@
                 <p></p>
             </div>
         </div>
-    </section>
+    </div>
 
 @endsection
 

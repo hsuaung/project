@@ -97,3 +97,20 @@ form textarea{
     width:40%;
     padding:.9rem;
 }
+
+
+/* responsive */
+@media(max-width:768px){
+    .container{
+        grid-template-columns:1fr;
+        gap:1rem;
+    }
+
+}
+
+@media(max-width:455px){
+    .detail form{
+        
+        grid-template-columns: 1fr;
+    }
+}

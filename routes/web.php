@@ -87,7 +87,7 @@ Route::get('/removeItem/{id}', [CartController::class, 'removeItem'])->name('rem
 
 Route::get('/category', [CustomerController::class, 'category'])->name('category');
 
-Route::get('/checkout', [CustomerController::class, 'checkout'])->name('checkout');
+Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 
 Route::get('/contact', [CustomerController::class, 'contact'])->name('contact');
 Route::get('/detail/{id}', [CustomerController::class, 'detail'])->name('detail');
