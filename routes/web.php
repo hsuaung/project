@@ -15,15 +15,8 @@ use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\CartController;
 
-<<<<<<< HEAD
-Auth::routes();
-
-Route::get('/admin/login', [LoginController::class, 'showStaffLoginForm'])->name('staff.login');
-Route::post('/admin/login/process', [LoginController::class, 'staffLogin'])->name('staff.login.process');
-=======
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 Route::post('/admin/login/process', [AuthenticatedSessionController::class, 'store'])->name('admin.login.process');
->>>>>>> main
 
 Route::get('/adminDashboard', [AdminController::class, 'dashboard'])->name('adminDashboard');
 
