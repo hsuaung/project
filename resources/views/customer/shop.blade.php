@@ -1,6 +1,29 @@
 @extends('layouts.customerLayout')
 @section('title', 'shop || furniture')
 @section('content')
+<div class="wrapper">
+    <i id="left" class="fa-solid fa-angle-left"></i>
+    <div class="carousel">
+        <div class="card">
+            <img src="{{asset('/image/customer/IMAGE(1).png')}}" alt="img" draggable="false">
+        </div>
+        <div class="card">
+            <img src="{{asset('/image/customer/IMAGE(2).png')}}" alt="img" draggable="false">
+        </div>
+        <div class="card">
+            <img src="{{asset('/image/customer/IMAGE(3).png')}}" alt="img" draggable="false">
+        </div>
+        <div class="card">
+            <img src="{{asset('/image/customer/IMAGE(4).png')}}" alt="img" draggable="false">
+        </div>
+        <div class="card">
+            <img src="{{asset('/image/customer/IMAGE(1).png')}}" alt="img" draggable="false">
+        </div>
+    </div>
+    <i id="right" class="fa-solid fa-angle-right"></i>
+</div>
+
+
     {{-- 
 <section class="shop-slider">
         <div class="slide-container">
@@ -37,7 +60,7 @@
         
         </div>
 </section> --}}
-    <section class="shop">
+    <section class="">
         <div class="link-connect">
             <span>Home</span>
             <span>Shop</span>

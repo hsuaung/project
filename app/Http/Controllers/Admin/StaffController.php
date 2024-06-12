@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Storage;
 
 class StaffController extends Controller
 {
-    //
+    public function __construct()
+    {
+        echo "Staff Controller";
+    }
 
     public function stafflist()
     {

@@ -50,8 +50,38 @@
 
         @if (!@empty($grid_items))
 
+<<<<<<< HEAD
             <section class="home-grid">
                 <a href="{{ url('/productByCategory/' . 'sofa') }}" class="sofa home-gird-card">
+=======
+        </div>
+
+        <div class="mySlides fade">
+
+            <img src="{{ asset('image/customer/blog2.png') }}">
+
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+
+    @if (!@empty($grid_items))
+
+        <section class="home-grid">
+            <a href="{{ url('/productByCategory/' . 'sofa') }}" class="sofa home-gird-card">
+                <div class="home-grid-text">
+                    <b>{{ $grid_items[0]['name'] }}</b>
+                    <p>{{ $grid_items[0]['products_count'] }} Products</p>
+                    
+                </div>
+                <img src="image/customer/category7.png" alt="">
+            </a>
+            @for ($i = 1; $i < count($grid_items); $i++)
+                <a href="{{ url('/productByCategory/' . 'bed') }}" class=" home-gird-card">
+>>>>>>> main
                     <div class="home-grid-text">
                         <b>{{ $grid_items[0]['name'] }}</b>
                         <p>{{ $grid_items[0]['products_count'] }} Products</p>
@@ -72,6 +102,7 @@
                 @endfor
 
 
+<<<<<<< HEAD
 
                 <a>
                     Explore more
@@ -79,8 +110,40 @@
                 </a>
             </section>
         @endif
+=======
+        
+            <a>
+                Explore more
+                <img src="image/customer/icons.svg" alt="">
+            </a>
+        </section>
+    @endif
+    {{-- <section>
+        <h2 class="heading">NEW PRODUCTS</h2>
+        @if (isset($category))
+        <div class="product-nav tabmenu">
+            @foreach ($category as  $c)
+            <button class="tab" onclick="openMenu('{{$c->id }}')"><a>{{ $c->name }}</a></button>
+                
+       
+>>>>>>> main
 
+                @foreach ($products as $product )
+                    <div>
+                        {{$product->category_id == $c->id? $product->name : ''}}
+                    </div>
+                    
+                    
+                @endforeach
+                
+            @endforeach
+        @else <h2>NO</h2>
+    </div>
+              
+        @endif
+    </section> --}}
 
+<<<<<<< HEAD
         <section class="new-products ">
             <h2 class="heading">NEW PRODUCTS</h2>
             @if (!@empty($category))
@@ -93,6 +156,19 @@
                 </div>
                 @foreach ($products as $product)
                     <div id="$product->name" class="menu grid">
+=======
+   <section class="new-products ">
+        <h2 class="heading">NEW PRODUCTS</h2>
+        @if (!@empty($category))
+           
+                <div class="product-nav tabmenu">
+                    @foreach ($category as $c)
+                    <button class="tab" onclick="openMenu('{{$c->id }}')"><a>{{ $c->name }}</a></button>
+                    @endforeach
+                </div>
+                @foreach ($products as $product )
+                    <div id="{{$product->category_id}}" class="menu grid"   style="display:none">
+>>>>>>> main
                         <a href="{{ url('/detail/' . $product->id) }}" class="pcard">
                             <div class="image">
                                 <img src="{{ asset("$product->image") }}" width="200px" height="250px" alt="">
@@ -105,10 +181,14 @@
                         </a>
                     </div>
                 @endforeach
+<<<<<<< HEAD
                 {{-- <div id="sofa" class="menu grid"> --}}
                 @foreach ($sofalist as $sofa)
                 @endforeach
                 {{-- </div> --}}
+=======
+        @endif
+>>>>>>> main
 
             @endif
 
@@ -279,6 +359,7 @@
                     <img src="image/customer/homeSofaBanner.png" alt="">
                 </div>
             </div>
+<<<<<<< HEAD
         </section>
         <section class="blog">
             <h2 class="heading">LATEST BLOG</h2>
@@ -303,6 +384,31 @@
                         </p>
                     </div>
                     <p></p>
+=======
+            <div class="banner-image">
+                <img src="image/customer/homeSofaBanner.png" alt="">
+            </div>
+        </div>
+    </section>
+    <div class="blog">
+        <h2 class="heading">LATEST BLOG</h2>
+        <div class="blog-card-container">
+            <div class="blog-card">
+                <img src="image/customer/blog1.png" alt="">
+                <div class="blog-text">
+                    <p>Nov 7,2023</p>
+                    <b>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</b>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                        industry's standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+                        make a type specimen
+                        book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                        remaining essentially
+                        unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem
+                        Ipsum passages, and more
+                        recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
+>>>>>>> main
                 </div>
                 <div class="blog-card">
                     <img src="image/customer/blog2.png" alt="">
@@ -329,7 +435,12 @@
                     <p></p>
                 </div>
             </div>
+<<<<<<< HEAD
         </section>
+=======
+        </div>
+    </div>
+>>>>>>> main
 
     @endsection
 

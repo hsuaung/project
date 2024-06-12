@@ -8,22 +8,7 @@
     @stack('styles')
     <link rel="stylesheet" href="{{ asset('css/customer/global.css') }}">
     <link rel="stylesheet" href="{{ asset('css/customer/home.css') }}">
-    {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-    <link rel="stylesheet" href="{{ asset('css/customer/blog.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/cart.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/category.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/checkout.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/contact.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/detail.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/customer/login.css') }}">
-    
-    <link rel="stylesheet" href="{{ asset('css/customer/story.css') }}"> --}}
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> --}}
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> --}}
-    <!-- font awesome link -->
+    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -33,10 +18,10 @@
    
     <nav class="top-nav">
         <div class="left">
-            <div><img src="{{asset('image/customer/vector.svg')}}" alt="facebook"></div>
-            <div><img src="{{asset('image/customer/instagram 1.svg')}}" alt="instargam"></div>
-            <div><img src="{{asset('image/customer/youtube 1.svg')}}" alt="youtube"></div>
-            <div><img src="{{asset('image/customer/telegram-original 1.svg')}}" alt="telegram"></div>
+            <div><i class="lni lni-facebook-fill"></i></div>
+            <div><i class="lni lni-instagram-fill"></i></div>
+            <div><i class="lni lni-youtube"></i></div>
+            <div><i class="lni lni-telegram-original"></i></div>
         </div>
           <div class="right">
             <span>Up to 40% off best selling furnitures.</span>
@@ -48,15 +33,17 @@
         <div class="nav-left">
             <div class="nav-brand">Logo</div>
             <div class="nav-menu">
-                <a href="{{route('home')}}" class="{{ Route::currentRouteNamed('home') ? 'home_active_link' : '' }}">Home</a>
-                <a href="{{route('shop')}}" class="{{ Route::currentRouteNamed('shop') ? 'home_active_link' : '' }}">Shop</a>
+                <div class="close-menu"><i class="lni lni-close"></i></div>
+                <a href="{{route('home')}}" class="{{ Route::currentRouteNamed('home') ? 'home_active_link' : '' }} active">Home</a>
+                <a href="{{route('shop')}}" class="{{ Route::currentRouteNamed('shop') ? 'home_active_link' : '' }} active">Shop</a>
                 
-                <!-- <a href=""> -->
+               
                     <div class="dropdown">
                         <button class="dropbtn">Category
-                            <img src="{{asset('image/customer/caret-down-solid.svg')}}" alt="">
+                            <img src="{{asset('image/customer/caret-down-solid.svg')}} active" alt="">
                         </button>
-                        <div class="dropdown-content">
+
+                        <div class="dropdown-content ">
                             
                             <div class="row">
                                 <div class="column">
@@ -86,19 +73,42 @@
                              
                             </div>
                         </div>
+
+                        <div class="categoryMenu">
+                            <a href="{{url('/productByCategory/'.'bed')}}">Bed</a>
+                                <a href="{{url('/productByCategory/'.'cabinet')}}">Cabinet</a>
+                                <a href="{{url('/productByCategory/'.'sofa')}}">Sofa</a>
+                                <a href="{{url('/productByCategory/'.'kitchen')}}">Kitchen</a>
+                                <a href="{{url('/productByCategory/'.'office')}}">Office</a>
+                                <a href="{{url('/productByCategory/'.'chair')}}">Chair</a>
+                        </div>
                     </div>
-                <!-- </a> -->
-                <a href="{{route('blog')}}" class="{{ Route::currentRouteNamed('blog') ? 'home_active_link' : '' }}">Blog</a>
-                <a href="{{route('story')}}" class="{{ Route::currentRouteNamed('story') ? 'home_active_link' : '' }}">About Us</a>
                
-                <a href="{{route('contact')}}" class="{{ Route::currentRouteNamed('contact') ? 'home_active_link' : '' }}">Contact</a>
+                <a href="{{route('blog')}}" class="{{ Route::currentRouteNamed('blog') ? 'home_active_link' : '' }} active">Blog</a>
+                <a href="{{route('story')}}" class="{{ Route::currentRouteNamed('story') ? 'home_active_link' : '' }} active">About Us</a>
+               
+                <a href="{{route('contact')}}" class="{{ Route::currentRouteNamed('contact') ? 'home_active_link' : '' }} active">Contact</a>
+                
             </div>
         </div>
         
         <div class="nav-right">
-            <div><img src="{{asset('image/customer/Frame.svg')}}" alt="magnifying glass"></div>
-            <div><img src="{{asset('image/customer/Frame(1).svg')}}" alt="user"></div>
-            <div><a href="{{route('cart')}}"><img src="{{asset('image/customer/shoppingBag.png')}}" alt="cart"> <span>10</span> </a></div>
+            
+            <div><i class="lni lni-search-alt"></i></div>
+            <div><i class="lni lni-user"></i></div>
+            <div class="cart"><i class="lni lni-cart"></i>
+
+                @if (session('cart')!==null)
+                    <span>{{count(session('cart'))}}</span> 
+                @else
+                    <span>0</span>
+                
+                    
+                @endif
+                 </a>
+            </div>
+            <div class="ham-menu"><i class="lni lni-menu"> </i></div>
+          
         </div>
        
     </header>
@@ -109,13 +119,15 @@
     <footer class="footer">
         <div class="footer-section">
             <div class="footer-social">
-               <img src="image/customer/facebook-f.svg" alt="facebook">
-               <img src="image/customer/twitter.svg" alt="twitter">
-               <img src="image/customer/flickr.svg" alt="flickr">
-               <img src="image/customer/instagram.svg" alt="instagram">
+                <div><i class="lni lni-facebook-fill" style="color:white"></i></div>
+                <div><i class="lni lni-instagram-fill"></i></div>
+                
+                <div><i class="lni lni-youtube"></i></div>
+                <div><i class="lni lni-telegram-original"></i></div>
+             
             </div>
-            <div class="footer-links">
-                <ul>
+           
+                <ul class="footer-links">
                     <li><a href="">Home</a></li>
                     <li><a href="">Shop</a></li>
                     <li><a href="">Blog</a></li>
@@ -123,7 +135,6 @@
                     <li><a href="">Contact Us</a></li>
                 </ul>
 
-            </div>
             <div class="footer-contact">
                 <h3>NEWSLETTER</h3>
                 <p>Enjoy our newsletter to stay updated with the latest news and special sales.</p>
@@ -139,6 +150,7 @@
 <!-- custom js link  -->
 <script src="{{asset('js/customer/home.js')}}"></script>
 <script src="{{asset('js/customer/shop.js')}}"></script>
+<script src="{{asset('js/customer/style.js')}}"></script>
 <script>
 
 

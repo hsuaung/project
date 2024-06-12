@@ -45,7 +45,11 @@ return [
         ],
         'staff' =>[
             'driver' => 'session',
+<<<<<<< HEAD
             'provider' => 'staffs',
+=======
+            'provider' => 'admins',
+>>>>>>> main
 
         ],
         // 'customer' => [
@@ -76,7 +80,11 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', User::class),
         ],
+<<<<<<< HEAD
         'staffs' => [
+=======
+        'admins' => [
+>>>>>>> main
             'driver' => 'eloquent',
             'model' => App\Models\Staff::class,
         ],
