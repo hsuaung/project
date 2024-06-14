@@ -16,18 +16,17 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        //
         DB::table('roles')->insert(
             [
                 [
-                    'name' => 'Admin',
+                    'name' => 'admin',
                     'uuid' => Str::uuid()->toString(),
                     'status' => 'Active',
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
                 ],
                 [
-                    'name' => 'Manager',
+                    'name' => 'manager',
                     'uuid' => Str::uuid()->toString(),
                     'status' => 'Active',
                     'created_at' => Carbon::now(),

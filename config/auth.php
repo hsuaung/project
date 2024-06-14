@@ -43,7 +43,7 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'staff' =>[
+        'admin' =>[
             'driver' => 'session',
             'provider' => 'admins',
 
@@ -78,7 +78,7 @@ return [
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Staff::class,
+            'model' => App\Models\Admin::class,
         ],
         // 'customer' => [
         //     'driver' => 'eloquent',
@@ -112,6 +112,11 @@ return [
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
         ],
     ],
 

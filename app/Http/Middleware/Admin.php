@@ -5,8 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
-class Staff
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -15,6 +16,12 @@ class Staff
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        // dd("admin");
+        if (auth('admin')->check()) {
+            if (auth('admin')->user()->role->name == 'admin') {
+                return $next($request);
+            }
+        }
+        return redirect('/admin/login');
     }
 }
