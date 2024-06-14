@@ -5,7 +5,9 @@
 @section('page', 'Order List')
 @section('title', 'Order List')
 @section('content')
-
+@php
+    // dd($orderlist);
+@endphp
 <div class="top_div">
     <div class="date">
         <input type="date">
@@ -80,48 +82,22 @@
             <th>Amount</th>
             <th>Action</th>
         </tr>
+        @foreach ($orderlist as $order )
         <tr>
-            <td>Morden Sofa</td>
-            <td>EE72823</td>
-            <td>2023 Nov 22</td>
-            <td>Sofia Mia</td>
-            <td>
-                <span class="dot dot-deliver"></span> Delivered
-            </td>
-            <td >250.000 MMK</td>
+            <td>{{$order->productName}}</td>
+            <td>{{$order->order_id}}</td>
+            <td>{{$order->created_at}}</td>
+            <td>{{$order->customerName}}</td>
+            <td>{{$order->status}}</td>
+            <td>{{$order->price}}</td>
             <td>
                 <img src="{{asset('image/admin/edit.svg') }}" alt="">
                 <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
             </td>
         </tr>
-        <tr>
-            <td>Morden Sofa</td>
-            <td>EE72823</td>
-            <td>2023 Nov 22</td>
-            <td>Sofia Mia</td>
-            <td>
-                <span class="dot dot-pending"></span> Delivered
-            </td>
-            <td >250.000 MMK</td>
-            <td>
-                <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-            </td>
-        </tr>
-        <tr>
-            <td>Morden Sofa</td>
-            <td>EE72823</td>
-            <td>2023 Nov 22</td>
-            <td>Sofia Mia</td>
-            <td>
-                <span class="dot dot-cancel"></span> Delivered
-            </td>
-            <td >250.000 MMK</td>
-            <td>
-                <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-            </td>
-        </tr>
+            
+        @endforeach
+       
     </table>
 </div>
 <div class="pagination">

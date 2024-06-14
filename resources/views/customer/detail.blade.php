@@ -2,7 +2,7 @@
 @section('title', 'detail || furniture')
 @section('content')
 
-    {{-- @dd($images[0]->image) --}}
+
     <section class="detail-section">
 
         {{-- <div class="link-connect">
@@ -13,7 +13,7 @@
         </div> --}}
         <div class="detail">
             <div class="detail-img">
-                <img width="250" height="200" src="{{ $images[0]->image }}" alt="Product">
+                <img width="250" height="200" src="{{ $images[0]->image }}" alt="Product" id="mainImage">
             </div>
             <div class="detail-content">
                 <h1>{{ $product[0]->name }}</h1>
@@ -21,15 +21,22 @@
                 <p>
                     {{ $product[0]->description }}
                 <div class="btn-gp">
-                    <form action="{{route('addtocart')}}" method="post">
+                    <form action="{{ route('addtocart') }}" method="post">
                         @csrf
-                        <input type="hidden" value="{{$product[0]->id}}" name="id">
+                        <input type="hidden" value="{{ $product[0]->id }}" name="id">
                         <input type="number" value="1" min="1" max="100" name="quantity">
-                        <button type="submit">Add to cart</button>
-                   
+                        <button type="submit" class="cart-btn">Add to cart</button>
+
                     </form>
-                     <a href="">Buy Now</a>
-                    
+                    <form action="{{ route('buynow') }}" method="post">
+                        @csrf
+                        <input type="hidden" value="{{ $product[0]->id }}" name="id">
+                        <input type="hidden" value="1" min="1" max="100" name="quantity">
+                        <button type="submit" class="cart-btn">Buy Now</button>
+
+                    </form>
+                    {{-- <a href="{{ route('buynow') }}">Buy Now</a> --}}
+
                 </div>
                 <p>SKU: BE-006</p>
                 <p>Categories: {{ $product[0]->categoryName }}</p>
@@ -43,8 +50,10 @@
                 </div>
             </div>
             <div class="detail-img-view">
-                <img width="250" height="200" src="{{ $images[1]->image }}" alt="">
-                <img width="250" height="200" src="{{ $images[2]->image }}" alt="">
+                <img width="250" height="200" src="{{ $images[1]->image }}" alt=""
+                    onclick="changeMainImage('{{ $images[1]->image }}')">
+                <img width="250" height="200" src="{{ $images[2]->image }}" alt=""
+                    onclick="changeMainImage('{{ $images[2]->image }}')">
             </div>
         </div>
 
@@ -59,8 +68,6 @@
                 <div class="text-indent cutoff-text">
                     <p> {{ $product[0]->feature }}</p>
                 </div>
-
-
                 <input class="expand-btn" type="checkbox">
 
             </div>
@@ -72,6 +79,23 @@
             </div>
         </section>
         <section class="recommend">
+            <h4>YOU MAY ALSO LIKE...</h4>
+            <div class="card-container">
+                @foreach ($productlist as $product)
+                <a href="{{ url('/detail/' . $product->id)}}"  class="card">
+                    <div class="card-img">
+                        <img src="{{ asset("$product->image") }}" alt="">
+                    </div>
+                    <div class="card-content">
+                        <p>{{$product->name}}</p>
+                        <p> $ {{$product->price}}</p>
+                    </div>
+                </a>
+                @endforeach
+            </div>
+
+        </section>
+        {{-- <section class="recommend">
             <h4>YOU MAY ALSO LIKE...</h4>
             <div class="card-container">
                 <div class="card">
@@ -106,10 +130,14 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
     </section>
 
-
+    <script>
+        function changeMainImage(image) {
+            document.getElementById('mainImage').src = image;
+        }
+    </script>
 @endsection
 
 @push('styles')

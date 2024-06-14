@@ -10,10 +10,21 @@ use App\Http\Controllers\Admin\UploadImageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Customer\HomeController;
 use App\Http\Controllers\Customer\CartController;
+use App\Http\Controllers\StripeController;
+
+//stripe start
+Route::get(uri:'/',action:'App\Http\Controllers\StripeController@index')->name(name:'index');
+Route::post('/stripe', [StripeController::class,'stripe'])->name('stripe');
+// Route::get(uri:'/stripe',action:'App\Http\Controllers\StripeController@stripe')->name(name:'stripe');
+
+Route::get(uri:'/success',action:'App\Http\Controllers\StripeController@success')->name(name:'success');
+
+//stripe end
 
 Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
 Route::post('/admin/login/process', [AuthenticatedSessionController::class, 'store'])->name('admin.login.process');
@@ -49,16 +60,16 @@ Route::get('/addBlog', [BlogController::class, 'addBlog'])->name('addBlog');
 
 
 Route::get('/customerList', [AdminController::class, 'customerList'])->name('customerList');
-Route::get('/orderList', [AdminController::class, 'orderList'])->name('orderList');
+Route::get('/orderList', [OrderController::class, 'orderList'])->name('orderList');
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/test', function () {
     return view('admin.test');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -84,6 +95,7 @@ Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::get('/clearCart', [CartController::class, 'clearCart'])->name('clearCart');
 Route::get('/updateCart', [CartController::class, 'updateCart'])->name('updateCart');
 Route::get('/removeItem/{id}', [CartController::class, 'removeItem'])->name('removeItem');
+Route::post('/buynow', [CartController::class, 'buynow'])->name('buynow');
 
 Route::get('/category', [CustomerController::class, 'category'])->name('category');
 

@@ -31,11 +31,13 @@ function showSlides(n) {
 
 // tab menu 
  function openMenu(menuItem) {
-    var i;
-    var x = document.getElementsByClassName("menu");
+    // let const (ES16)
+    let i;
+    let x = document.getElementsByClassName("menu");
     for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";
     }
     document.getElementById(menuItem).style.display = "grid";
 }
+
 

@@ -32,17 +32,31 @@ class CustomerController extends Controller
     public function detail ($id){
         $product=DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category_id')
-        // ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
         ->where('products.id', $id)
         ->select('products.*', 'categories.name as categoryName')
         ->get();
-
+    
+        
         $images=DB::table('product_photos')
         ->join('products','products.id','=','product_photos.product_id')
         ->where('products.id', $id)
         ->select('product_photos.image')
         ->get();
-        return view ('./customer/detail',compact('product','images'));
+
+        $categoryID=DB::table('products')
+        ->where('products.id', $id)
+        ->select('products.category_id')
+        ->pluck('products.category_id');
+        
+        $productlist=DB::table('products')
+        ->join('categories', 'categories.id', '=', 'products.category_id')
+        ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
+        ->where('product_photos.isPrimary', 1)
+        ->where('products.category_id', $categoryID)
+        ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
+        ->get();
+        return view ('./customer/detail',compact('product','images' ,'productlist'));
+
     }
     public function login(){
         return view ('./customer/login');
@@ -87,6 +101,7 @@ class CustomerController extends Controller
         ->where('categories.name','=',$category)
         ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
         ->get();
+        // dd("hey");
         return view ('./customer/category',compact('productlist','category'));
  
      

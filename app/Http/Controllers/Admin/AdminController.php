@@ -27,9 +27,6 @@ class AdminController extends Controller
         
         return view('./admin/customerList', compact('customerlist'));
     }
-    public function orderList()
-    {
-        return view('./admin/orderList');
-    }
+   
     
 }

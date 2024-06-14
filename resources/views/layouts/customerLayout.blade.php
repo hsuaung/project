@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,10 +13,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-   
+
 </head>
+
 <body>
-   
+
     <nav class="top-nav">
         <div class="left">
             <div><i class="lni lni-facebook-fill"></i></div>
@@ -23,7 +25,7 @@
             <div><i class="lni lni-youtube"></i></div>
             <div><i class="lni lni-telegram-original"></i></div>
         </div>
-          <div class="right">
+        <div class="right">
             <span>Up to 40% off best selling furnitures.</span>
             <span>Shop Now</span>
         </div>
@@ -34,106 +36,119 @@
             <div class="nav-brand">Logo</div>
             <div class="nav-menu">
                 <div class="close-menu"><i class="lni lni-close"></i></div>
-                <a href="{{route('home')}}" class="{{ Route::currentRouteNamed('home') ? 'home_active_link' : '' }} active">Home</a>
-                <a href="{{route('shop')}}" class="{{ Route::currentRouteNamed('shop') ? 'home_active_link' : '' }} active">Shop</a>
-                
-               
-                    <div class="dropdown">
-                        <button class="dropbtn">Category
-                            <img src="{{asset('image/customer/caret-down-solid.svg')}} active" alt="">
-                        </button>
+                <a href="{{ route('home') }}"
+                    class="{{ Route::currentRouteNamed('home') ? 'home_active_link' : '' }} active">Home</a>
+                <a href="{{ route('shop') }}"
+                    class="{{ Route::currentRouteNamed('shop') ? 'home_active_link' : '' }} active">Shop</a>
 
-                        <div class="dropdown-content ">
-                            
-                            <div class="row">
+
+                <div class="dropdown">
+                    <button class="dropbtn">Category
+                        <img src="{{ asset('image/customer/caret-down-solid.svg') }} active" alt="">
+                    </button>
+
+                    <div class="dropdown-content ">
+
+                        <div class="row">
+                            <div class="column">
+                                <h3>CATEGORY ONE </h3>
                                 <div class="column">
-                                    <h3>CATEGORY ONE </h3>
-                                    <div class="column">
-                                        <a href="{{url('/productByCategory/'.'bed')}}">Bed</a>
-                                        <a href="{{url('/productByCategory/'.'cabinet')}}">Cabinet</a>
-                                        <a href="{{url('/productByCategory/'.'sofa')}}">Sofa</a>
-                                        <a href="{{url('/productByCategory/'.'kitchen')}}">Kitchen</a>
-                                        <a href="{{url('/productByCategory/'.'office')}}">Office</a>
-                                        <a href="{{url('/productByCategory/'.'chair')}}">Chair</a>
-                                    </div>
-                                    <div class="column">
-                                        <a href="{{url('/productByCategory/'.'bed')}}">Bed</a>
-                                        <a href="{{url('/productByCategory/'.'cabinet')}}">Cabinet</a>
-                                        <a href="{{url('/productByCategory/'.'sofa')}}">Sofa</a>
-                                        <a href="{{url('/productByCategory/'.'kitchen')}}">Kitchen</a>
-                                        <a href="{{url('/productByCategory/'.'office')}}">Office</a>
-                                        <a href="{{url('/productByCategory/'.'chair')}}">Chair</a>
-                                
-                                    </div>
+                                    <a href="{{ url('/productByCategory/' . 'bed') }}">Bed</a>
+                                    <a href="{{ url('/productByCategory/' . 'cabinet') }}">Cabinet</a>
+                                    <a href="{{ url('/productByCategory/' . 'sofa') }}">Sofa</a>
+                                    <a href="{{ url('/productByCategory/' . 'kitchen') }}">Kitchen</a>
+                                    <a href="{{ url('/productByCategory/' . 'office') }}">Office</a>
+                                    <a href="{{ url('/productByCategory/' . 'chair') }}">Chair</a>
                                 </div>
                                 <div class="column">
-                                    <img src="{{asset('image/customer/megaMenu1.jpg')}}" alt="" >
-                                    <img src="{{asset('image/customer/megaMenu2.jpg')}}" alt="" >
+                                    <a href="{{ url('/productByCategory/' . 'bed') }}">Bed</a>
+                                    <a href="{{ url('/productByCategory/' . 'cabinet') }}">Cabinet</a>
+                                    <a href="{{ url('/productByCategory/' . 'sofa') }}">Sofa</a>
+                                    <a href="{{ url('/productByCategory/' . 'kitchen') }}">Kitchen</a>
+                                    <a href="{{ url('/productByCategory/' . 'office') }}">Office</a>
+                                    <a href="{{ url('/productByCategory/' . 'chair') }}">Chair</a>
+
                                 </div>
-                             
                             </div>
-                        </div>
+                            <div class="column">
+                                <img src="{{ asset('image/customer/megaMenu1.jpg') }}" alt="">
+                                <img src="{{ asset('image/customer/megaMenu2.jpg') }}" alt="">
+                            </div>
 
-                        <div class="categoryMenu">
-                            <a href="{{url('/productByCategory/'.'bed')}}">Bed</a>
-                                <a href="{{url('/productByCategory/'.'cabinet')}}">Cabinet</a>
-                                <a href="{{url('/productByCategory/'.'sofa')}}">Sofa</a>
-                                <a href="{{url('/productByCategory/'.'kitchen')}}">Kitchen</a>
-                                <a href="{{url('/productByCategory/'.'office')}}">Office</a>
-                                <a href="{{url('/productByCategory/'.'chair')}}">Chair</a>
                         </div>
                     </div>
-               
-                <a href="{{route('blog')}}" class="{{ Route::currentRouteNamed('blog') ? 'home_active_link' : '' }} active">Blog</a>
-                <a href="{{route('story')}}" class="{{ Route::currentRouteNamed('story') ? 'home_active_link' : '' }} active">About Us</a>
-               
-                <a href="{{route('contact')}}" class="{{ Route::currentRouteNamed('contact') ? 'home_active_link' : '' }} active">Contact</a>
-                
+
+                    <div class="categoryMenu">
+                        <a href="{{ url('/productByCategory/' . 'bed') }}">Bed</a>
+                        <a href="{{ url('/productByCategory/' . 'cabinet') }}">Cabinet</a>
+                        <a href="{{ url('/productByCategory/' . 'sofa') }}">Sofa</a>
+                        <a href="{{ url('/productByCategory/' . 'kitchen') }}">Kitchen</a>
+                        <a href="{{ url('/productByCategory/' . 'office') }}">Office</a>
+                        <a href="{{ url('/productByCategory/' . 'chair') }}">Chair</a>
+                    </div>
+                </div>
+
+                <a href="{{ route('blog') }}"
+                    class="{{ Route::currentRouteNamed('blog') ? 'home_active_link' : '' }} active">Blog</a>
+                <a href="{{ route('story') }}"
+                    class="{{ Route::currentRouteNamed('story') ? 'home_active_link' : '' }} active">About Us</a>
+
+                <a href="{{ route('contact') }}"
+                    class="{{ Route::currentRouteNamed('contact') ? 'home_active_link' : '' }} active">Contact</a>
+
             </div>
         </div>
-        
+
         <div class="nav-right">
-            
+
             <div><i class="lni lni-search-alt"></i></div>
             <div><i class="lni lni-user"></i></div>
-            <div class="cart"><i class="lni lni-cart"></i>
+            <a href="{{ url('/cart') }}" class="cart">
+                <i class="lni lni-cart" ></i>
 
-                @if (session('cart')!==null)
-                    <span>{{count(session('cart'))}}</span> 
-                @else
-                    <span>0</span>
-                
-                    
-                @endif
-                 </a>
-            </div>
-            <div class="ham-menu"><i class="lni lni-menu"> </i></div>
-          
+                    @if (session('cart') !== null)
+                        <span>{{ count(session('cart')) }}</span>
+                    @else
+                        <span>0</span>
+                    @endif
+            </a>
+            {{-- <a href="{{ url('/cart') }}">
+                <div class="cart"><i class="lni lni-cart"></i>
+
+                    @if (session('cart') !== null)
+                        <span>{{ count(session('cart')) }}</span>
+                    @else
+                        <span>0</span>
+                    @endif
+            </a> --}}
         </div>
-       
+        <div class="ham-menu"><i class="lni lni-menu"> </i></div>
+
+        
+
     </header>
 
     @yield('content')
 
-    
+
     <footer class="footer">
         <div class="footer-section">
             <div class="footer-social">
                 <div><i class="lni lni-facebook-fill" style="color:white"></i></div>
                 <div><i class="lni lni-instagram-fill"></i></div>
-                
+
                 <div><i class="lni lni-youtube"></i></div>
                 <div><i class="lni lni-telegram-original"></i></div>
-             
+
             </div>
-           
-                <ul class="footer-links">
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Shop</a></li>
-                    <li><a href="">Blog</a></li>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Contact Us</a></li>
-                </ul>
+
+            <ul class="footer-links">
+                <li><a href="">Home</a></li>
+                <li><a href="">Shop</a></li>
+                <li><a href="">Blog</a></li>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
+            </ul>
 
             <div class="footer-contact">
                 <h3>NEWSLETTER</h3>
@@ -146,29 +161,26 @@
             <span><img src="image/customer/payment-gray-lighter.png.png" alt=""></span>
         </div>
     </footer>
- 
-<!-- custom js link  -->
-<script src="{{asset('js/customer/home.js')}}"></script>
-<script src="{{asset('js/customer/shop.js')}}"></script>
-<script src="{{asset('js/customer/style.js')}}"></script>
-<script>
 
+    <!-- custom js link  -->
+    <script src="{{ asset('js/customer/home.js') }}"></script>
+    <script src="{{ asset('js/customer/shop.js') }}"></script>
+    <script src="{{ asset('js/customer/style.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.image-list').slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                infinite: true,
+                prevArrow: "<button type='button' class='slick-prev'> &#10094</button>",
+                nextArrow: "<button type='button' class='slick-next'> &#10095 </button>"
+            });
+        });
+    </script>
 
-
-    $(document).ready(function(){
-    $('.image-list').slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        infinite: true,
-        prevArrow: "<button type='button' class='slick-prev'> &#10094</button>",
-        nextArrow: "<button type='button' class='slick-next'> &#10095 </button>"
-    });
-});
-</script>
-
-@stack('scripts')
+    @stack('scripts')
 </body>
-   
+
 </html>

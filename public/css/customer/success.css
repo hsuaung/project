@@ -1,0 +1,11 @@
+.success{
+    display:flex;
+    flex-direction: column;
+    margin:0 auto;
+    width:50%;
+    align-items: center;
+    text-align: center;
+}
+.success-icon{
+    font-size: 150px;
+}

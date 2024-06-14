@@ -12,14 +12,17 @@ use Illuminate\Support\Facades\Session;
 class CartController extends Controller
 {
     public function __construct()
-    {       
-       
+    {
+        // if(session('cart')){
+        //     dd("OK");
+        //     session()->forget('cart');
+        // }else{
+        //     dd("NG");
+        // }
+        
     }
     public function cart()
     {
-        // if(session('cart')){
-        //     session()->forget('cart');
-        // }
         return view('./customer/cart');
     }
     public function addtocart(Request $request)
@@ -35,40 +38,68 @@ class CartController extends Controller
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
             $cart[$id]['quantity'] += $request->quantity;
-        } 
-        else {
+        } else {
             $cart[$id] = [
                 'product_id' => $products[0]->id,
                 'product_name' => $products[0]->name,
                 'image' => $products[0]->image,
                 'quantity' => $request->quantity,
-                'price' =>$products[0]->price,
-             ];
-            
+                'price' => $products[0]->price,
+            ];
         }
         session()->put('cart', $cart);
-        return view('./customer/cart');
-       
 
+        return redirect('/shop');
+    }
+    public function buynow(Request $request)
+    {
+        // dd(session('cart'));
+        $id = $request->id;
+        
+        $product = DB::table('products')
+            ->join('categories', 'categories.id', '=', 'products.category_id')
+            ->leftjoin('product_photos', 'product_photos.product_id', '=', 'products.id')
+            ->where('product_photos.isPrimary', 1)
+            ->where('products.id', '=', $id)
+            ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
+            ->get();
+
+        $cart=(session('cart'));
+        // dd($cart);
+
+        if (isset($cart[$id])) {
+                $cart[$id]['quantity'] += 1;
+        } else {
+                $cart[$id] = [
+                    'product_id' => $product[0]->id,
+                    'product_name' => $product[0]->name,
+                    'image' => $product[0]->image,
+                    'quantity' => 1,
+                    'price' => $product[0]->price,
+                ];
+            }
+        session()->put('cart', $cart);
+
+        return redirect('/checkout');
     }
     public function clearCart()
     {
         Session::flush();
-        return view('./customer/home');
+        return redirect('/home');
     }
-    public function updateCart(Request $request){
+    public function updateCart(Request $request)
+    {
         $cart = session('cart');
         $ids = $request->product_id ?? '';
         $quantities = $request->quantity ?? '';
-        if (isset($cart) && isset($quantities) && isset($ids))
-        {
+        if (isset($cart) && isset($quantities) && isset($ids)) {
             // dd($cart, $ids, $quantities);
-            foreach($ids as $key => $id){
-                if(array_key_exists($id, $cart)){
+            foreach ($ids as $key => $id) {
+                if (array_key_exists($id, $cart)) {
                     // dd('true');
                     // dd($cart[$id]['product_id']);
                     // dd(in_array($id, $cart[$id], true));
-                    if($id == $cart[$id]['product_id']){
+                    if ($id == $cart[$id]['product_id']) {
                         // dd('true');
                         $quantity = $quantities[$key];
                         // dd($quantity);
@@ -81,18 +112,19 @@ class CartController extends Controller
             session()->put('cart', $cart);
         }
         return redirect('/cart');
-
     }
-    public function removeItem($id){
+    public function removeItem($id)
+    {
         $items = session('cart');
-        if(!empty($items)){
+        if (!empty($items)) {
             unset($items[$id]);
             session()->put('cart', $items);
             return view('customer.cart')->with('success', "Deleted");
         }
         return view('customer.cart')->with('error', 'Delete Unsuccessfull');
     }
-    public function checkout(){
-        return view ('./customer/checkout');
+    public function checkout()
+    {
+        return view('./customer/checkout');
     }
 }

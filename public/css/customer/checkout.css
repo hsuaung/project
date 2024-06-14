@@ -24,15 +24,15 @@ body{
 }
 
 
-form {
+.form {
     display:grid;
     grid-template-columns: 1fr 1fr;
     margin:2rem 0;
 }
-form span{
+.form span{
     color:red;
 }
-form input{
+.form input{
     width: 100%;
     height: 2rem;
     margin:.5rem 0;

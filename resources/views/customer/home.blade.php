@@ -37,89 +37,49 @@
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 
-
+    {{-- Home Grid  --}}
     @if (!@empty($grid_items))
-
         <section class="home-grid">
-            <a href="{{ url('/productByCategory/' . 'sofa') }}" class="sofa home-gird-card">
-                <div class="home-grid-text">
-                    <b>{{ $grid_items[0]['name'] }}</b>
-                    <p>{{ $grid_items[0]['products_count'] }} Products</p>
-                    
-                </div>
-                <img src="image/customer/category7.png" alt="">
-            </a>
-            @for ($i = 1; $i < count($grid_items); $i++)
-                <a href="{{ url('/productByCategory/' . 'bed') }}" class=" home-gird-card">
+            @for ($i = 0; $i < count($grid_items); $i++)
+                <a href="{{ url('/productByCategory/' . $grid_items[$i]['name']) }}"
+                    class="grid{{ $i}} home-gird-card">
                     <div class="home-grid-text">
                         <b>{{ $grid_items[$i]['name'] }}</b>
                         <p>{{ $grid_items[$i]['products_count'] }} Products</p>
-
                     </div>
                     <img src="{{ asset($grid_items[$i]['image']) }}" alt="">
-
                 </a>
             @endfor
-
-
-        
             <a>
                 Explore more
                 <img src="image/customer/icons.svg" alt="">
             </a>
         </section>
     @endif
-    {{-- <section>
+    
+    <div class="new-products">
         <h2 class="heading">NEW PRODUCTS</h2>
-        @if (isset($category))
-        <div class="product-nav tabmenu">
-            @foreach ($category as  $c)
-            <button class="tab" onclick="openMenu('{{$c->id }}')"><a>{{ $c->name }}</a></button>
-                
-       
-
-                @foreach ($products as $product )
-                    <div>
-                        {{$product->category_id == $c->id? $product->name : ''}}
-                    </div>
-                    
-                    
-                @endforeach
-                
+        <ul class="tab-menu">
+            @foreach ($categories as $category)
+                <li data-category-id="{{ $category->id }}">{{ $category->name }}</li>
             @endforeach
-        @else <h2>NO</h2>
-    </div>
-              
-        @endif
-    </section> --}}
+        </ul>
 
-   <section class="new-products ">
-        <h2 class="heading">NEW PRODUCTS</h2>
-        @if (!@empty($category))
-           
-                <div class="product-nav tabmenu">
-                    @foreach ($category as $c)
-                    <button class="tab" onclick="openMenu('{{$c->id }}')"><a>{{ $c->name }}</a></button>
-                    @endforeach
-                </div>
-                @foreach ($products as $product )
-                    <div id="{{$product->category_id}}" class="menu grid"   style="display:none">
-                        <a href="{{ url('/detail/' . $product->id) }}" class="pcard">
-                            <div class="image">
-                                <img src="{{ asset("$product->image") }}" width="200px" height="250px" alt="">
-                                <span class="sale">Sale</span>
-                            </div>
-                            <div class="">
-                                <p>{{ $product->name }}</p>
-                                <b>${{ $product->price }}</b>
-                            </div>
-                        </a>
+        <div class="products">
+            @foreach ($products as $product)
+                <a href="{{ url('/detail/' . $product->id)}}" >
+                    <div class="product" data-category-id="{{ $product->category_id }}" >
+                        <img src="{{ asset("$product->image") }}" alt="{{ $product->name }}"
+                            width="200px" height="250px">
+                        <h3>{{ $product->name }}</h3>
+                        <p>${{ $product->price }}</p>
                     </div>
-                @endforeach
-        @endif
+                </a>
+            @endforeach
+        </div>
+    </div>
 
-    </section>
-
+ 
 
 
     {{-- <section class="new-products ">
@@ -148,6 +108,7 @@
                     </a>
                 @endforeach
             </div>
+        @else <div>SOFA</div>
         @endif
         @if (@isset($bedlist))
             <div id="bed" class="menu grid" style="display:none">
@@ -164,6 +125,7 @@
                     </a>
                 @endforeach
             </div>
+            @else <div>bed</div>
         @endif
 
         @if (@isset($lamplist))
@@ -182,6 +144,7 @@
                     </a>
                 @endforeach
             </div>
+            @else <div>lamp</div>
         @endif
         @if (@isset($cabinetlist))
             <div id="cabinet" class="menu grid" style="display:none">
@@ -333,6 +296,40 @@
 
 @endsection
 
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.tab-menu li');
+        const products = document.querySelectorAll('.product');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const categoryId = this.getAttribute('data-category-id');
+
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+
+                // Add active class to the clicked tab
+                this.classList.add('active');
+
+                // Show/hide products based on the selected category
+                products.forEach(product => {
+                    if (product.getAttribute('data-category-id') === categoryId) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Trigger click on the first tab to display the initial set of products
+        if (tabs.length > 0) {
+            tabs[0].click();
+        }
+    });
+</script>
 @push('scripts')
     <link rel="stylesheet" href="{{ asset('js/customer/home.js') }}">
 @endpush
