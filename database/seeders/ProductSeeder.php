@@ -22,7 +22,6 @@ class ProductSeeder extends Seeder
                     'category_id'=>1,
                     'staff_id'=>1,
                     'detail'=>'Sofa detail',
-                    
                     'price'=>2000,
                     'stock'=>10,
                     'description'=>'Sofa Description',
@@ -36,7 +35,7 @@ class ProductSeeder extends Seeder
                 [
                     'name' => 'Bed',
                     'category_id'=>2,
-                    'staff_id'=>2,
+                    'staff_id'=>1,
                     'detail'=>'Bed detail',
                     
                     'price'=>2000,
@@ -52,7 +51,7 @@ class ProductSeeder extends Seeder
                 [
                     'name' => 'lamp',
                     'category_id'=>3,
-                    'staff_id'=>3,
+                    'staff_id'=>1,
                     'detail'=>'lamp detail',
                     'price'=>2000,
                     'stock'=>10,
@@ -67,7 +66,7 @@ class ProductSeeder extends Seeder
                 [
                     'name' => 'table',
                     'category_id'=>4,
-                    'staff_id'=>4,
+                    'staff_id'=>1,
                     'detail'=>'Bed detail',
                     
                     'price'=>2000,
@@ -99,7 +98,7 @@ class ProductSeeder extends Seeder
                 [
                     'name' => 'Shelf',
                     'category_id'=>6,
-                    'staff_id'=>2,
+                    'staff_id'=>1,
                     'detail'=>' detail',
                     
                     'price'=>2000,
@@ -115,7 +114,7 @@ class ProductSeeder extends Seeder
                 [
                     'name' => 'Chair',
                     'category_id'=>7,
-                    'staff_id'=>3,
+                    'staff_id'=>1,
                     'detail'=>'Bed detail',
                     
                     'price'=>2000,

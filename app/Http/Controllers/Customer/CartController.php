@@ -85,7 +85,7 @@ class CartController extends Controller
     public function clearCart()
     {
         Session::flush();
-        return redirect('/home');
+        return redirect('/');
     }
     public function updateCart(Request $request)
     {

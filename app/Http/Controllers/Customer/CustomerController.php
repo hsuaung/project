@@ -78,7 +78,7 @@ class CustomerController extends Controller
         $customer->status= "Active";
         
         $customer->save();
-        return redirect()->to('/home');
+        return redirect()->to('/');
 
     }
     public function shop(){

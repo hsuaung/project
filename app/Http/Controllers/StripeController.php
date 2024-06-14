@@ -11,10 +11,10 @@ use Illuminate\Http\Request;
 
 class StripeController extends Controller
 {
-    //
+    
     public function index()
     {
-        return view(view: 'index');
+        echo "Cancel";
     }
     public function stripe(Request $request)
     {
@@ -63,6 +63,7 @@ class StripeController extends Controller
         ]);
         return redirect()->away($session->url);
     }
+
     public function success()
     {
         $name = session('customer')['firstName'] . ' ' . session('customer')['lastName'];

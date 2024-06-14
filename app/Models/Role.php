@@ -8,8 +8,9 @@ use App\Models\Admin;
 
 class Role extends Model
 {
-    public function admin(){
-        return $this->hasOne(Admin::class);
+    use HasFactory;
+    public function admins(){
+        return $this->hasMany(Admin::class);
     }
 
 }
