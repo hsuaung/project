@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
                 ProductSeeder::class,
                 ProductPhotoSeeder::class,
                 CustomerSeeder::class,
-                UserTableSeeder::class
+                UserTableSeeder::class,
+                AdminSeeder::class
             ]
             );
 

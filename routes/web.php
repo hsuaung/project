@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\StaffController;
 use App\Http\Controllers\Admin\ProductController;
-
 use App\Http\Controllers\Admin\UploadImageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -26,9 +25,11 @@ Route::get(uri:'/success',action:'App\Http\Controllers\StripeController@success'
 
 //stripe end
 
-Route::get('/admin/login', [AdminController::class, 'login'])->name('admin.login');
-Route::post('/admin/login/process', [AuthenticatedSessionController::class, 'store'])->name('admin.login.process');
+Route::get('/admin/login', [LoginController::class, 'showAdminLogin'])->name('admin.login');
+Route::post('/admin/login/process', [LoginController::class, 'login'])->name('admin.login.process');
+Route::get('/admin/logout', [LoginController::class, 'myLogout'])->name('admin.logout');
 
+<<<<<<< HEAD
 Route::get('/adminDashboard', [AdminController::class, 'dashboard'])->name('adminDashboard');
 
 Route::get('/productList', [ProductController::class, 'productList'])->name('productList');
@@ -70,6 +71,46 @@ Route::get('/test', function () {
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+=======
+Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function(){
+    Route::get('/adminDashboard', [AdminController::class, 'dashboard'])->name('adminDashboard');
+    Route::get('/productList', [ProductController::class, 'productList'])->name('productList');
+    Route::get('/addProduct', [ProductController::class, 'addProduct'])->name('addProduct');
+    Route::post('/addProductProcess', [ProductController::class, 'addProductProcess'])->name('addProductProcess');
+    Route::get('/editProduct/{id}', [ProductController::class, 'editProduct'])->name('editProduct');
+    Route::post('/editProductProcess', [ProductController::class, 'editProductProcess'])->name('editProductProcess');
+    Route::get('/deleteProductProcess/{id}', [ProductController::class, 'deleteProductProcess'])->name('deleteProductProcess');
+    Route::get('/searchProduct', [ProductController::class, 'searchProduct'])->name('searchProduct');
+    
+    Route::get('/staffList', [StaffController::class, 'stafflist'])->name('staffList');
+    Route::get('/addStaff', [StaffController::class, 'addStaff'])->name('addStaff');
+    Route::post('/addStaffProcess', [StaffController::class, 'addStaffProcess'])->name('addStaffProcess');
+    Route::get('/editStaff{id}', [StaffController::class, 'editStaff'])->name('editStaff');
+    Route::post('/editStaffProcess', [StaffController::class, 'editStaffProcess'])->name('editStaffProcess');
+    Route::get('/deleteStaffProcess{id}', [StaffController::class, 'deleteStaffProcess'])->name('deleteStaffProcess');
+    Route::get('/searchStaff', [StaffController::class, 'searchStaff'])->name('searchStaff');
+    Route::get('/dateFilter', [StaffController::class, 'dateFilter'])->name('dateFilter');
+    
+    Route::get('/categoryList', [CategoryController::class, 'categoryList'])->name('categoryList');
+    Route::get('/addCategory', [CategoryController::class, 'addCategory'])->name('addCategory');
+    Route::post('/addCategoryProcess', [CategoryController::class, 'addCategoryProcess'])->name('addCategoryProcess');
+    Route::get('/editCategory{id}', [CategoryController::class, 'editCategory'])->name('editCategory');
+    Route::post('/editCategoryProcess', [CategoryController::class, 'editCategoryProcess'])->name('editCategoryProcess');
+    Route::get('/deleteCategoryProcess{id}', [CategoryController::class, 'deleteCategoryProcess'])->name('deleteCategoryProcess');
+    Route::get('/searchCategory', [CategoryController::class, 'searchCategory'])->name('searchCategory');
+    
+    Route::get('/addBlog', [BlogController::class, 'addBlog'])->name('addBlog');
+    
+    
+    Route::get('/customerList', [AdminController::class, 'customerList'])->name('customerList');
+    Route::get('/orderList', [AdminController::class, 'orderList'])->name('orderList');
+});
+
+// Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/test', function () {
+    return view('admin.test');
+});
+>>>>>>> 221cd6ac707590022d5495bdc410b8c3b0eb8268
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -81,11 +122,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
 
-
-
-Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/blog', [CustomerController::class, 'blog'])->name('blog');
 
 Route::get('/productByCategory/' . '{category}', [CustomerController::class, 'productByCategory'])->name('productByCategory');
@@ -113,3 +151,6 @@ Route::post('/customer/register/process', [CustomerController::class, 'RegisterP
 
 Route::get('/shop', [CustomerController::class, 'shop'])->name('shop');
 Route::get('/story', [CustomerController::class, 'story'])->name('story');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

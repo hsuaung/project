@@ -106,6 +106,7 @@
             <a href="{{ url('/cart') }}" class="cart">
                 <i class="lni lni-cart" ></i>
 
+<<<<<<< HEAD
                     @if (session('cart') !== null)
                         <span>{{ count(session('cart')) }}</span>
                     @else
@@ -125,6 +126,18 @@
         <div class="ham-menu"><i class="lni lni-menu"> </i></div>
 
         
+=======
+                @if (session('cart') !== null)
+                    <span>{{ count(session('cart')) }}</span>
+                @else
+                    <span>0</span>
+                @endif
+                </a>
+            </div>
+            <div class="ham-menu"><i class="lni lni-menu"> </i></div>
+
+        </div>
+>>>>>>> 221cd6ac707590022d5495bdc410b8c3b0eb8268
 
     </header>
 
