@@ -27,7 +27,7 @@ if(!empty($category)){
         <input type="text" id="name" name="name" value="{{$updatestatus == true ? $category->name : '' }}">
     </div>
     <div class="btn_gp">
-        <button type="reset" value="" class="btn cancel_btn">Cancel</button>
+        <a href="{{route('categoryList')}}" class="btn cancel_btn">Cancel</a>
         <button type="submit" value="" class="btn add_btn">{{$updatestatus == true ? 'Update Category' : 'Publish Category'}}</button>
     </div>
 </form>

@@ -15,7 +15,7 @@ class StaffController extends Controller
 {
     public function __construct()
     {
-        echo "Staff Controller";
+        // echo "Staff Controller";
     }
 
     public function stafflist()
@@ -94,34 +94,36 @@ class StaffController extends Controller
     }
     public function searchStaff(Request $request)
     {
+       
         $search = $request->input('search');
         $stafflist = DB::table('staff')
             ->join('roles', 'roles.id', '=', 'staff.role_id')
             ->select('staff.*', 'roles.name as rolename')
             ->where('staff.name', 'like', "%$search%")
+           
             ->paginate(3);
         return view('admin.stafflist', compact('stafflist'));
     }
     public function dateFilter(Request $request)
     {
-        if (isset($request->startDate) && isset($request->endDate)) {
-            $startDate = $request->startDate;
-            $endDate = $request->endDate;
-            $stafflist = Staff::whereBetween('created_at', [$startDate, $endDate])
-            ->paginate(3);
-            return view('admin.stafflist', compact('stafflist'));
-        }
-        else if (isset($request->startDate)){
-            // dd("need");
-            $startDate = $request->startDate;
-            $endDate = carbon::now();
-            // dd($endDate);
-            // dd($startDate);
-            $stafflist = Staff::whereBetween('created_at', [$startDate, $endDate])
-            ->paginate(3);
-            return view('admin.stafflist', compact('stafflist'));
-        }
-        // else dd("both");
+        $startDate = Carbon::parse($request->date1);
+        $endDate = Carbon::parse($request->date2);
+        $stafflist = DB::table('staff')
+        
+        ->join('roles', 'roles.id', '=', 'staff.role_id')
+        ->select('staff.*', 'roles.name as rolename')
+        ->whereBetween('staff.created_at', [$startDate, $endDate])
+        ->paginate(3);
+        return view('./admin/stafflist', compact('stafflist'));
 
+    }
+
+    public function sortStaff(Request $request){
+        $stafflist=DB::table('staff')
+        ->join('roles', 'roles.id', '=', 'staff.role_id')
+        ->select('staff.*', 'roles.name as rolename')
+        ->orderBy('staff.id', $request->sort)
+        ->paginate(2);
+    return view('./admin/stafflist', compact('stafflist'));
     }
 }

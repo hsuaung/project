@@ -3,28 +3,40 @@
 @section('title', 'Customer List')
 @section('content')
 <div class="top_div">
-    <div class="date">
-        <input type="date">
-    </div>
+    <form action="{{route('customerDateSearch')}}" class="dateForm" method="get">
+        <input type="date" name="date1" value="{{Request::get('date1')? Request::get('date1'):''}}">
+        <input type="date" name="date2" value="{{Request::get('date2')? Request::get('date2'):''}}">
+        <button type="submit">search</button>
+    </form>
     <div class="right_div">
-        <div class="btn search_btn">
-            <a href="{{route('addProduct')}}" >
-                <img src="{{asset('image/admin/search.png') }}"alt="">
-                <p>search</p>
-            </a>
-        </div>
-        <div class="sort">
-            <select id="sort">
-                <option value="">Deafult Sorting</option>
-                <option value="A">A-Z</option>
-                <option value="A">A-Z</option>
-                <option value="A">A-Z</option>
+        {{-- <div class="btn search_btn"> --}}
+            <form action="{{route('searchCustomer')}}" class="searchForm" >
+                <input type="text" name="search" value="{{Request::get('search')? Request::get('search'):''}}">
+                <button type="submit">Search</button>
+            </form>
+           
+        {{-- </div> --}}
+        <form action="{{route('customerOrderBy')}}" method="get" class="orderBy">
+            @csrf
+            <select name="sort" onchange="this.form.submit()"  >
+                {{-- <option value="" {{Request::get('sort') == "null"? 'selected':''}}>default</option> --}}
+                <option value="asc"  {{Request::get('sort') == "asc"? 'selected':''}}>Oldest to Latest</option>
+                <option value="desc" {{Request::get('sort') == "desc"? 'selected':''}} >Latest to Oldest</option>
             </select>
-        </div>
+        </form>
+        
+
+        
     </div>
                 
                 
 </div>
+@if ($customerlist->isEmpty())
+    <div class="noResult">
+        <i class="lni lni-sad"></i> 
+        <h2 style="text-align: center">Sorry,We dont have that customer you have been searching for. </h2>
+    </div>
+@else
 <div class="table">
     <div class="title">
         <b>Customer List</b>
@@ -47,7 +59,9 @@
             <td>{{$customer->email}}</td>
             <td>{{$customer->phone}}</td>
             <td>{{$customer->created_at}}</td>
-{{--            
+
+
+            {{--            
             <td>
                 <img src="{{asset('image/admin/edit.svg') }}" alt="">
                 <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
@@ -60,5 +74,6 @@
     </table>
     {{$customerlist->links()}}
 </div>
+@endif
            
 @endsection

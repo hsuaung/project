@@ -18,7 +18,7 @@
         <i class="lni lni-checkmark-circle success-icon"></i>
         <h1>Thank You</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque architecto consequuntur id, laudantium nemo facilis vel harum. Vel, laborum quaerat!</p>
-        <a href="{{ route('shop') }}" >
+        <a href="{{ route('home') }}" >
             <button class="return-to-shop-button">
                 Return to Home Page
                 <i class="lni lni-arrow-right"></i>

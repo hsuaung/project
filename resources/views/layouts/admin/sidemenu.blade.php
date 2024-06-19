@@ -65,7 +65,7 @@
             </a>
         </li>
         <li>
-            <a href="/login.html" class="side-item {{ Route::currentRouteNamed('') ? 'active_link' : '' }} ">
+            <a href="{{route('admin.logout')}}" class="side-item {{ Route::currentRouteNamed('') ? 'active_link' : '' }} ">
                 <i class="lni lni-exit"></i>
                 <p class="hidden">Logout</p>
             </a>

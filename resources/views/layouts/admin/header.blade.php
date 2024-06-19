@@ -3,8 +3,6 @@
 
 
 @endpush
-
-
 <section class="topnav">
     <header>
         @yield('title')
@@ -14,8 +12,8 @@
     </header>
    
     <div class="rightnav">
+        <img src="{{Auth::guard('admin')->user()->image}}" alt="admin"  width="50px" height="50px">
         
-        <img src="{{asset('image/admin/admin.png') }}" alt="">
     </div>
 </section>
 <div class="rightnav">

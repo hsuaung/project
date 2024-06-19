@@ -1,6 +1,10 @@
 @extends('layouts.customerLayout')
 @section('title', 'shop || furniture')
 @section('content')
+@php
+    
+    // dd($categories);
+@endphp
 <div class="wrapper">
     <i id="left" class="fa-solid fa-angle-left"></i>
     <div class="carousel">
@@ -24,42 +28,7 @@
 </div>
 
 
-    {{-- 
-<section class="shop-slider">
-        <div class="slide-container">
-            <div class="slider-wrapper">
-                <button id="prev-slide" class="slide-button ">
-                    <img src="{{asset('/image/customer/previous-svgrepo-com 1.svg')}}" alt="">
-                </button>
-                <div class="image-list">
-                    <img class="image-item" src="{{asset('/image/customer/IMAGE(1).png')}}"  width="342px"
-                    height="446px" alt="img-1" />
-                    <img class="image-item" src="{{asset('/image/customer/IMAGE(2).png')}}" width="342px"
-                    height="446px" alt="img-2" />
-                    <img class="image-item" src="{{asset('/image/customer/IMAGE(3).png')}}" width="342px"
-                    height="446px" alt="img-3" />
-                    <img class="image-item" src="{{asset('/image/customer/IMAGE(4).png')}}" width="342px"
-                    height="446px" alt="img-4" />
-                    <img class="image-item" src="{{asset('/image/customer/IMAGE(1).png')}}" width="342px"
-                    height="446px" alt="img-5" />
-                    <img class="image-item" src="{{asset('/image/customer/IMAGE(2).png')}}"  width="342px"
-                    height="446px"alt="img-6" />
-                    <img class="image-item" src="{{asset('/image/customer/IMAGE(3).png')}}"  width="342px"
-                    height="446px"alt="img-7" />
-                    <img class="image-item" src="{{asset('/image/customer/IMAGE(4).png')}}" width="342px"
-                    height="446px" alt="img-8" />
-                    <img class="image-item" src="{{asset('/image/customer/IMAGE(1).png')}}" width="342px"
-                    height="446px" alt="img-9" />
-                    <img class="image-item" src="{{asset('/image/customer/IMAGE(2).png')}}" width="342px"
-                    height="446px" alt="img-10" />
-                </div>
-                <button id="next-slide" class="slide-button">
-                    <img src="{{asset('/image/customer/previous-svgrepo-com 1(1).svg')}}" alt="">
-                </button>
-            </div>
-        
-        </div>
-</section> --}}
+  
     <section class="">
         <div class="link-connect">
             <span>Home</span>
@@ -68,24 +37,48 @@
         <div class="title">SHOP</div>
         <div class="shop-nav">
             <a href="#">View 16 per page</a>
-            <div class="filter">
-                <a href="#">CATEGORIES
-                    <img src="{{ asset('/image/customer/previous-svgrepo-com 11.svg') }}" alt="">
-                </a>
-                <a href="#">PRICE
-                    <img src="{{ asset('/image/customer/previous-svgrepo-com 11.svg') }}" alt="">
-                </a>
-                <a href="#">COLOR
-                    <img src="{{ asset('/image/customer/previous-svgrepo-com 11.svg') }}" alt="">
-                </a>
-                <a href="#">MATERIAL
-                    <img src="{{ asset('/image/customer/previous-svgrepo-com 11.svg') }}" alt="">
-                </a>
-                <a href="#" class="selected">SORT BY LATEST
-                    <img src="{{ asset('/image/customer/previous-svgrepo-com 11.svg') }}" alt="">
-                </a>
-            </div>
+                <form action="{{route('shopSearch')}}" method="get" class="filterForm">
+                    {{-- @csrf --}}
+                        <input type="text" name="search" value="{{Request::get('search')? Request::get('search'):''}}" >
+                        <button type="submit">Search</button>
+                   </form>
+
+            
+          
+                <form action="{{route('shopFilter')}}" method="post" class="filterForm">
+                    @csrf
+                    <select name="category" id="" class="selectBox"> 
+                        <option value="">Categories</option>
+                        @foreach ($categories as $category )
+                            <option value="{{$category->id}}" {{Request::get('category') == $category->id ? 'selected':''}}>{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                    <select name="price" id="" class="selectBox">
+                        <option value="">Default</option>                    
+                        <option value="below" {{Request::get('price') == "below"? 'selected':''}}>below $500</option>
+                        <option value="between" {{Request::get('price') == "between"? 'selected':''}}>between $500 and $1000 </option>
+                        <option value="above" {{Request::get('price') == "above"? 'selected':''}}>above $1000</option>
+                    </select>
+                    <select name="orderby" id="" class="selectBox">
+                        <option value="asc" {{Request::get('orderby') == "asc"? 'selected':''}}>Oldest to Latest</option>
+                        <option value="desc" {{Request::get('orderby') == "desc"? 'selected':''}}>Latest to Oldest</option>
+                        
+                    </select>
+                   
+                   <button type="submit">filter</button>
+
+
+                </form>
+                
+            
         </div>
+        @if ($productlist->isEmpty())
+        <div class="noResult">
+            <i class="lni lni-sad"></i> 
+            <h2 style="text-align: center">Sorry,We dont have that product you have been searching for. </h2>
+        </div>
+          
+        @else
         <div class="shop-card-container">
             @foreach ($productlist as $product)
                 <a class="card-link" href="{{ url('/detail/' . $product->id) }}" style="text-decoration: none;color:black">
@@ -96,19 +89,22 @@
                         </div>
                         <div class="shop-card-content">
                             <p>{{ $product->name }}</p>
-                            <p>{{ $product->price }}</p>
+                            <p>$ {{ $product->price }}</p>
                         </div>
                     </div>
                 </a>
             @endforeach
         </div>
-
-
-
         <div class="loadMore">
             <p>You're viewed 16 of 50 products</p>
             <a href="#">LOAD MORE</a>
         </div>
+        @endif
+        
+
+
+
+        
     </section>
 
 

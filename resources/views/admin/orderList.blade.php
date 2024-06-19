@@ -5,36 +5,57 @@
 @section('page', 'Order List')
 @section('title', 'Order List')
 @section('content')
-@php
-    // dd($orderlist);
-@endphp
 <div class="top_div">
-    <div class="date">
-        <input type="date">
+    <form action="{{route('orderDateSearch')}}" class="dateForm" method="get">
+        <input type="date" name="date1" value="{{Request::get('date1')? Request::get('date1'):''}}">
+        <input type="date" name="date2" value="{{Request::get('date2')? Request::get('date2'):''}}">
+        <button type="submit">search</button>
+    </form>
+    <form action="{{route('orderSearch')}}" class="searchForm" method="post" >
+        @csrf
+        <input type="text" name="search" value="{{Request::get('search')? Request::get('search'):''}}">
+        <button type="submit">Search</button>
+    </form>
+    <div class="">
+       
+        <div >
+            <form action="{{route('orderStatus')}}" method="get" >
+                @csrf
+                <select name="status" onchange="this.form.submit()"  >
+                    <option value="status" {{Request::get('status') == "status"? 'selected':''}}> All Orders</option>
+                    <option value="pending"  {{Request::get('status') == "pending"? 'selected':''}}>Pending</option>
+                    <option value="delivered" {{Request::get('status') == "delivered"? 'selected':''}} >Delivered</option>
+                    <option value="cancel" {{Request::get('status') == "cancel"? 'selected':''}} >Cancel</option>
+                   
+                </select>
+            </form>
+            <form action="{{route('orderOrderBy')}}" method="get">
+                @csrf
+                <select name="sort" onchange="this.form.submit()"  >
+                    {{-- <option value="" {{Request::get('sort') == "null"? 'selected':''}}>default</option> --}}
+                    <option value="asc"  {{Request::get('sort') == "asc"? 'selected':''}}>Oldest to Latest</option>
+                    <option value="desc" {{Request::get('sort') == "desc"? 'selected':''}} >Latest to Oldest</option>
+                </select>
+            </form>
+            
+        </div>  
+       
     </div>
+</div>
+<div class="top_div">
+   
     <div class="right_div">
-        <div class="btn search_btn">
-            <a href="{{route('addProduct')}}" >
-                <img src="{{asset('image/admin/search.png') }}"alt="">
-                <p>search</p>
-            </a>
-        </div>
-        <div class="sort">
-            <select id="sort">
-                <option value="">Status</option>
-                <option value="A">A-Z</option>
-                <option value="A">A-Z</option>
-                <option value="A">A-Z</option>
-            </select>
-        </div>
-        <div class="sort">
-            <select id="sort">
-                <option value="">Deafult Sorting</option>
-                <option value="A">A-Z</option>
-                <option value="A">A-Z</option>
-                <option value="A">A-Z</option>
-            </select>
-        </div>
+        {{-- <div class="btn search_btn"> --}}
+           
+            {{-- <form action="{{route('orderSearch')}}" method="post" class="searchForm">
+                @csrf
+                <input type="text" name="search">
+                <button type="submit">Search</button>
+            </form> --}}
+           
+        {{-- </div> --}}
+       
+       
     </div>
                 
                 
@@ -43,7 +64,7 @@
     <div class="order-deliver order">
         <div>
             <p>Orders Delivered</p>
-            <h1>648K</h1>
+            <h1>{{$orderDelivered}}</h1>
         </div>
         <div>
         <input type="checkbox">
@@ -52,7 +73,7 @@
     <div class="order-pending order">
         <div>
             <p>Orders Pending</p>
-            <h1>650</h1>
+            <h1>{{$orderPending}}</h1>
         </div>
         <div>
             <input type="checkbox">
@@ -61,49 +82,71 @@
     <div class="order-cancel order">
         <div>
             <p>Orders Cancel</p>
-            <h1>56</h1>
+            <h1>{{$orderCancel}}</h1>
         </div>
         <div>
             <input type="checkbox">
         </div>
     </div>
+   
 </div>
+@if ($orders->isEmpty())
+    <div class="noResult">
+        <i class="lni lni-sad"></i> 
+        <h2 style="text-align: center">Sorry,We dont have that order you have been searching for. </h2>
+    </div>
+@else
+
 <div class="table">
     <div class="title">
 
     </div>
+
     <table>
         <tr>
-            <th>Product Name</th>
             <th>Order ID</th>
-            <th>Date</th>
             <th>Customer Name</th>
+            <th>Customer Email</th>
+            <th>Customer Phone</th>
+            <th>Address</th>
+            <th>Payment Type</th>
+            <th>Total Price</th>
             <th>Status</th>
-            <th>Amount</th>
             <th>Action</th>
         </tr>
-        @foreach ($orderlist as $order )
+        @foreach($orders as $order)
         <tr>
-            <td>{{$order->productName}}</td>
-            <td>{{$order->order_id}}</td>
-            <td>{{$order->created_at}}</td>
-            <td>{{$order->customerName}}</td>
-            <td>{{$order->status}}</td>
-            <td>{{$order->price}}</td>
+            <td>{{$order->id}}</td>
+            <td>{{$order->buyername}}</td>
+            <td>{{$order->buyeremail}}</td>
+            <td>{{$order->buyerphone}}</td>
+            <td>{{$order->deliveryaddress}}</td>
+            <td>{{$order->paymenttype}}</td>
+            <td>{{$order->totalprice}}</td>
+          
             <td>
-                <img src="{{asset('image/admin/edit.svg') }}" alt="">
-                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
+                <form action="{{route('orderUpdate')}}" method="">
+                    <input type="hidden" name="id" value="{{$order->id}}">
+                   
+                    <input type="radio" class="deliverRadio" onchange="this.form.submit()" name="status" value="delivered" {{$order->status=='delivered'? 'checked':''}} >deliver
+                    <input type="radio" class="pendingRadio" onchange="this.form.submit()" name="status" value="pending" {{$order->status=='pending'? 'checked':''}} >pending
+                    <input type="radio" class="cancelRadio" onchange="this.form.submit()" name="status" value="cancel" {{$order->status=='cancel'? 'checked':''}} >cancel
+    
+
+                </form>
+            </td>
+            <td>
+                <a href="orderDetail/{{$order->id}}"> detail</a>
             </td>
         </tr>
-            
         @endforeach
-       
     </table>
+    
 </div>
-<div class="pagination">
-    <a href="#">< </a>
-    <a href="#">1</a>
-    <a href="#" class="pagination_active">2</a>
-    <a href="#">></a>
-</div>
+{{$orders->links()}}
+@endif
+
+
 @endsection
+
+

@@ -46,6 +46,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function(){
     Route::post('/editStaffProcess', [StaffController::class, 'editStaffProcess'])->name('editStaffProcess');
     Route::get('/deleteStaffProcess{id}', [StaffController::class, 'deleteStaffProcess'])->name('deleteStaffProcess');
     Route::get('/searchStaff', [StaffController::class, 'searchStaff'])->name('searchStaff');
+    Route::get('/sortStaff', [StaffController::class, 'sortStaff'])->name('sortStaff');
     Route::get('/dateFilter', [StaffController::class, 'dateFilter'])->name('dateFilter');
     
     Route::get('/categoryList', [CategoryController::class, 'categoryList'])->name('categoryList');
@@ -60,7 +61,22 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function(){
     
     
     Route::get('/customerList', [AdminController::class, 'customerList'])->name('customerList');
+    Route::get('/searchCustomer', [AdminController::class, 'searchCustomer'])->name('searchCustomer');
+    
+    Route::get('/customerOrderBy', [AdminController::class, 'customerOrderBy'])->name('customerOrderBy');
+    Route::get('/customerDateSearch', [AdminController::class, 'customerDateSearch'])->name('customerDateSearch');
+    
+  
+    
     Route::get('/orderList', [OrderController::class, 'orderList'])->name('orderList');
+    Route::get('/orderDetail/{id}', [OrderController::class, 'orderDetail'])->name('orderDetail');
+    Route::get('/orderUpdate', [OrderController::class, 'orderUpdate'])->name('orderUpdate');
+    Route::post('/orderSearch', [OrderController::class, 'orderSearch'])->name('orderSearch');
+    Route::get('/orderStatus', [OrderController::class, 'orderStatus'])->name('orderStatus');
+    Route::get('/orderOrderBy', [OrderController::class, 'orderOrderBy'])->name('orderOrderBy');
+    
+    Route::get('/orderDateSearch', [OrderController::class, 'orderDateSearch'])->name('orderDateSearch');
+    
 });
 
 // Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -106,6 +122,8 @@ Route::get('/customer/login', [CustomerController::class, 'login'])->name('login
 Route::post('/customer/register/process', [CustomerController::class, 'RegisterProcess'])->name('customer.register.process');
 
 Route::get('/shop', [CustomerController::class, 'shop'])->name('shop');
+Route::post('/shopFilter', [CustomerController::class, 'shopFilter'])->name('shopFilter');
+Route::get('/shopSearch', [CustomerController::class, 'shopSearch'])->name('shopSearch');
 Route::get('/story', [CustomerController::class, 'story'])->name('story');
 Auth::routes();
 

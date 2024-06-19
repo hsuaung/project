@@ -94,7 +94,7 @@ class StripeController extends Controller
             $order_product->price = $cart['price'] * $cart['quantity'];
             $uuid = Str::uuid()->toString();
             $order_product->uuid = $uuid;
-            $order_product->status = 'Active';
+            $order_product->status = 'pending';
             $order_product->save();
         }
 

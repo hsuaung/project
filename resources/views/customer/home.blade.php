@@ -13,7 +13,7 @@
             <p>orem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             <button>Shop Now <img src="{{ asset('image/customer/right-arrow-svgrepo-com 2.svg') }}" alt=""></button>
         </div>
-        <!-- Full-width images with number and caption text -->
+       
         <div class="mySlides ">
 
             <img src="{{ asset('image/customer/homeSlider.png') }}" alt="">

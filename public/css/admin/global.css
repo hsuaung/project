@@ -279,3 +279,69 @@ header{
 }
 
 
+.totalAmt{
+    background-color:var(--confirm_color);
+    padding:2rem;
+}
+
+.deliverRadio:after , .pendingRadio:after , .cancelRadio::after{
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+.deliverRadio:checked:after , .pendingRadio:checked:after , .cancelRadio:checked:after{
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+.pendingRadio:checked:after {
+    background-color: #ffa500;
+}
+.deliverRadio:checked:after {
+    background-color: green;
+}
+.cancelRadio:checked:after {
+    background-color: red;
+}
+
+.noResult{
+    margin:   10rem 1px;
+    text-align: center;
+}
+.noResult i{
+    font-size: 100px;
+    margin-bottom:50px;
+}
+.searchForm input ,.dateForm input{
+    padding:15px 30px;
+    background-color: transparent;
+    border: 1px solid --text_color;
+    border-radius: 5px;
+    color:var(--text_color);
+}
+.searchForm button ,.dateForm button{
+    padding:15px 30px;
+    cursor:pointer;
+    border-radius: 5px;
+}
+.searchForm button:hover , .dateForm button:hover{
+    background-color: black;
+    color:var(--text_color);
+}

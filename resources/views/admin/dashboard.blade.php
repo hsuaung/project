@@ -5,27 +5,30 @@
 <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
 @endpush
 @section('content')
+@php
+    // dd($totalSale);
+@endphp
 <div class="dashboardrow ">
     <div class="box">
         <div class="content">
-            <p>Todays Revenue</p>
-            <h1>$8.2K</h1>
+            <p>Today Order</p>
+            <h1>{{$todayOrder}}</h1>
             <p>Availabale to payout</p>
         </div>
     </div>
 
     <div class="box">
         <div class="content">
-            <p>Todays Revenue</p>
-            <h1>$8.2K</h1>
+            <p>Total Sale</p>
+            <h1>$ {{$totalSale}}</h1>
             <p>Availabale to payout</p>
         </div>
     </div>
 
     <div class="box">
         <div class="content">
-            <p>Todays Revenue</p>
-            <h1>$8.2K</h1>
+            <p>Total Order</p>
+            <h1>{{$totalOrder}}</h1>
             <p>Availabale to payout</p>
         </div>
     </div>
@@ -105,8 +108,55 @@
     </div>
 
 </div>
-
 <div class="table">
+    <div class="title">
+
+    </div>
+    <table>
+        <h1>Latest Orders</h1>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer Name</th>
+            <th>Customer Email</th>
+            <th>Customer Phone</th>
+            <th>Address</th>
+            <th>Payment Type</th>
+            <th>Total Price</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        @foreach($latestOrders as $order)
+        <tr>
+            <td>{{$order->id}}</td>
+            <td>{{$order->buyername}}</td>
+            <td>{{$order->buyeremail}}</td>
+            <td>{{$order->buyerphone}}</td>
+            <td>{{$order->deliveryaddress}}</td>
+            <td>{{$order->paymenttype}}</td>
+            <td>{{$order->totalprice}}</td>
+          
+            <td>
+                <form action="{{route('orderUpdate')}}" method="">
+                    <input type="hidden" name="id" value="{{$order->id}}">
+                   
+                    <input type="radio" class="deliverRadio" onchange="this.form.submit()" name="status" value="delivered" {{$order->status=='delivered'? 'checked':''}} disabled >deliver
+                    <input type="radio" class="pendingRadio" onchange="this.form.submit()" name="status" value="pending" {{$order->status=='pending'? 'checked':''}} disabled>pending
+                    <input type="radio" class="cancelRadio"  onchange="this.form.submit()" name="status" value="cancel" {{$order->status=='cancel'? 'checked':''}} disabled >cancel
+    
+
+                </form>
+            </td>
+            <td>
+                <a href="orderDetail/{{$order->id}}"> detail</a>
+            </td>
+        </tr>
+        @endforeach
+    </table>
+    {{$latestOrders->links()}}
+    
+</div>
+
+{{-- <div class="table">
     <div class="title">
         <b>Latest Orders</b>
     </div>
@@ -163,7 +213,7 @@
             </td>
         </tr>
     </table>
-</div>
+</div> --}}
 
 
 

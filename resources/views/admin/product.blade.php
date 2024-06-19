@@ -1,4 +1,8 @@
 @php
+
+// dd(Auth::guard('admin')->user()->image);
+
+
 $updatestatus=false;
 
 if(!empty($product)){
@@ -44,27 +48,11 @@ if(!empty($product)){
         </div>
        
         <div class="row">
-            <div class="col">
-                <label for="staff_id">Choose Staff <span>*</span></label>
-            <select name="staff_id" id="">
-                @foreach ($staffs as $staff)
-                <option value="{{ $staff->id }}"
-                    @isset($product){{ $product->staff_id === $staff->id ? 'selected' : '' }}
-                    @endisset>
-                    {{ $staff->name }}</option>
-                @endforeach
-            </select>
-            </div>
+           
             <div class="col">
                 <label for="price">Price <span>*</span></label>
                 <input type="text" id="price" name="price" required value="{{$updatestatus == true ? $product->price: '' }}">
                 
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label for="detail">Detail <span>*</span></label>
-                <input type="text" id="detail" name="detail" required value="{{$updatestatus == true ? $product->detail: '' }}">
             </div>
             <div class="col">
                 <label for="stock">Stock <span>*</span></label>
@@ -72,6 +60,13 @@ if(!empty($product)){
             </div>
         </div>
         <div class="row">
+            {{-- <div class="col">
+                <label for="detail">Detail <span>*</span></label>
+                <input type="text" id="detail" name="detail" required value="{{$updatestatus == true ? $product->detail: '' }}">
+            </div> --}}
+           
+        </div>
+        {{-- <div class="row">
             <div class="col">
                 <label for="feature">Feature <span>*</span></label>
                 <input type="text" id="feature" name="feature" required value="{{$updatestatus == true ? $product->feature:'' }}">
@@ -80,7 +75,7 @@ if(!empty($product)){
                 <label for="additioninfo">Additioninfo <span>*</span></label>
                 <input type="text" id="additioninfo" name="additioninfo" required value="{{$updatestatus == true ? $product->additioninfo:'' }}">
             </div>
-        </div>
+        </div> --}}
         <div class="col image">
             <label for="image">Enter Your Image: <span>*</span></label>
             <input type="file" id="image" name="images[]" placeholder="image" multiple required value="{{$updatestatus == true ? '':'' }}">
@@ -95,7 +90,7 @@ if(!empty($product)){
        
    
     <div class="btn_gp">
-        <button type="reset" value="" class="btn cancel_btn">Cancel</button>
+        <a href="{{url('/admin/productList')}}" class="btn cancel_btn">Cancel</a>
         <button type="submit" value="" class="btn add_btn">{{$updatestatus == true ? 'Update Product':'Publish Product' }}</button>
     </div>
     </form>

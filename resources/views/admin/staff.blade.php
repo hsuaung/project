@@ -21,7 +21,7 @@ if(!empty($staff)){
 @section('content')
 <form action="{{$updatestatus == true? route('editStaffProcess'): route('addStaffProcess')}}" method="post" class="form" enctype="multipart/form-data">
     @csrf
-    <input type="hidden" name="id" id="id" value="{{$updatestatus == true? $staff->id: '' }}">
+    {{-- <input type="hidden" name="id" id="id" value="{{$updatestatus == true? $staff->id: '' }}"> --}}
     <div class="row">
         <div class="col">
             <label for="name">Name <span>*</span></label>
@@ -70,7 +70,7 @@ if(!empty($staff)){
     
    
     <div class="btn_gp">
-        <button type="reset" value="" class="btn cancel_btn">Cancel</button>
+        <a href="{{route('staffList')}}" type="reset" value="" class="btn cancel_btn">Cancel</a>
         <button type="submit" value="" class="btn add_btn">{{$updatestatus == true? 'Edit Staff ': 'Add Staff' }}</button>
     </div>
     

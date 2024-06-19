@@ -13,7 +13,7 @@
 <div class="table" >
     <div class="title">
         <form action="{{ route('searchProduct') }}" method="GET" class="btn search_btn">
-            <input type="text" name="search" placeholder="Search Products">
+            <input type="text" name="search" placeholder="Search Products" value="{{Request::get('search')? Request::get('search'):''}}">
             <button type="submit"><i class="lni lni-search-alt"></i></button>
         </form>
 
@@ -25,9 +25,11 @@
         </div>
     </div>
 
-    
-        @if(empty($productlist))
-               <div class="error"> Sorry!!</div>
+    @if ($productlist->isEmpty())
+    <div class="noResult">
+        <i class="lni lni-sad"></i> 
+        <h2 style="text-align: center">Sorry,We dont have that product you have been searching for. </h2>
+    </div>
         
         @else 
             <table>
@@ -50,11 +52,11 @@
                     <td>{{$product->categoryName}}</td>
                     <td>{{$product->description}}</td>
                     <td>{{$product->stock}}</td>
-                    <td>{{$product->price}}</td>
+                    <td>$ {{$product->price}}</td>
                     <td>{{$product->updated_at}}</td>
                     <td>
-                        <a href="{{url('/editProduct/'.$product->id)}}"><img src="{{asset('image/admin/edit.svg') }}" alt=""></a>
-                        <a href="{{url('/deleteProductProcess/'.$product->id)}}"><img src="{{asset('image/admin/trashbin.svg') }}" alt=""></a>
+                        <a href="{{url('/admin/editProduct/'.$product->id)}}"><img src="{{asset('image/admin/edit.svg') }}" alt=""></a>
+                        <a href="{{url('/admin/deleteProductProcess/'.$product->id)}}"><img src="{{asset('image/admin/trashbin.svg') }}" alt=""></a>
                     </td>
                 </tr>
                 @endforeach

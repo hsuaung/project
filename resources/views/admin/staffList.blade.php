@@ -4,44 +4,41 @@
 
 @section('content')
     <div class="top_div">
-        <form action="{{ route('dateFilter') }}" class="dateFilter">
-            <input type="date" id="startDate" name="startDate" value="2024-06-3" class="date-picker" />
-            <input type="date" id="endDate" name="endDate" class="date-picker" />
-            <button type="submit"> <i class="lni lni-search-alt"></i></button>
+        <form action="{{ route('dateFilter') }}" class="dateForm" >
+            <input type="date" id="startDate" name="date1" value="2024-06-3" class="date-picker" />
+            <input type="date" id="endDate" name="date2" class="date-picker" />
+            <button type="submit"> search</button>
+            {{-- <i class="lni lni-search-alt"></i> --}}
      
           
           
-            {{-- <div class="date">
-                <label for="startDate">Start Date: </label>
-                <input type="date" id="startDate" name="startDate" value="2024-06-3" class="date-picker" />
-            </div>
-            <div class="date">
-               
-                <label for="endDate">End Date: </label>
-                <input type="date" id="endDate" name="endDate" class="date-picker" />
-                
-            </div> --}}
+            
                </form>
         
         <div class="right_div">
-            <form action="{{ route('searchStaff') }}" method="GET" class="btn search_btn">
+            <form action="{{ route('searchStaff') }}" method="GET" class="searchForm" >
                 <input type="text" name="search" placeholder="Search Staff">
-                <button type="submit"><i class="lni lni-search-alt"></i></button>
+                <button type="submit">search</button>
             </form>
 
-            <div class="sort">
-                <select id="sort">
-                    <option value="">Deafult Sorting</option>
-                    <option value="A">A-Z</option>
-                    <option value="A">A-Z</option>
-                    <option value="A">A-Z</option>
+            <form action="{{route('sortStaff')}}" method="get">
+                @csrf
+                <select name="sort" onchange="this.form.submit()"  >
+                    {{-- <option value="" {{Request::get('sort') == "null"? 'selected':''}}>default</option> --}}
+                    <option value="asc"  {{Request::get('sort') == "asc"? 'selected':''}}>Oldest to Latest</option>
+                    <option value="desc" {{Request::get('sort') == "desc"? 'selected':''}} >Latest to Oldest</option>
                 </select>
-            </div>
+            </form>
         </div>
 
 
     </div>
-
+    @if ($stafflist->isEmpty())
+    <div class="noResult">
+        <i class="lni lni-sad"></i> 
+        <h2 style="text-align: center">Sorry,We dont have that staff you have been searching for. </h2>
+    </div>
+@else
 
     <div class="table">
         <div class="title">
@@ -54,6 +51,7 @@
             </div>
 
         </div>
+        
         <table>
             <tr>
                 <th>Staff ID</th>
@@ -81,9 +79,9 @@
 
             <td>{{ $staff->status }}</td>
             <td>
-                <a href="{{ url('/editStaff' . $staff->id) }}"><img src="{{ asset('image/admin/edit.svg') }}"
+                <a href="{{ url('/admin/editStaff' . $staff->id) }}"><img src="{{ asset('image/admin/edit.svg') }}"
                         alt=""></a>
-                <a href="{{ url('/deleteStaffProcess' . $staff->id) }}"> <img src="{{ asset('image/admin/trashbin.svg') }}"
+                <a href="{{ url('/admin/deleteStaffProcess' . $staff->id) }}"> <img src="{{ asset('image/admin/trashbin.svg') }}"
                         alt=""></a>
 
             </td>
@@ -94,6 +92,7 @@
 
     {{-- <div class="pagination"> --}}
     {{ $stafflist->links() }}
+    @endif
     {{-- </div> --}}
     {{-- <div class="pagination-links">
                     {{-- {{ $stafflist->links() }} --}}

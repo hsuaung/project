@@ -21,7 +21,8 @@ class HomeController extends Controller
         $categoryNames = DB::table('categories')
         ->select('name')
         ->pluck('name');
-           $grid_items = Category::whereIn('name', $categoryNames)
+
+        $grid_items = Category::whereIn('name', $categoryNames)
             ->withCount('products')
             ->take(5)
             ->get();

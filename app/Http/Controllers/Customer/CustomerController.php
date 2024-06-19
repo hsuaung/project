@@ -7,15 +7,20 @@ use App\Models\Category;
 use App\Models\Customer;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Repository\shopFilterRepository;
+
 
 class CustomerController extends Controller
 {
-   
+    private $itemRepository;
+    public function __construct(shopFilterRepository $itemrepository){
+        $this->itemRepository = $itemrepository;
+    }
 
     public function blog(){
         return view ('./customer/blog');
@@ -89,9 +94,25 @@ class CustomerController extends Controller
         ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
         ->get();
        
-        return view ('./customer/shop',compact('productlist'));
+        $categories=DB::table('categories')
+        ->select('categories.*')
+        ->get();
+        return view ('./customer/shop',compact('productlist','categories'));
     }
+    public function shopFilter(Request $request){
+            
+            $response = $this->itemRepository->filter($request);
+            return $response;
+        
 
+    }
+    public function shopSearch(Request $request){
+        // dd($request->orderby);
+        $response = $this->itemRepository->search($request);
+        return $response;
+    
+
+}
     public function productByCategory($category){
         
         $productlist=DB::table('products')
