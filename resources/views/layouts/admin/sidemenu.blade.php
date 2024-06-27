@@ -48,22 +48,22 @@
             </a>
 
         </li>
-        <li>
+        {{-- <li>
             <a href="#" class="side-item {{ Route::currentRouteNamed('') ? 'active_link' : '' }} ">
                 <i class="lni lni-stats-up"></i>
                 <p class="hidden">Reports</p>
             </a>
 
-        </li>
+        </li> --}}
         
     </ul>
     <ul>
-        <li>
+        {{-- <li>
             <a href="" class="side-item {{ Route::currentRouteNamed('') ? 'active_link' : '' }} ">
                 <i class="lni lni-cog"></i>
                 <p class="hidden">Settings</p>
             </a>
-        </li>
+        </li> --}}
         <li>
             <a href="{{route('admin.logout')}}" class="side-item {{ Route::currentRouteNamed('') ? 'active_link' : '' }} ">
                 <i class="lni lni-exit"></i>

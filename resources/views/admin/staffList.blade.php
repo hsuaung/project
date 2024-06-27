@@ -25,8 +25,8 @@
                 @csrf
                 <select name="sort" onchange="this.form.submit()"  >
                     {{-- <option value="" {{Request::get('sort') == "null"? 'selected':''}}>default</option> --}}
-                    <option value="asc"  {{Request::get('sort') == "asc"? 'selected':''}}>Oldest to Latest</option>
-                    <option value="desc" {{Request::get('sort') == "desc"? 'selected':''}} >Latest to Oldest</option>
+                    <option value="asc"  {{Request::get('sort') == "asc"? 'selected':''}}>Old to New</option>
+                    <option value="desc" {{Request::get('sort') == "desc"? 'selected':''}} >New to Old</option>
                 </select>
             </form>
         </div>

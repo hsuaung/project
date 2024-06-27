@@ -5,7 +5,7 @@ namespace App\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class shopFilterRepository{
+class categoryFilterRepository{
 
     public function filter(Request $request){
         $orderby=$request->orderby;

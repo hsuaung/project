@@ -36,8 +36,8 @@
         </div>
         <div class="title">SHOP</div>
         <div class="shop-nav">
-            <a href="#">View 16 per page</a>
-                <form action="{{route('shopSearch')}}" method="get" class="filterForm">
+            {{-- <a href="#">View 16 per page</a> --}}
+                <form action="{{route('shopSearch')}}" method="get" class="filterForm" id="search">
                     {{-- @csrf --}}
                         <input type="text" name="search" value="{{Request::get('search')? Request::get('search'):''}}" >
                         <button type="submit">Search</button>
@@ -95,10 +95,10 @@
                 </a>
             @endforeach
         </div>
-        <div class="loadMore">
+        {{-- <div class="loadMore">
             <p>You're viewed 16 of 50 products</p>
             <a href="#">LOAD MORE</a>
-        </div>
+        </div> --}}
         @endif
         
 

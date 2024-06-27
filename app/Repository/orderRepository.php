@@ -22,7 +22,7 @@ class orderRepository{
         ->orWhere('orders.buyername', 'like','%'. $search.'%')
         // ->orWhere('orders.status', 'like','%'. $search.'%')
         
-        ->paginate(3);
+        ->paginate(10);
 
     $orderPending = DB::table('orders')
         ->where('status', '=', 'pending')

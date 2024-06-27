@@ -18,16 +18,16 @@ class HomeController extends Controller
     
     public function home(){
         //For Home Grid
-        $categoryNames = DB::table('categories')
-        ->select('name')
-        ->pluck('name');
+        // $categoryNames = DB::table('categories')
+        // ->select('name')
+        // ->pluck('name');
 
-        $grid_items = Category::whereIn('name', $categoryNames)
-            ->withCount('products')
-            ->take(5)
-            ->get();
+        // $grid_items = Category::whereIn('name', $categoryNames)
+        //     ->withCount('products')
+        //     ->take(5)
+        //     ->get();
         
-
+            $grid_items=Category::limit(5) ->withCount('products')->get();
         //For New Products
         $categories=DB::table('categories')
         ->select('categories.*')->get();

@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function categoryList(){
         $categories = DB::table('categories')
         ->select('categories.*')
-        ->paginate(5);
+        ->paginate(10);
         // ->get();
         return view('./admin/categoryList',compact('categories'));
     }
@@ -60,7 +60,7 @@ class CategoryController extends Controller
         // ->join('roles', 'roles.id', '=', 'staff.role_id')
         ->select('categories.*')
         ->where('categories.name', 'like', "%$search%")
-        ->paginate(5);
+        ->paginate(10);
         return view('admin.categoryList', compact('categories'));
     }
 }

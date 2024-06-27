@@ -22,7 +22,7 @@ class ProductController extends Controller
             ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
             ->where('product_photos.isPrimary', 1)
             ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
-            ->paginate(5);
+            ->paginate(10);
         // ->get();
         // dd($productlist);
         return view('admin.productList', compact('productlist'));
@@ -153,7 +153,7 @@ class ProductController extends Controller
                     ->orWhere('categories.name', 'like', "%$search%");
             })
             ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
-            ->paginate(5);
+            ->paginate(10);
         return view('admin.productList', compact('productlist'));
     }
 }

@@ -13,15 +13,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Repository\shopFilterRepository;
-
+use App\Repository\categoryFilterRepository;
 
 class CustomerController extends Controller
 {
     private $itemRepository;
-    public function __construct(shopFilterRepository $itemrepository){
-        $this->itemRepository = $itemrepository;
-    }
+    private $categoryRepository;
 
+    public function __construct(shopFilterRepository $itemRepository, categoryFilterRepository $categoryRepository)
+    {
+        $this->itemRepository = $itemRepository;
+        $this->categoryRepository = $categoryRepository;
+    }
     public function blog(){
         return view ('./customer/blog');
     }
@@ -52,7 +55,7 @@ class CustomerController extends Controller
         ->where('products.id', $id)
         ->select('products.category_id')
         ->pluck('products.category_id');
-        
+        // dd ($id);
         $productlist=DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category_id')
         ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
@@ -60,6 +63,7 @@ class CustomerController extends Controller
         ->where('products.category_id', $categoryID)
         ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
         ->get();
+        // dd($productlist);
         return view ('./customer/detail',compact('product','images' ,'productlist'));
 
     }
@@ -122,11 +126,28 @@ class CustomerController extends Controller
         ->where('categories.name','=',$category)
         ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
         ->get();
-        // dd("hey");
-        return view ('./customer/category',compact('productlist','category'));
+
+        $categories=DB::table('categories')
+        ->select('categories.*')
+        ->get();
+        return view ('./customer/category',compact('productlist','categories','category'));
  
      
     }
+    public function categoryFilter(Request $request){
+            
+        $response = $this->itemRepository->filter($request);
+        return $response;
+    
+
+}
+public function categorySearch(Request $request){
+    // dd($request->orderby);
+    $response = $this->itemRepository->search($request);
+    return $response;
+
+
+}
     public function story(){
         return view ('./customer/story');
     }

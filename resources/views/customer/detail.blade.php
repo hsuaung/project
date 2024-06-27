@@ -13,7 +13,7 @@
         </div> --}}
         <div class="detail">
             <div class="detail-img">
-                <img width="250" height="200" src="{{ $images[0]->image }}" alt="Product" id="mainImage">
+                <img src="{{ $images[0]->image }}" alt="Product" id="mainImage">
             </div>
             <div class="detail-content">
                 <h1>{{ $product[0]->name }}</h1>
@@ -50,10 +50,29 @@
                 </div>
             </div>
             <div class="detail-img-view">
-                <img width="250" height="200" src="{{ $images[1]->image }}" alt=""
+                {{-- @php
+                    dd($images);
+                @endphp --}}
+                    <img width="250" height="200" src="{{ $images[0]->image }}" alt=""
+                    onclick="changeMainImage('{{ $images[0]->image }}')">
+                
+                
+                    <img width="250" height="200" src="{{ $images[1]->image }}" alt=""
                     onclick="changeMainImage('{{ $images[1]->image }}')">
-                <img width="250" height="200" src="{{ $images[2]->image }}" alt=""
+                
+                
+                    <img width="250" height="200" src="{{ $images[2]->image }}" alt=""
                     onclick="changeMainImage('{{ $images[2]->image }}')">
+
+                {{-- @foreach ($images as $key=>$image)
+                    <div class="item-img">
+                        <input type="radio" name="selected_image" id="image{{$key}}" class="select-image">
+                        <label for="image{{$key}}"></label>
+                        <img src="{{$image->image}}" alt="Product Iamage" class="img-thumbnail">
+                    </div>
+                @endforeach --}}
+                
+               
             </div>
         </div>
 
@@ -95,48 +114,16 @@
             </div>
 
         </section>
-        {{-- <section class="recommend">
-            <h4>YOU MAY ALSO LIKE...</h4>
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-img">
-                        <img src="{{ asset('/image/customer/detail-card1.png') }}" alt="">
-                    </div>
-                    <div class="card-content">
-                        <p>Haiku 2-Seater Sofa</p>
-                        <p>$999.00 -$1,499.00</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('/image/customer/detail-card2.png') }}" alt="">
-                    <div class="card-content">
-                        <p>Solid Wood Side Tables</p>
-                        <p>$350.00</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('/image/customer/detail-card3.png') }}" alt="">
-                    <div class="card-content">
-                        <p>Vipp Wool Pillow</p>
-                        <p>$79.00</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{{ asset('/image/customer/detail-card4.png') }}" alt="">
-                    <div class="card-content">
-                        <span class="upperSpan minus">-20%</span>
-                        <p>Vipp Wool Blanket</p>
-                        <p><span class="mute-text">$100.00</span> $80.00</p>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
+    
     </section>
 
     <script>
         function changeMainImage(image) {
-            document.getElementById('mainImage').src = image;
+            const mainImg = document.getElementById('mainImage');
+            mainImg.src = image;
         }
+
+        // document.addEventListener('DOMContentLoaded', function())
     </script>
 @endsection
 

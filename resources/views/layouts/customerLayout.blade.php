@@ -18,6 +18,7 @@
 
 <body>
 
+  
     <nav class="top-nav">
         <div class="left">
             <div><i class="lni lni-facebook-fill"></i></div>
@@ -53,22 +54,20 @@
                             <div class="column">
                                 <h3>CATEGORY ONE </h3>
                                 <div class="column">
-                                    <a href="{{ url('/productByCategory/' . 'bed') }}">Bed</a>
-                                    <a href="{{ url('/productByCategory/' . 'cabinet') }}">Cabinet</a>
                                     <a href="{{ url('/productByCategory/' . 'sofa') }}">Sofa</a>
-                                    <a href="{{ url('/productByCategory/' . 'kitchen') }}">Kitchen</a>
-                                    <a href="{{ url('/productByCategory/' . 'office') }}">Office</a>
-                                    <a href="{{ url('/productByCategory/' . 'chair') }}">Chair</a>
-                                </div>
-                                <div class="column">
                                     <a href="{{ url('/productByCategory/' . 'bed') }}">Bed</a>
+                                    <a href="{{ url('/productByCategory/' . 'lamp') }}">Lamp</a>
+                                    <a href="{{ url('/productByCategory/' . 'table') }}">Table</a>
                                     <a href="{{ url('/productByCategory/' . 'cabinet') }}">Cabinet</a>
-                                    <a href="{{ url('/productByCategory/' . 'sofa') }}">Sofa</a>
-                                    <a href="{{ url('/productByCategory/' . 'kitchen') }}">Kitchen</a>
-                                    <a href="{{ url('/productByCategory/' . 'office') }}">Office</a>
-                                    <a href="{{ url('/productByCategory/' . 'chair') }}">Chair</a>
-
+                                    <a href="{{ url('/productByCategory/' . 'shelf') }}">Shelf</a>
                                 </div>
+                                {{-- <div class="column">
+                                    @foreach ($categories as $category )
+                                    <a href="">{{$category->name}}</a>
+                                        
+                                    @endforeach
+                                </div> --}}
+                              
                             </div>
                             <div class="column">
                                 <img src="{{ asset('image/customer/megaMenu1.jpg') }}" alt="">
@@ -101,8 +100,10 @@
 
         <div class="nav-right">
 
-            <div><i class="lni lni-search-alt"></i></div>
-            <div><i class="lni lni-user"></i></div>
+            {{-- <div><i class="lni lni-search-alt"></i></div>
+            <div><i class="lni lni-user"></i></div> --}}
+            
+            <div class="ham-menu"><i class="lni lni-menu"> </i></div>
             <a href="{{ url('/cart') }}" class="cart">
                 <i class="lni lni-cart" ></i>
 
@@ -112,8 +113,6 @@
                     <span>0</span>
                 @endif
                 </a>
-            </div>
-            <div class="ham-menu"><i class="lni lni-menu"> </i></div>
 
         </div>
 
@@ -126,10 +125,10 @@
         <div class="footer-section">
             <div class="footer-social">
                 <div><i class="lni lni-facebook-fill" style="color:white"></i></div>
-                <div><i class="lni lni-instagram-fill"></i></div>
+                <div><i class="lni lni-instagram-fill" style="color:white"></i></div>
 
-                <div><i class="lni lni-youtube"></i></div>
-                <div><i class="lni lni-telegram-original"></i></div>
+                <div><i class="lni lni-youtube" style="color:white"></i></div>
+                <div><i class="lni lni-telegram-original" style="color:white"></i></div>
 
             </div>
 

@@ -26,7 +26,7 @@ class AdminController extends Controller
        
             $customerlist=DB::table('customers')
             ->orderBy('customers.id', $request->sort)
-            ->paginate(3);
+            ->paginate(10);
         return view('./admin/customerList', compact('customerlist'));
        
     }
@@ -37,7 +37,7 @@ class AdminController extends Controller
             ->where('customers.name', 'like', "%$search%")
             ->orWhere('customers.email', 'like', "%$search%")
             ->orWhere('customers.phone', 'like', "%$search%")
-            ->paginate(3);
+            ->paginate(10);
         return view('admin.customerList', compact('customerlist'));
     }
     public function login(){
@@ -65,7 +65,7 @@ class AdminController extends Controller
        
         $latestOrders = DB::table('orders')
         ->orderBy('created_at', 'desc')
-        ->paginate(3);
+        ->paginate(10);
 
         
 
@@ -79,7 +79,7 @@ class AdminController extends Controller
             // ->join('roles', 'roles.id', '=', 'staff.role_id')
            
             ->select('customers.*')
-            ->paginate(3);
+            ->paginate(10);
         // dd($customerlist);
         
         return view('./admin/customerList', compact('customerlist'));

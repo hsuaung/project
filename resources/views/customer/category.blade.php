@@ -16,23 +16,41 @@
 
             </div>
             
-            <div class="filter">
-                <a href="#">CATEGORIES
-                    <img src="{{asset('/image/customer/previous-svgrepo-com 11.svg')}}" alt="">
-                </a>
-                <a href="#">PRICE
-                    <img src="{{asset('/image/customer/previous-svgrepo-com 11.svg')}}" alt="">
-                </a>
-                <a href="#">COLOR
-                    <img src="{{asset('/image/customer/previous-svgrepo-com 11.svg')}}" alt="">
-                </a>
-                <a href="#">MATERIAL
-                    <img src="{{asset('/image/customer/previous-svgrepo-com 11.svg')}}" alt="">
-                </a>
-                <a href="#" class="selected">SORT BY LATEST
-                    <img src="{{asset('/image/customer/previous-svgrepo-com 11.svg')}}" alt="">
-                </a>
-            </div>
+            {{-- <div class="filter">
+                <form action="{{route('categorySearch')}}" method="get" class="filterForm">
+                    @csrf
+                        <input type="text" name="search" value="{{Request::get('search')? Request::get('search'):''}}" >
+                        <button type="submit">Search</button>
+                   </form>
+
+            
+          
+                <form action="{{route('categoryFilter')}}" method="post" class="filterForm">
+                    @csrf
+                    <select name="category" id="" class="selectBox"> 
+                        <option value="">Categories</option>
+                        @foreach ($categories as $category )
+                            <option value="{{$category->id}}" {{Request::get('category') == $category->id ? 'selected':''}}>{{$category->name}}</option>
+                        @endforeach
+                    </select>
+                    <select name="price" id="" class="selectBox">
+                        <option value="">Default</option>                    
+                        <option value="below" {{Request::get('price') == "below"? 'selected':''}}>below $500</option>
+                        <option value="between" {{Request::get('price') == "between"? 'selected':''}}>between $500 and $1000 </option>
+                        <option value="above" {{Request::get('price') == "above"? 'selected':''}}>above $1000</option>
+                    </select>
+                    <select name="orderby" id="" class="selectBox">
+                        <option value="asc" {{Request::get('orderby') == "asc"? 'selected':''}}>Oldest to Latest</option>
+                        <option value="desc" {{Request::get('orderby') == "desc"? 'selected':''}}>Latest to Oldest</option>
+                        
+                    </select>
+                   
+                   <button type="submit">filter</button>
+
+
+                </form>
+                
+            </div> --}}
         </div>
         
         <div class="shop-card-container">

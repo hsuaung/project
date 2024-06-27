@@ -25,7 +25,7 @@ class StaffController extends Controller
             ->join('roles', 'roles.id', '=', 'staff.role_id')
 
             ->select('staff.*', 'roles.name as rolename')
-            ->paginate(3);
+            ->paginate(10);
         // dd($stafflist);
         return view('admin.stafflist', compact('stafflist'));
     }
@@ -101,7 +101,7 @@ class StaffController extends Controller
             ->select('staff.*', 'roles.name as rolename')
             ->where('staff.name', 'like', "%$search%")
            
-            ->paginate(3);
+            ->paginate(10);
         return view('admin.stafflist', compact('stafflist'));
     }
     public function dateFilter(Request $request)
@@ -113,7 +113,7 @@ class StaffController extends Controller
         ->join('roles', 'roles.id', '=', 'staff.role_id')
         ->select('staff.*', 'roles.name as rolename')
         ->whereBetween('staff.created_at', [$startDate, $endDate])
-        ->paginate(3);
+        ->paginate(10);
         return view('./admin/stafflist', compact('stafflist'));
 
     }
@@ -123,7 +123,7 @@ class StaffController extends Controller
         ->join('roles', 'roles.id', '=', 'staff.role_id')
         ->select('staff.*', 'roles.name as rolename')
         ->orderBy('staff.id', $request->sort)
-        ->paginate(2);
+        ->paginate(10);
     return view('./admin/stafflist', compact('stafflist'));
     }
 }

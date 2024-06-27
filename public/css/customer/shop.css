@@ -325,13 +325,16 @@
     .shop-nav
     {
         flex-direction: column;
-        /* align-items: center; */
+        align-items: center;
     }
     .filter{
         align-self: flex-end;
     }
     .shop-card-container{
         grid-template-columns: 1fr 1fr 1fr;
+    }
+    #search{
+        display: none;
     }
 }
 @media (max-width:768px){
@@ -340,12 +343,16 @@
      }
        
     .shop-card-container{
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr ;
     }
     .filter{
        display: flex;
        flex-direction: column;
        align-self: center;
+    }
+    .filterForm
+    {
+        flex-direction: column;
     }
 
 }
@@ -356,10 +363,7 @@
     .carousel .card {
        width: calc(100% /1);
     }
-      
-    /* .filter{
-        display: none;
-    } */
+   
 
 }
 /* responsive end */

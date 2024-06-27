@@ -107,7 +107,7 @@ Route::get('/updateCart', [CartController::class, 'updateCart'])->name('updateCa
 Route::get('/removeItem/{id}', [CartController::class, 'removeItem'])->name('removeItem');
 Route::post('/buynow', [CartController::class, 'buynow'])->name('buynow');
 
-Route::get('/category', [CustomerController::class, 'category'])->name('category');
+
 
 Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout');
 
@@ -120,11 +120,17 @@ Route::get('/detail/{id}', [CustomerController::class, 'detail'])->name('detail'
 Route::get('/customer/login', [CustomerController::class, 'login'])->name('login');
 
 Route::post('/customer/register/process', [CustomerController::class, 'RegisterProcess'])->name('customer.register.process');
-
 Route::get('/shop', [CustomerController::class, 'shop'])->name('shop');
 Route::post('/shopFilter', [CustomerController::class, 'shopFilter'])->name('shopFilter');
-Route::get('/shopSearch', [CustomerController::class, 'shopSearch'])->name('shopSearch');
+Route::get('/shopSearch',[CustomerController::class, 'shopSearch'])->name('shopSearch');
+
+
+Route::get('/category', [CustomerController::class, 'category'])->name('category');
+Route::post('/categoryFilter', [CustomerController::class, 'categoryFilter'])->name('categoryFilter');
+Route::get('/categorySearch',[CustomerController::class, 'categorySearch'])->name('categorySearch');
+
 Route::get('/story', [CustomerController::class, 'story'])->name('story');
+
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -34,7 +34,7 @@ class OrderController extends Controller
     {
         $orders = DB::table('orders')
             ->select('*')
-            ->paginate(3);
+            ->paginate(10);
 
         $orderPending = DB::table('orders')
             ->where('status', '=', 'pending')
@@ -100,7 +100,7 @@ class OrderController extends Controller
 
         $orders=DB::table('orders')
         ->orderBy('orders.id', $request->sort)
-        ->paginate(3);
+        ->paginate(10);
         return view('./admin/orderList', compact('orders', 'orderPending', 'orderDelivered', 'orderCancel', 'orderActive'));
 
     }
@@ -109,13 +109,13 @@ class OrderController extends Controller
         if($status == 'status'){
             $orders = DB::table('orders')
             ->select('*')
-            ->paginate(3);
+            ->paginate(10);
         }
         else {
             $orders = DB::table('orders')
             ->select('*')
             ->where('orders.status','=',$status)
-            ->paginate(3);
+            ->paginate(10);
         }
       
 
@@ -144,7 +144,7 @@ class OrderController extends Controller
     public function orderDateSearch(Request $request){
         $startDate = Carbon::parse($request->date1);
         $endDate = Carbon::parse($request->date2);
-        $orders = Order::whereBetween('created_at', [$startDate, $endDate]) ->paginate(3);
+        $orders = Order::whereBetween('created_at', [$startDate, $endDate]) ->paginate(10);
      
 
     $orderPending = DB::table('orders')
