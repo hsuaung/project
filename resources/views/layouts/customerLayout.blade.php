@@ -100,8 +100,8 @@
 
         <div class="nav-right">
 
-            {{-- <div><i class="lni lni-search-alt"></i></div>
-            <div><i class="lni lni-user"></i></div> --}}
+            <div><i class="lni lni-search-alt"></i></div>
+            <a href="{{route('customer.login')}}"> <i class="lni lni-user"></i></a> 
             
             <div class="ham-menu"><i class="lni lni-menu"> </i></div>
             <a href="{{ url('/cart') }}" class="cart">

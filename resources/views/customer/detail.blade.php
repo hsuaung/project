@@ -35,7 +35,7 @@
                         <button type="submit" class="cart-btn">Buy Now</button>
 
                     </form>
-                    {{-- <a href="{{ route('buynow') }}">Buy Now</a> --}}
+                 
 
                 </div>
                 <p>SKU: BE-006</p>
@@ -50,9 +50,7 @@
                 </div>
             </div>
             <div class="detail-img-view">
-                {{-- @php
-                    dd($images);
-                @endphp --}}
+                
                     <img width="250" height="200" src="{{ $images[0]->image }}" alt=""
                     onclick="changeMainImage('{{ $images[0]->image }}')">
                 
@@ -64,14 +62,7 @@
                     <img width="250" height="200" src="{{ $images[2]->image }}" alt=""
                     onclick="changeMainImage('{{ $images[2]->image }}')">
 
-                {{-- @foreach ($images as $key=>$image)
-                    <div class="item-img">
-                        <input type="radio" name="selected_image" id="image{{$key}}" class="select-image">
-                        <label for="image{{$key}}"></label>
-                        <img src="{{$image->image}}" alt="Product Iamage" class="img-thumbnail">
-                    </div>
-                @endforeach --}}
-                
+              
                
             </div>
         </div>

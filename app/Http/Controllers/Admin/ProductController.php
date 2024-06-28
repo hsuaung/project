@@ -23,8 +23,7 @@ class ProductController extends Controller
             ->where('product_photos.isPrimary', 1)
             ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
             ->paginate(10);
-        // ->get();
-        // dd($productlist);
+       
         return view('admin.productList', compact('productlist'));
     }
     public function addProduct()
@@ -128,7 +127,7 @@ class ProductController extends Controller
             ]);
             return redirect()->to('/admin/productList');
         } else {
-            dd("wrong");
+          
             return back()->with('error', 'No file uploaded');
         }
     }

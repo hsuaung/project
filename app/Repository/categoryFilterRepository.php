@@ -35,7 +35,7 @@ class categoryFilterRepository{
         $categories=DB::table('categories')
         ->select('*')
         ->get();
-        // dd($productlist);
+   
         return view('customer.shop',compact('categories','productlist'));
         
     }

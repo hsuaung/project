@@ -11,7 +11,7 @@ class orderRepository{
     public function search(Request $request)
     {
         $search=$request->search;
-        // dd()
+       
         $orders = DB::table('orders')
         ->select('*')
         ->where('orders.paymenttype', 'like','%'. $search.'%')
@@ -20,7 +20,7 @@ class orderRepository{
         ->orWhere('orders.buyerphone', 'like','%'. $search.'%')
         ->orWhere('orders.buyeremail', 'like','%'. $search.'%')
         ->orWhere('orders.buyername', 'like','%'. $search.'%')
-        // ->orWhere('orders.status', 'like','%'. $search.'%')
+       
         
         ->paginate(10);
 

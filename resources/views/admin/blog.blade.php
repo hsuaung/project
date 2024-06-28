@@ -4,7 +4,7 @@ $updatestatus=false;
 if(!empty($product)){
     
     $updatestatus=true;
-    // dd($product);
+ 
 }
 
 

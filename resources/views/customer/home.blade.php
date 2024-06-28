@@ -1,5 +1,5 @@
 @extends('layouts.customerLayout')
-{{-- @dd($grid_items) --}}
+
 @section('title', 'Home')
 
 @section('content')

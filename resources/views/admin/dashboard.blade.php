@@ -5,9 +5,7 @@
 <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}">
 @endpush
 @section('content')
-@php
-    // dd($totalSale);
-@endphp
+
 <div class="dashboardrow ">
     <div class="box">
         <div class="content">

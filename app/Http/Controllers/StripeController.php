@@ -37,9 +37,6 @@ class StripeController extends Controller
         ];
         session()->put('customer', $customer);
 
-        // dd(session('customer'));
-
-
         \Stripe\Stripe::setApiKey(config(key: 'stripe.sk'));
 
         $session = \Stripe\Checkout\Session::create([
@@ -85,8 +82,7 @@ class StripeController extends Controller
         $carts = session('cart');
 
         foreach ($carts as $cart) {
-            // dd($cart);
-            // dd($cart['product_id']);
+           
             $order_product = new Order_product();
             $order_product->order_id = $order->id;
             $order_product->product_id = $cart['product_id'];

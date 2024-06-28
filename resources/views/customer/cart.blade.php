@@ -26,14 +26,9 @@
                 </tr>
                 
                 @php
-                    // dd(session()->get('cart'));
-                    // if(isset(session()->get('cart'))){
-                    //     session()->forget('cart');
-                    // }
-                    // session()->forget('cart');
-                    // session()->flush();
+                   
                     $items = session('cart');
-                    // dd($items);
+                  
                 @endphp
                 @if (is_array($items))
                     @if (is_array(current($items)))

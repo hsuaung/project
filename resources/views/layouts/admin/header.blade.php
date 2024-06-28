@@ -5,8 +5,9 @@
 @endpush
 <section class="topnav">
     <header>
-        @yield('title')
-        <a href="{{route('home')}}" >
+        <h1 class="adminTitle">  @yield('title') </h1>
+       
+        <a href="{{route('home')}}" target="_blank" >
             <i class="lni lni-home"></i>
         </a>
     </header>

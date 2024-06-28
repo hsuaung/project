@@ -117,9 +117,12 @@ Route::get('/detail/{id}', [CustomerController::class, 'detail'])->name('detail'
 
 // Route::get('/detail{id}', [App\Http\Controllers\CustomerController::class, 'detail'])->name('detail');
 
-Route::get('/customer/login', [CustomerController::class, 'login'])->name('login');
+Route::get('/customer/login', [CustomerController::class, 'login'])->name('customer.login');
 
 Route::post('/customer/register/process', [CustomerController::class, 'RegisterProcess'])->name('customer.register.process');
+
+Route::post('/customer/login/process', [LoginController::class, 'customerLogin'])->name('customer.login.process');
+
 Route::get('/shop', [CustomerController::class, 'shop'])->name('shop');
 Route::post('/shopFilter', [CustomerController::class, 'shopFilter'])->name('shopFilter');
 Route::get('/shopSearch',[CustomerController::class, 'shopSearch'])->name('shopSearch');

@@ -9,15 +9,20 @@
     <section class="form-container">
         <div class="login-form">
             <h1>Log In</h1>
-            <form action="">
-                <label for="username">Username or email address <span>*</span></label>
-                <input type="text" id="username">
-
-                <label for="password">Username or email address <span>*</span></label>
-                <input type="password" id="password">
+            <form action="{{route('customer.login.process') }}" method="post">
+                @csrf
+                <label for="email">Email address <span>*</span></label>
+                <input type="text" id="email" name="email" required>
+                @error('email')
+                    <p>{{$message}}</p>
+                @enderror
+                <label for="password">Password<span>*</span></label>
+                <input type="password" id="password" name="password" required>
+                @error('password')
+                    <p>{{$message}}</p>
+                @enderror
                 <div>
-                    <button>LOG IN</button>
-                    <!-- <p>Remember me</p> -->
+                    <button type="submit">LOG IN</button>
                 </div>
                 <p>Lost your password?</p>
             </form>

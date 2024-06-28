@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');:root {
     --body_color: #383854;
     --primary_color: #2E2E48;
     --text_color:#FFFFFF;
@@ -11,6 +10,7 @@
     padding:0;
     margin:0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
     
 }
 body{
@@ -24,6 +24,10 @@ header{
     padding: 1rem 0; 
     display:flex;
     align-items: center;
+}
+.adminTitle{
+    font-size: 32px;
+    font-weight: bold;
 }
 a{
     text-decoration: none;

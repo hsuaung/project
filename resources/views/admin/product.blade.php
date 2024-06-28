@@ -1,16 +1,12 @@
 @php
 
-// dd(Auth::guard('admin')->user()->image);
-
-
 $updatestatus=false;
 
 if(!empty($product)){
     
     $updatestatus=true;
-    // dd($product);
+   
 }
-
 
 @endphp
 @extends('layouts.admin.masterLayout')
@@ -60,23 +56,9 @@ if(!empty($product)){
             </div>
         </div>
         <div class="row">
-            {{-- <div class="col">
-                <label for="detail">Detail <span>*</span></label>
-                <input type="text" id="detail" name="detail" required value="{{$updatestatus == true ? $product->detail: '' }}">
-            </div> --}}
-           
+         
         </div>
-        {{-- <div class="row">
-            <div class="col">
-                <label for="feature">Feature <span>*</span></label>
-                <input type="text" id="feature" name="feature" required value="{{$updatestatus == true ? $product->feature:'' }}">
-            </div>
-            <div class="col">
-                <label for="additioninfo">Additioninfo <span>*</span></label>
-                <input type="text" id="additioninfo" name="additioninfo" required value="{{$updatestatus == true ? $product->additioninfo:'' }}">
-            </div>
-        </div> --}}
-        <div class="col image">
+               <div class="col image">
             <label for="image">Enter Your Image: <span>*</span></label>
             <input type="file" id="image" name="images[]" placeholder="image" multiple required value="{{$updatestatus == true ? '':'' }}">
         </div>

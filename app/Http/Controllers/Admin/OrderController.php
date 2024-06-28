@@ -24,7 +24,7 @@ class OrderController extends Controller
         $this->itemRepository = $itemrepository;
     }
     public function orderSearch(Request $request){
-        // dd($request->orderby);
+ 
         $response = $this->itemRepository->search($request);
         return $response;
     
@@ -66,7 +66,7 @@ class OrderController extends Controller
             ->where('order_products.order_id', '=', $id)
             ->where('product_photos.isPrimary', '=', 1)
             ->get();
-        // dd($orderDetail);
+   
 
         return view('./admin/orderDetail', compact('orderDetail'));
     }

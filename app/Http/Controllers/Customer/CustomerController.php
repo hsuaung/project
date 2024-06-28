@@ -55,7 +55,7 @@ class CustomerController extends Controller
         ->where('products.id', $id)
         ->select('products.category_id')
         ->pluck('products.category_id');
-        // dd ($id);
+      
         $productlist=DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category_id')
         ->join('product_photos', 'product_photos.product_id', '=', 'products.id')
@@ -63,7 +63,6 @@ class CustomerController extends Controller
         ->where('products.category_id', $categoryID)
         ->select('products.*', 'categories.name as categoryName', 'product_photos.image as image')
         ->get();
-        // dd($productlist);
         return view ('./customer/detail',compact('product','images' ,'productlist'));
 
     }
@@ -72,24 +71,27 @@ class CustomerController extends Controller
     }
     
     public function registerProcess(Request $request){
-        // dd($request->image);
+        
+        
         $path = $request->file('image')->store('images/customer', 'public');
         $url = Storage::url($path);
         $uuid = Str::uuid()->toString();
+
         $customer = new Customer();
         $customer->name = $request->name;
         $customer->email = $request->email;
         $customer->phone = $request->phone;
         $customer->address = $request->address;
-        $customer->password =Hash::make($request->password);
+        $customer->password = Hash::make($request->password);
         $customer->image = $url;
         $customer->uuid= $uuid;
         $customer->status= "Active";
         
         $customer->save();
-        return redirect()->to('/');
+        return redirect()->to('./customer/login');
 
     }
+    
     public function shop(){
         $productlist=DB::table('products')
         ->join('categories', 'categories.id', '=', 'products.category_id')
@@ -111,7 +113,7 @@ class CustomerController extends Controller
 
     }
     public function shopSearch(Request $request){
-        // dd($request->orderby);
+       
         $response = $this->itemRepository->search($request);
         return $response;
     
@@ -142,7 +144,7 @@ class CustomerController extends Controller
 
 }
 public function categorySearch(Request $request){
-    // dd($request->orderby);
+ 
     $response = $this->itemRepository->search($request);
     return $response;
 

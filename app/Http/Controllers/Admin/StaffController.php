@@ -26,14 +26,14 @@ class StaffController extends Controller
 
             ->select('staff.*', 'roles.name as rolename')
             ->paginate(10);
-        // dd($stafflist);
+       
         return view('admin.stafflist', compact('stafflist'));
     }
     public function addStaff()
     {
         $roles = DB::table('roles')
             ->select('roles.*')->get();
-        // dd($roles);
+     
         return view('./admin/staff', compact('roles'));
     }
 

@@ -4,9 +4,7 @@ $updatestatus=false;
 if(!empty($category)){
     
     $updatestatus=true;
-    // dd($category);
 }
-// dd("false")
 
 @endphp
 

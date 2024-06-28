@@ -5,7 +5,7 @@ $updatestatus=false;
 
 if(!empty($staff)){
     $updatestatus=true;
-    // dd($staff);
+    
 }
 @endphp
 
@@ -21,8 +21,7 @@ if(!empty($staff)){
 @section('content')
 <form action="{{$updatestatus == true? route('editStaffProcess'): route('addStaffProcess')}}" method="post" class="form" enctype="multipart/form-data">
     @csrf
-    {{-- <input type="hidden" name="id" id="id" value="{{$updatestatus == true? $staff->id: '' }}"> --}}
-    <div class="row">
+     <div class="row">
         <div class="col">
             <label for="name">Name <span>*</span></label>
             <input type="text" id="name" name="name" placeholder="Enter your name" required value="{{$updatestatus == true? $staff->name: '' }}">

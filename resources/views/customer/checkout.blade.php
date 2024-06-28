@@ -4,7 +4,7 @@
     <section class="">
         <a href="">Home > </a> Checkout
     </section>
-    {{-- @dd(session('cart')) --}}
+  
 
 
     <section class="container">

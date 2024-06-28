@@ -21,7 +21,7 @@ class AdminController extends Controller
 
     }
     public function customerOrderBy(Request $request){
-        // dd($request->sort);
+      
       
        
             $customerlist=DB::table('customers')
@@ -69,18 +69,16 @@ class AdminController extends Controller
 
         
 
-        // dd($latestOrders);
-        
         return view('./admin/dashboard',compact('todayOrder','totalSale','totalOrder','latestOrders'));
     }
     public function customerList()
     {
         $customerlist = DB::table('customers')
-            // ->join('roles', 'roles.id', '=', 'staff.role_id')
+         
            
             ->select('customers.*')
             ->paginate(10);
-        // dd($customerlist);
+       
         
         return view('./admin/customerList', compact('customerlist'));
     }

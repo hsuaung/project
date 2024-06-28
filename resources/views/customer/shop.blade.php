@@ -1,10 +1,7 @@
 @extends('layouts.customerLayout')
 @section('title', 'shop || furniture')
 @section('content')
-@php
-    
-    // dd($categories);
-@endphp
+
 <div class="wrapper">
     <i id="left" class="fa-solid fa-angle-left"></i>
     <div class="carousel">

@@ -13,12 +13,7 @@ class CartController extends Controller
 {
     public function __construct()
     {
-        // if(session('cart')){
-        //     dd("OK");
-        //     session()->forget('cart');
-        // }else{
-        //     dd("NG");
-        // }
+     
         
     }
     public function cart()
@@ -53,7 +48,7 @@ class CartController extends Controller
     }
     public function buynow(Request $request)
     {
-        // dd(session('cart'));
+      
         $id = $request->id;
         
         $product = DB::table('products')
@@ -65,8 +60,7 @@ class CartController extends Controller
             ->get();
 
         $cart=(session('cart'));
-        // dd($cart);
-
+      
         if (isset($cart[$id])) {
                 $cart[$id]['quantity'] += 1;
         } else {
@@ -93,19 +87,14 @@ class CartController extends Controller
         $ids = $request->product_id ?? '';
         $quantities = $request->quantity ?? '';
         if (isset($cart) && isset($quantities) && isset($ids)) {
-            // dd($cart, $ids, $quantities);
-            foreach ($ids as $key => $id) {
+               foreach ($ids as $key => $id) {
                 if (array_key_exists($id, $cart)) {
-                    // dd('true');
-                    // dd($cart[$id]['product_id']);
-                    // dd(in_array($id, $cart[$id], true));
-                    if ($id == $cart[$id]['product_id']) {
-                        // dd('true');
+                        if ($id == $cart[$id]['product_id']) {
+                      
                         $quantity = $quantities[$key];
-                        // dd($quantity);
+                    
                         $cart[$id]['quantity'] = $quantity;
                     }
-                    // dd($cart);
                 }
             }
             session()->forget('cart');

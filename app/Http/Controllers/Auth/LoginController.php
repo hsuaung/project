@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -38,21 +40,23 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest:admin')->except(['myLogout', 'logout']);
-        $this->middleware('auth:admin')->only(['myLogout', 'logout']);
+        // $this->middleware('auth:admin')->only(['myLogout', 'logout']);
     }
 
-    public function showAdminLogin(){
+    public function showAdminLogin()
+    {
         return view("admin.login");
     }
 
-    public function myLogout(Request $request){
+    public function myLogout(Request $request)
+    {
 
         return $this->logout($request);
     }
 
     protected function guard()
     {
-        // dd('Auth Guard');
+        
         return Auth::guard('admin');
     }
 
@@ -71,5 +75,26 @@ class LoginController extends Controller
         return $request->wantsJson()
             ? new JsonResponse([], 204)
             : redirect('/admin/login');
+    }
+
+
+    public function customerLogin(Request $request)
+    {
+        
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if (Auth::guard('customer')->attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])) {
+            dd('OK');
+            return redirect()->intended('/');
+        }else{
+            // Log::warning('Failed to login attempt', ['email'=>$request->password]);
+            dd('Something!');
+        }
     }
 }

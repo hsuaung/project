@@ -8,10 +8,7 @@
 
 <section>
     
-    {{-- @php
-        dd($orderDetail);
 
-    @endphp --}}
     <table>
         <tr>
             <th>Item No</th>

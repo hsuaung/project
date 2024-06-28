@@ -1,5 +1,5 @@
 @extends('layouts.customerLayout')
-@section('title','category || furniture')
+@section('title','Category | Furniture Store')
 @section('content')
 
     <section class="category">
@@ -16,7 +16,7 @@
 
             </div>
             
-            {{-- <div class="filter">
+            <div class="filter">
                 <form action="{{route('categorySearch')}}" method="get" class="filterForm">
                     @csrf
                         <input type="text" name="search" value="{{Request::get('search')? Request::get('search'):''}}" >
@@ -50,7 +50,7 @@
 
                 </form>
                 
-            </div> --}}
+            </div>
         </div>
         
         <div class="shop-card-container">
