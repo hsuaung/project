@@ -73,6 +73,7 @@ class OrderController extends Controller
 
     public function orderUpdate(Request $request)
     {
+        // dd($request->id);
         Order::where('id', $request->id)->update([
             'status' => $request->status,
 

@@ -28,6 +28,7 @@ header{
 .adminTitle{
     font-size: 32px;
     font-weight: bold;
+    border-radius: 10px;
 }
 a{
     text-decoration: none;

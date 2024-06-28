@@ -12,7 +12,11 @@
     display: flex;
     margin-top: 1rem;
     gap:1rem;
+    border-radius: 10px;
 
+}
+.container{
+    border-radius:10px;
 }
 
 .box
@@ -20,7 +24,7 @@
     width: 100%;
   
     background-color: var(--primary_color);
-  
+    border-radius: 20px;
    
 }
 
@@ -32,7 +36,8 @@
     justify-content: center;
     gap: 10px;
     padding: 15px;
-    
+
+  
 }
 
 .bar-chart

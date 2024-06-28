@@ -8,7 +8,7 @@
 
 <div class="dashboardrow ">
     <div class="box">
-        <div class="content">
+        <div class="content ">
             <p>Today Order</p>
             <h1>{{$todayOrder}}</h1>
             <p>Availabale to payout</p>
@@ -16,7 +16,7 @@
     </div>
 
     <div class="box">
-        <div class="content">
+        <div class="content ">
             <p>Total Sale</p>
             <h1>$ {{$totalSale}}</h1>
             <p>Availabale to payout</p>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="box">
-        <div class="content">
+        <div class="content ">
             <p>Total Order</p>
             <h1>{{$totalOrder}}</h1>
             <p>Availabale to payout</p>
@@ -33,7 +33,7 @@
 </div>
 
 <div class="dashboardrow ">
-    <div class="bar-chart">
+    <div class="bar-chart container">
         <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
         <script>
             var ctx = document.getElementById('myChart').getContext('2d');
@@ -69,7 +69,7 @@
 
     </div>
 
-    <div class="pie-chart">
+    <div class="pie-chart container">
         <canvas id="myPie" style="width:100%;max-width:600px"></canvas>
         <script>
             var ctx = document.getElementById('myPie').getContext('2d');
@@ -106,7 +106,7 @@
     </div>
 
 </div>
-<div class="table">
+<div class="table container">
     <div class="title">
 
     </div>
@@ -136,10 +136,15 @@
             <td>
                 <form action="{{route('orderUpdate')}}" method="">
                     <input type="hidden" name="id" value="{{$order->id}}">
+                    <select name="status" id="" disabled>
+                        <option value="pending" {{$order->status=='pending'? 'selected':''}}>Pending</option>
+                        <option value="delivered" {{$order->status=='delivered'? 'selected':''}}>Delivered</option>
+                        <option value="cancel" {{$order->status=='cancel'? 'selected':''}}>Cancel</option>
+                    </select>
                    
-                    <input type="radio" class="deliverRadio" onchange="this.form.submit()" name="status" value="delivered" {{$order->status=='delivered'? 'checked':''}} disabled >deliver
+                    {{-- <input type="radio" class="deliverRadio" onchange="this.form.submit()" name="status" value="delivered" {{$order->status=='delivered'? 'checked':''}} disabled >deliver
                     <input type="radio" class="pendingRadio" onchange="this.form.submit()" name="status" value="pending" {{$order->status=='pending'? 'checked':''}} disabled>pending
-                    <input type="radio" class="cancelRadio"  onchange="this.form.submit()" name="status" value="cancel" {{$order->status=='cancel'? 'checked':''}} disabled >cancel
+                    <input type="radio" class="cancelRadio"  onchange="this.form.submit()" name="status" value="cancel" {{$order->status=='cancel'? 'checked':''}} disabled >cancel --}}
     
 
                 </form>
@@ -154,64 +159,7 @@
     
 </div>
 
-{{-- <div class="table">
-    <div class="title">
-        <b>Latest Orders</b>
-    </div>
-    <table>
-        <tr>
-            <th>Product Name</th>
-            <th>Order ID</th>
-            <th>Date</th>
-            <th>Customer Name</th>
-            <th>Status</th>
-            <th>Amount</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>Morden Sofa</td>
-            <td>EE72823</td>
-            <td>2023 Nov 22</td>
-            <td>Sofia Mia</td>
-            <td>
-                <span class="dot dot-deliver"></span> Delivered
-            </td>
-            <td>250.000 MMK</td>
-            <td>
-                <img src="{{asset('image/admin/edit.svg') }}"alt="">
-                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-            </td>
-        </tr>
-        <tr>
-            <td>Morden Sofa</td>
-            <td>EE72823</td>
-            <td>2023 Nov 22</td>
-            <td>Sofia Mia</td>
-            <td>
-                <span class="dot dot-deliver"></span> Delivered
-            </td>
-            <td>250.000 MMK</td>
-            <td>
-                <img src="{{asset('image/admin/edit.svg') }}"alt="">
-                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-            </td>
-        </tr>
-        <tr>
-            <td>Morden Sofa</td>
-            <td>EE72823</td>
-            <td>2023 Nov 22</td>
-            <td>Sofia Mia</td>
-            <td>
-                <span class="dot dot-deliver"></span> Delivered
-            </td>
-            <td>250.000 MMK</td>
-            <td>
-                <img src="{{asset('image/admin/edit.svg') }}"alt="">
-                <img src="{{asset('image/admin/trashbin.svg') }}" alt="">
-            </td>
-        </tr>
-    </table>
-</div> --}}
+
 
 
 

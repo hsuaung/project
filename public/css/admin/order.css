@@ -9,9 +9,15 @@
     padding:1rem;
     border-radius: 5px;
 }
+
 .order-deliver{
     background-color: #4CE13F;
 }
+
+option {
+    color: #000000;
+}
+
 .order-pending{
     background-color: #F29A2E;
 }
