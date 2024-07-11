@@ -86,15 +86,18 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
+        // dd($request->email,$request->password);
+        dd(Auth::guard('customer'));
         if (Auth::guard('customer')->attempt([
             'email' => $request->email,
             'password' => $request->password
-        ])) {
+        ],$request->get('remember'))) {
             dd('OK');
-            return redirect()->intended('/');
+            // return redirect()->intended('/');
         }else{
             // Log::warning('Failed to login attempt', ['email'=>$request->password]);
-            dd('Something!');
+            // dd('Something!');
+            return redirect()->intended('/');
         }
     }
 }

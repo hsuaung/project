@@ -12,20 +12,13 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
     
     public function home(){
-        //For Home Grid
-        // $categoryNames = DB::table('categories')
-        // ->select('name')
-        // ->pluck('name');
-
-        // $grid_items = Category::whereIn('name', $categoryNames)
-        //     ->withCount('products')
-        //     ->take(5)
-        //     ->get();
+       
         
             $grid_items=Category::limit(5) ->withCount('products')->get();
         //For New Products
@@ -44,5 +37,10 @@ class HomeController extends Controller
     }
    
 
+    public function clearSession(){
+        
+        Session::flush();
+        return redirect('/');
+    }
 
 }

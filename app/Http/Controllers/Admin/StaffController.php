@@ -55,7 +55,7 @@ class StaffController extends Controller
         $staff->status = "Active";
         $staff->password = Hash::make($request->password);
         $staff->save();
-        return redirect()->to('/staffList');
+        return redirect()->to('/admin/staffList');
     }
     public function editStaff($id)
     {
@@ -67,11 +67,13 @@ class StaffController extends Controller
     public function editStaffProcess(Request $request)
     {
 
+        
 
         if ($request->hasFile('image')) {
+            
             $path = $request->file('image')->store('images', 'public');
             $url = Storage::url($path);
-
+            // dd($request->id);
             Staff::where('id', $request->id)->update([
                 'image' => $url,
                 'name' => $request->name,
@@ -81,7 +83,7 @@ class StaffController extends Controller
                 'phone' => $request->phone,
                 'role_id' => $request->role,
             ]);
-            return redirect()->to('/staffList');
+            return redirect()->to('/admin/staffList');
         } else {
 
             return back()->with('error', 'No file uploaded');
@@ -90,7 +92,7 @@ class StaffController extends Controller
     public function deleteStaffProcess($id)
     {
         DB::table('staff')->where('id', $id)->delete();
-        return redirect()->to('/staffList');
+        return redirect()->to('/admin/staffList');
     }
     public function searchStaff(Request $request)
     {

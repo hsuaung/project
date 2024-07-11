@@ -96,6 +96,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/clearsession', [HomeController::class, 'clearsession'])->name('clearsession');
 Route::get('/blog', [CustomerController::class, 'blog'])->name('blog');
 
 Route::get('/productByCategory/' . '{category}', [CustomerController::class, 'productByCategory'])->name('productByCategory');

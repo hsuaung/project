@@ -34,7 +34,7 @@ class CategoryController extends Controller
         $category->uuid=$uuid;
         $category->status="Active";
         $category->save();
-        return redirect()->to('/categoryList');
+        return redirect()->to('/admin/categoryList');
     }
     public function editCategory(Request $request){
         $category = DB::table('categories')
@@ -47,11 +47,11 @@ class CategoryController extends Controller
         Category::where('id', $request->id)->update([
             'name' => $request->name,
         ]);
-        return redirect()->to('/categoryList');
+        return redirect()->to('/admin/categoryList');
     }
     public function deleteCategoryProcess($id){
         DB::table('categories')->where('id', $id)->delete();
-        return redirect()->to('/categoryList');
+        return redirect()->to('/admin/categoryList');
     }
     public function searchCategory(Request $request)
     {
