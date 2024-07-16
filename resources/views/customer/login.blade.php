@@ -2,14 +2,15 @@
 @section('title', 'Log in || furniture')
 @section('content')
 
-    <section class="link-connect">
+    <section class="">
         <span>Home</span>
         <span>My Account</span>
     </section>
-    <section class="form-container">
-        <div class="login-form">
-            <h1>Log In</h1>
+    <section class="form-gp">
+        
+           
             <form action="{{route('customer.login.process') }}" method="post">
+                <h1>Log In</h1><br>
                 @csrf
                 <label for="email">Email address <span>*</span></label>
                 <input type="text" id="email" name="email" required>
@@ -24,12 +25,13 @@
                 <div>
                     <button type="submit">LOG IN</button>
                 </div>
-                <p>Lost your password?</p>
+                <a>Lost your password?</a>
             </form>
-        </div>
-        <div class="register-form">
-            <h1>Register</h1>
+        
+        
+            
             <form action="{{route('customer.register.process') }}" method="post" class="form" enctype="multipart/form-data">
+                <h1>Register</h1><br>
                 @csrf
         
                 <label for="name">Name<span>*</span></label>
@@ -50,10 +52,10 @@
                 <label for="address">Address <span>*</span></label>
                 <textarea name="address" id="address" cols="30" rows="10" required></textarea>
 
-                    <button type="submit">REGISTER</button>
+                <button type="submit">REGISTER</button>
                    
                 
-        </div>
+     
     </section>
 @endsection
 

@@ -142,10 +142,7 @@
                         <option value="cancel" {{$order->status=='cancel'? 'selected':''}}>Cancel</option>
                     </select>
                    
-                    {{-- <input type="radio" class="deliverRadio" onchange="this.form.submit()" name="status" value="delivered" {{$order->status=='delivered'? 'checked':''}} disabled >deliver
-                    <input type="radio" class="pendingRadio" onchange="this.form.submit()" name="status" value="pending" {{$order->status=='pending'? 'checked':''}} disabled>pending
-                    <input type="radio" class="cancelRadio"  onchange="this.form.submit()" name="status" value="cancel" {{$order->status=='cancel'? 'checked':''}} disabled >cancel --}}
-    
+                    
 
                 </form>
             </td>

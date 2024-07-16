@@ -7,9 +7,7 @@
     <section class="">
         <a href="">Home > </a> Shopping cart
     </section>
-    {{-- <section class=""> 
-            {{ session('cart') != null ? count(session('cart')) . ' <b>Your selection </b><span> items' : '' }}</span>
-    </section> --}}
+    
     @if (session('cart') != null)
         <section>
             <b>Your selection </b> {{count(session('cart'))}} items
@@ -18,10 +16,12 @@
         <section class="table">
             <table class="cart-table">
                 <tr>
-                    <th colspan="3">Product</th>
+                    
+                    <th colspan="3" >Product</th>
+                    
                     <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
+                    <th >Quantity</th>
+                    <th >Total</th>
 
                 </tr>
                 

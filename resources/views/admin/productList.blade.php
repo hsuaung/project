@@ -12,17 +12,15 @@
              
 <div class="table" >
     <div class="title">
-        <form action="{{ route('searchProduct') }}" method="GET" class="btn search_btn">
+        <form action="{{ route('searchProduct') }}" method="GET" class="button">
             <input type="text" name="search" placeholder="Search Products" value="{{Request::get('search')? Request::get('search'):''}}">
             <button type="submit"><i class="lni lni-search-alt"></i></button>
         </form>
-
-        <div class="btn add_btn">
-            <a href="{{route('addProduct')}}" >
+        <a href="{{route('addProduct')}}" class="button addButton" >
                 <i class="lni lni-circle-plus"></i>
-                <p>New Product</p>
-            </a>
-        </div>
+                <span>New Product</span>
+        </a>
+       
     </div>
 
     @if ($productlist->isEmpty())

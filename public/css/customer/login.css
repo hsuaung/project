@@ -1,10 +1,11 @@
 body{
     background-color: white;
 }
-.form-container{
+.form-gp{
     display: grid;
+    
     grid-template-columns: 50% 50%;
-    margin:2rem 3rem;
+   
 }
 
 form{
@@ -22,7 +23,29 @@ form input{
 form button{
     background-color: black;
     color:white;
-    
-    width:5rem;
-    height:2rem;
+    width:6rem;
+    height:2.5rem;
+
+}
+
+/* responsive  */
+@media(max-width:1440px ){
+    .form-gp{
+        grid-template-columns: 1fr;
+        gap:3rem;
+        justify-items: center;
+    }
+    form{
+     
+        width:100%;
+        padding:1rem;
+        /* align-items: center; */
+    }
+    form input{
+        width:100%;
+    }
+
+}
+@media(max-width:768px ){
+ 
 }

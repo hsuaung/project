@@ -6,20 +6,20 @@
 @section('title', 'Order List')
 @section('content')
     <div class="top_div">
-        <form action="{{ route('orderDateSearch') }}" class="dateForm" method="get">
-            <input type="date" name="date1" value="{{ Request::get('date1') ? Request::get('date1') : '' }}">
-            <input type="date" name="date2" value="{{ Request::get('date2') ? Request::get('date2') : '' }}">
-            <button type="submit">search</button>
+        <form action="{{ route('orderDateSearch') }}" class="" method="get">
+            <input type="date" name="date1" value="{{ Request::get('date1') ? Request::get('date1') : '' }}" class="dateButton">
+            <input type="date" name="date2" value="{{ Request::get('date2') ? Request::get('date2') : '' }}" class="dateButton">
+            <button type="submit" class="dateButton"><i class="lni lni-search-alt"></i></button>
         </form>
-        <form action="{{ route('orderSearch') }}" class="searchForm" method="post">
-            @csrf
-            <input type="text" name="search" value="{{ Request::get('search') ? Request::get('search') : '' }}">
-            <button type="submit">Search</button>
-        </form>
-        <div class="">
-
-            <div>
-                <form action="{{ route('orderStatus') }}" method="get">
+       
+        <div class="right_div">
+            <form action="{{ route('orderSearch') }}" class="button" method="post">
+                @csrf
+                <input type="text" name="search" value="{{ Request::get('search') ? Request::get('search') : '' }}" placeholder="Search Orders">
+                <button type="submit"><i class="lni lni-search-alt"></i></button>
+            </form>
+          
+                <form action="{{ route('orderStatus') }}" method="get" class="button">
                     @csrf
                     <select name="status" onchange="this.form.submit()">
                         <option value="status" {{ Request::get('status') == 'status' ? 'selected' : '' }}> All Orders
@@ -31,7 +31,7 @@
 
                     </select>
                 </form>
-                <form action="{{ route('orderOrderBy') }}" method="get">
+                <form action="{{ route('orderOrderBy') }}" method="get" class="button">
                     @csrf
                     <select name="sort" onchange="this.form.submit()">
                         {{-- <option value="" {{Request::get('sort') == "null"? 'selected':''}}>default</option> --}}
@@ -40,7 +40,7 @@
                     </select>
                 </form>
 
-            </div>
+         
 
         </div>
     </div>
@@ -110,7 +110,7 @@
                         <td>{{ $order->totalprice }}</td>
 
                         <td>
-                            <form action="{{ route('orderUpdate') }}" method="GET">
+                            <form action="{{ route('orderUpdate') }}" method="GET" class="button orderStatus">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $order->id }}">
                                 <select name="status" onchange="this.form.submit()" id="statusSelect">

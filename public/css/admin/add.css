@@ -7,7 +7,8 @@
     border-radius: 5px;
     margin-top:2rem;
 }
-.form input ,select ,textarea{
+.form input  {
+
     background-color: var(--body_color);
     color: var(--text_color);
     padding:1rem;
@@ -26,7 +27,7 @@
    
   
 }
-.row input , select{
+.row input {
    
     width:25rem;
 

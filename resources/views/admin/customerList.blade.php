@@ -2,21 +2,23 @@
 @section('page', 'Customer List')
 @section('title', 'Customer List')
 @section('content')
+
 <div class="top_div">
-    <form action="{{route('customerDateSearch')}}" class="dateForm" method="get">
-        <input type="date" name="date1" value="{{Request::get('date1')? Request::get('date1'):''}}">
-        <input type="date" name="date2" value="{{Request::get('date2')? Request::get('date2'):''}}">
-        <button type="submit">search</button>
+    {{-- dateForm --}}
+    <form action="{{route('customerDateSearch')}}" class="" method="get">
+        <input type="date" name="date1" value="{{Request::get('date1')? Request::get('date1'):''}}" class="dateButton">
+        <input type="date" name="date2" value="{{Request::get('date2')? Request::get('date2'):''}}" class="dateButton">
+        <button type="submit" class="dateButton"><i class="lni lni-search-alt "></i></button>
     </form>
     <div class="right_div">
-        {{-- <div class="btn search_btn"> --}}
-            <form action="{{route('searchCustomer')}}" class="searchForm" >
-                <input type="text" name="search" value="{{Request::get('search')? Request::get('search'):''}}">
-                <button type="submit">Search</button>
+        {{-- searchForm --}}
+            <form action="{{route('searchCustomer')}}" class="button" >
+                <input type="text" name="search" value="{{Request::get('search')? Request::get('search'):''}}" placeholder="Search Customers">
+                <button type="submit"><i class="lni lni-search-alt"></i></button>
             </form>
            
-        {{-- </div> --}}
-        <form action="{{route('customerOrderBy')}}" method="get" class="orderBy">
+            {{-- orderBy --}}
+        <form action="{{route('customerOrderBy')}}" method="get" class="button">
             @csrf
             <select name="sort" onchange="this.form.submit()"  >
                 {{-- <option value="" {{Request::get('sort') == "null"? 'selected':''}}>default</option> --}}

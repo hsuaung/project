@@ -8,7 +8,7 @@
         <h1 class="adminTitle">  @yield('title') </h1>
        
         <a href="{{route('home')}}" target="_blank" >
-            <i class="lni lni-home"></i>
+            <i class="lni lni-home adminTitle"></i>
         </a>
     </header>
    
@@ -17,9 +17,7 @@
         
     </div>
 </section>
-<div class="rightnav">
-  
-</div>
+
 @push('scripts')
     <script src="{{asset('js/admin/style.js') }}"></script>
 @endpush 

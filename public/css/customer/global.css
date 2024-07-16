@@ -42,24 +42,6 @@ a{
 .content{
     text-align: center;
 }
-/* @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@700&family=Jost&family=Source+Code+Pro:wght@500&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-.tabmenu{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    background-color:black ;
-    gap: 2rem;;
-
-}
-.card{
-    background-color: burlywood;
-    
-}
- */
 
 
 
@@ -89,4 +71,16 @@ textarea{
         margin:1rem 0rem;
         /* background-color: goldenrod; */
     }
+}
+
+
+/* update style */
+#home_shop_btn{
+    margin-top:15px;
+    display:flex;
+    gap:5px;
+    width:150px;
+    padding:15px 20px;
+    border:1px solid black;
+
 }

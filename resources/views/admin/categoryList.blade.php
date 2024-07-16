@@ -6,23 +6,20 @@
 
 @section('content')
 
-    <div class="table">
 
+    <div class="table">
         <div class="title">
 
-            <form action="{{ route('searchCategory') }}" method="GET" class="btn search_btn">
-                <input type="text" name="search" placeholder="Search..">
+            <form action="{{ route('searchCategory') }}" method="GET" class="button">
+                <input type="text" name="search" placeholder="Search Category">
                 <button type="submit"><i class="lni lni-search-alt"></i></button>
             </form>
-
-            <div class="btn add_btn">
-                <a href="{{ route('addCategory') }}">
+            <a href="{{ route('addCategory') }}" class="button">
                     <i class="lni lni-circle-plus"></i>
-                    <p>Add </p>
+                    <span>Add Category </span>
                 </a>
-            </div>
-
         </div>
+       
         @if ($categories->isEmpty())
             <div class="noResult">
                 <i class="lni lni-sad"></i>

@@ -11,7 +11,7 @@
             <h3>SALE OFF 30%</h3>
             <h1>Classic 2023 Interior Designs</h1>
             <p>orem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            <button>Shop Now <img src="{{ asset('image/customer/right-arrow-svgrepo-com 2.svg') }}" alt=""></button>
+            <a href="{{ route('shop') }}" id="home_shop_btn"><span>Shop Now</span> <img src="{{ asset('image/customer/right-arrow-svgrepo-com 2.svg') }}" alt=""></a>
         </div>
        
         <div class="mySlides ">
@@ -50,7 +50,7 @@
                     <img src="{{ asset($grid_items[$i]['image']) }}" alt="">
                 </a>
             @endfor
-            <a>
+            <a href="{{ route('shop') }}">
                 Explore more
                 <img src="image/customer/icons.svg" alt="">
             </a>
@@ -82,129 +82,6 @@
  
 
 
-    {{-- <section class="new-products ">
-        <h2 class="heading">NEW PRODUCTS</h2>
-        <div class="product-nav tabmenu">
-            <button class="tab" onclick="openMenu('sofa')"><a>Sofa</a></button>
-            <button class="tab" onclick="openMenu('bed')"><a>Bed</a></button>
-            <button class="tab" onclick="openMenu('lamp')"><a>Lamp</a></button>
-            <button class="tab" onclick="openMenu('cabinet')"><a>Cabinet</a></button>
-            <button class="tab" onclick="openMenu('chair')"><a>Chair</a></button>
-            <button class="tab" onclick="openMenu('table')"><a>Table</a></button>
-
-        </div>
-        @if (@isset($sofalist))
-            <div id="sofa" class="menu grid">
-                @foreach ($sofalist as $sofa)
-                    <a href="{{ url('/detail/' . $sofa->id) }}" class="pcard">
-                        <div class="image">
-                            <img src="{{ asset("$sofa->image") }}" width="200px" height="250px" alt="">
-                            <span class="sale">Sale</span>
-                        </div>
-                        <div class="">
-                            <p>{{ $sofa->name }}</p>
-                            <b>${{ $sofa->price }}</b>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-        @else <div>SOFA</div>
-        @endif
-        @if (@isset($bedlist))
-            <div id="bed" class="menu grid" style="display:none">
-                @foreach ($bedlist as $bed)
-                    <a href="{{ url('/detail/' . $bed->id) }}" class="pcard">
-                        <div class="image">
-                            <img src="{{ asset("$bed->image") }}" width="200px" height="250px" alt="">
-                            <span class="sale">Sale</span>
-                        </div>
-                        <div class="">
-                            <p>{{ $bed->name }}</p>
-                            <b>${{ $bed->price }}</b>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-            @else <div>bed</div>
-        @endif
-
-        @if (@isset($lamplist))
-            <div id="lamp" class="menu grid" style="display:none">
-
-                @foreach ($lamplist as $lamp)
-                    <a href="{{ url('/detail/' . $lamp->id) }}" class="pcard">
-                        <div class="image">
-                            <img src="{{ asset("$lamp->image") }}" width="200px" height="250px" alt="">
-                            <span class="sale">Sale</span>
-                        </div>
-                        <div class="">
-                            <p>{{ $lamp->name }}</p>
-                            <b>${{ $lamp->price }}</b>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-            @else <div>lamp</div>
-        @endif
-        @if (@isset($cabinetlist))
-            <div id="cabinet" class="menu grid" style="display:none">
-
-                @foreach ($cabinetlist as $cabinet)
-                    <a href="{{ url('/detail/' . $cabinet->id) }}" class="pcard">
-                        <div class="image">
-                            <img src="{{ asset("$cabinet->image") }}" width="200px" height="250px" alt="">
-                            <span class="sale">Sale</span>
-                        </div>
-                        <div class="">
-                            <p>{{ $cabinet->name }}</p>
-                            <b>${{ $cabinet->price }}</b>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-        @endif
-        @if (@isset($chairlist))
-            <div id="chair" class="menu grid" style="display:none">
-
-                @foreach ($chairlist as $chair)
-                    <a href="{{ url('/detail/' . $chair->id) }}" class="pcard">
-                        <div class="image">
-                            <img src="{{ asset("$chair->image") }}" width="200px" height="250px" alt="">
-                            <span class="sale">Sale</span>
-                        </div>
-                        <div class="">
-                            <p>{{ $chair->name }}</p>
-                            <b>${{ $chair->price }}</b>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-        @endif
-        @if (@isset($tablelist))
-            <div id="table" class="menu grid" style="display:none">
-
-                @foreach ($tablelist as $table)
-                    <a href="{{ url('/detail/' . $table->id) }}" class="pcard">
-                        <div class="image">
-                            <img src="{{ asset("$table->image") }}" width="200px" height="250px" alt="">
-                            <span class="sale">Sale</span>
-                        </div>
-                        <div class="">
-                            <p>{{ $table->name }}</p>
-                            <b>${{ $table->price }}</b>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-        @endif
-
-
-
-
-
-
-
-    </section> --}}
     <section class="home-banner">
         <div class="banner">
             <div class="banner-content">

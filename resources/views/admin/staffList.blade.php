@@ -4,24 +4,18 @@
 
 @section('content')
     <div class="top_div">
-        <form action="{{ route('dateFilter') }}" class="dateForm" >
-            <input type="date" id="startDate" name="date1" value="2024-06-3" class="date-picker" />
-            <input type="date" id="endDate" name="date2" class="date-picker" />
-            <button type="submit"> search</button>
-            {{-- <i class="lni lni-search-alt"></i> --}}
-     
-          
-          
-            
-               </form>
-        
+        <form action="{{ route('dateFilter') }}" class="" >
+            <input type="date" id="startDate" name="date1" value="2024-06-3"   class="dateButton"/>
+            <input type="date" id="endDate" name="date2" class="dateButton" />
+            <button type="submit" class="dateButton"> <i class="lni lni-search-alt"></i></button>
+        </form>
         <div class="right_div">
-            <form action="{{ route('searchStaff') }}" method="GET" class="searchForm" >
+            <form action="{{ route('searchStaff') }}" method="GET" class="button" >
                 <input type="text" name="search" placeholder="Search Staff">
-                <button type="submit">search</button>
+                <button type="submit"><i class="lni lni-search-alt"></i></button>
             </form>
 
-            <form action="{{route('sortStaff')}}" method="get">
+            <form action="{{route('sortStaff')}}" method="get" class="button">
                 @csrf
                 <select name="sort" onchange="this.form.submit()"  >
                     {{-- <option value="" {{Request::get('sort') == "null"? 'selected':''}}>default</option> --}}
@@ -43,12 +37,12 @@
     <div class="table">
         <div class="title">
             <b>Staff List</b>
-            <div class="btn add_btn">
-                <a href="{{ route('addStaff') }}">
+            
+                <a href="{{ route('addStaff') }}" class="button addButton" > 
                     <i class="lni lni-circle-plus"></i>
-                    <p>New Staff</p>
+                    <span>New Staff</span>
                 </a>
-            </div>
+       
 
         </div>
         

@@ -104,6 +104,11 @@ li{
     align-items: center;
     gap:1rem;
 }
+.rightnav img{
+    width:55px;
+    height:55px;
+    border-radius: 100%;
+}
     
 .date{
     width: 13%;
@@ -166,16 +171,7 @@ table{
     color:var(--text_color);
 }
 
-/* .btn a{
-    display:flex;
-    justify-items: center;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-}
-.btn a:hover{
-    color:var(--text_color);
-} */
+
 .btn_gp{
     margin-top: 1rem;
 }
@@ -235,8 +231,8 @@ table{
 .right_div{
     display:flex;
     gap:1rem;
-    align-items: flex-end;
-    /* padding: 1rem; */
+    align-items: center;
+ 
 }
 header{
     display: flex;
@@ -246,27 +242,14 @@ header{
 .title{
     display:flex;
     justify-content: space-between;
-    /* background-color: red; */
+    
 }
 
 .active_link{
+   
     color:var(--confirm_color);
 }
-/* 
-.pagination{
-    margin-top:1rem;
-    display: flex;
-    gap:1rem;
-    justify-content: flex-end;
-}
-.pagination a{
-    background-color: var(--primary_color);
-    padding: 1rem;
-}
-.pagination a:active{
-    background-color: #F7941D;
-}
- */
+
 
  .pagination{
     background-color: transparent;
@@ -278,10 +261,14 @@ header{
  }
 .page-item{
     border:1px solid var(--confirm_color);
-    padding: 1rem;
-    border-radius: 5px;
+    border-radius: 20%;
     cursor: pointer;
+    width: 40px;;
+    height:40px;
+    text-align: center;
+    align-content: center;
 }
+
 
 
 .totalAmt{
@@ -349,4 +336,46 @@ header{
 .searchForm button:hover , .dateForm button:hover{
     background-color: black;
     color:var(--text_color);
+}
+
+
+/* update  */
+.button{
+    padding:10px;
+    border-radius: 10px;
+    border:1px solid var(--text_color);
+}
+.button input{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color:var(--text_color)
+}
+.button button{
+    background-color: transparent;
+    border:none;
+    color: var(--text_color);
+}
+.addButton{
+    display:flex;
+    align-items: center;
+    gap:5px;
+}
+.dateButton{
+    background-color: var(--primary_color);
+    outline: none;
+    border: none;
+    color:var(--text_color);
+    padding:10px;
+    border-radius: 10px;
+}
+
+.button select{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color:var(--text_color);
+}
+.orderStatus{
+    border:none !important;
 }
